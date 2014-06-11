@@ -1,6 +1,15 @@
 package models;
 
-import java.io.Serializable;
+import play.db.jpa.GenericModel;
+import play.db.jpa.Model;
+import play.data.validation.Required;
+import play.data.validation.MaxSize;
+
+import java.math.BigDecimal;
+import java.util.Date;
+import java.util.List;
+
+import javax.persistence.*;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -12,49 +21,41 @@ import java.util.List;
  * 
  */
 @Entity
-@NamedQuery(name="Hemerografia.findAll", query="SELECT h FROM Hemerografia h")
-public class Hemerografia implements Serializable {
-	private static final long serialVersionUID = 1L;
+@Table(name="HEMEROGRAFIA")
+public class Hemerografia extends GenericModel {
 
-	@EmbeddedId
-	private HemerografiaPK id;
+	@Id
+	@Column(name="CODIGO")
+	private long codigo;
 
+	@Column(name="DESCRIPCIONHEM")
 	private String descripcionhem;
 
-	@Temporal(TemporalType.DATE)
+	@Column(name="FECHAPUBLICACION")
 	private Date fechapublicacion;
 
+	@Column(name="LUGAREDICION")
 	private String lugaredicion;
 
+	@Column(name="PRECIO")
 	private BigDecimal precio;
 
 	//bi-directional many-to-one association to Editorial
 	@ManyToOne
 	@JoinColumn(name="IDEDITORIAL")
 	private Editorial editorial;
-
 	//bi-directional many-to-one association to Material
 	@ManyToOne
 	@JoinColumn(name="IDMATERIAL")
 	private Material material;
-
 	//bi-directional many-to-one association to Periodico
 	@OneToMany(mappedBy="hemerografia")
 	private List<Periodico> periodicos;
-
 	//bi-directional many-to-one association to Revista
 	@OneToMany(mappedBy="hemerografia")
 	private List<Revista> revistas;
 
 	public Hemerografia() {
-	}
-
-	public HemerografiaPK getId() {
-		return this.id;
-	}
-
-	public void setId(HemerografiaPK id) {
-		this.id = id;
 	}
 
 	public String getDescripcionhem() {

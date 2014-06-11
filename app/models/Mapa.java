@@ -1,7 +1,18 @@
 package models;
 
-import java.io.Serializable;
+import play.db.jpa.GenericModel;
+import play.db.jpa.Model;
+import play.data.validation.Required;
+import play.data.validation.MaxSize;
+
+import java.math.BigDecimal;
+import java.util.Date;
+import java.util.List;
+
 import javax.persistence.*;
+import javax.persistence.*;
+import java.math.BigDecimal;
+import java.util.Date;
 import java.util.List;
 
 
@@ -10,19 +21,24 @@ import java.util.List;
  * 
  */
 @Entity
-@NamedQuery(name="Mapa.findAll", query="SELECT m FROM Mapa m")
-public class Mapa implements Serializable {
+@Table(name="MAPA")
+public class Mapa extends GenericModel {
 	private static final long serialVersionUID = 1L;
 
-	@EmbeddedId
-	private MapaPK id;
-
+	@Id
+	@Column(name="IDMAPA")
+	private long idmapa;
+	
+	@Column(name="ESCALA")
 	private String escala;
 
+	@Column(name="FUENTE")
 	private String fuente;
 
+	@Column(name="LUGAR")
 	private String lugar;
 
+	@Column(name="TITULO")
 	private String titulo;
 
 	//bi-directional many-to-many association to Autor
@@ -31,7 +47,6 @@ public class Mapa implements Serializable {
 		name="MAPAS_AUTORES"
 		, joinColumns={
 			@JoinColumn(name="IDMAPA", referencedColumnName="IDMAPA"),
-			@JoinColumn(name="IDMATERIAL", referencedColumnName="IDMATERIAL")
 			}
 		, inverseJoinColumns={
 			@JoinColumn(name="IDAUTOR")
@@ -50,14 +65,6 @@ public class Mapa implements Serializable {
 	private Material material;
 
 	public Mapa() {
-	}
-
-	public MapaPK getId() {
-		return this.id;
-	}
-
-	public void setId(MapaPK id) {
-		this.id = id;
 	}
 
 	public String getEscala() {

@@ -43,11 +43,49 @@ public class Application extends Controller {
 		}
 		*/
     	
+    	/*
     	List<Memoria> memorias = Memoria.findAll();
     	for (Memoria memoria : memorias) {
     		Logger.log4j.info(memoria.getAutor());			
 		}
-        render();
+    	*/
+    	
+    	/*
+    	List<TrabajoGraduacion> trabajosG = TrabajoGraduacion.findAll();
+    	for (TrabajoGraduacion trabajoGraduacion : trabajosG) {
+			Logger.log4j.info(trabajoGraduacion.getTema());
+    		List<Autor> autore = trabajoGraduacion.getAutors();
+			for (Autor autor : autore) {
+				Logger.log4j.info(autor);
+			}
+			
+		}
+		*/
+    	
+    	/*
+    	List<ObraReferencia> obrasRef = ObraReferencia.findAll();
+    	for (ObraReferencia obraReferencia : obrasRef) {
+			Logger.log4j.info(obraReferencia.getTitulo());
+    		List<Autor> autore = obraReferencia.getAutors();
+			for (Autor autor : autore) {
+				Logger.log4j.info(autor);
+			}
+			
+		}
+    	*/
+    	
+    	List<Mapa> mapas = Mapa.findAll();
+    	for (Mapa mapa : mapas) {
+			Logger.log4j.info(mapa.getTitulo());
+			Logger.log4j.info(mapa.getCategoriamapa().getNombrecatmapa());
+    		List<Autor> autore = mapa.getAutors();
+			for (Autor autor : autore) {
+				Logger.log4j.info(autor);
+			}
+			
+		}
+    	
+    	render();
         
     }
     

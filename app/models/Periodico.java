@@ -1,7 +1,19 @@
 package models;
 
-import java.io.Serializable;
+import play.db.jpa.GenericModel;
+import play.db.jpa.Model;
+import play.data.validation.Required;
+import play.data.validation.MaxSize;
+
+import java.math.BigDecimal;
+import java.util.Date;
+import java.util.List;
+
 import javax.persistence.*;
+import javax.persistence.*;
+import java.math.BigDecimal;
+import java.util.Date;
+import java.util.List;
 
 
 /**
@@ -9,15 +21,18 @@ import javax.persistence.*;
  * 
  */
 @Entity
-@NamedQuery(name="Periodico.findAll", query="SELECT p FROM Periodico p")
-public class Periodico implements Serializable {
+@Table(name="PERIODICO")
+public class Periodico extends GenericModel {
 	private static final long serialVersionUID = 1L;
 
-	@EmbeddedId
-	private PeriodicoPK id;
-
+	@Id
+	@Column(name="IDPERIODICO")
+	private long idperiodico;
+	
+	@Column(name="EMPRESA")
 	private String empresa;
 
+	@Column(name="TITULAR")
 	private String titular;
 
 	//bi-directional many-to-one association to Hemerografia
@@ -29,14 +44,6 @@ public class Periodico implements Serializable {
 	private Hemerografia hemerografia;
 
 	public Periodico() {
-	}
-
-	public PeriodicoPK getId() {
-		return this.id;
-	}
-
-	public void setId(PeriodicoPK id) {
-		this.id = id;
 	}
 
 	public String getEmpresa() {

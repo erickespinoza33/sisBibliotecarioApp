@@ -1,7 +1,18 @@
 package models;
 
-import java.io.Serializable;
+import play.db.jpa.GenericModel;
+import play.db.jpa.Model;
+import play.data.validation.Required;
+import play.data.validation.MaxSize;
+
+import java.math.BigDecimal;
+import java.util.Date;
+import java.util.List;
+
 import javax.persistence.*;
+import javax.persistence.*;
+import java.math.BigDecimal;
+import java.util.Date;
 import java.util.List;
 
 
@@ -10,13 +21,14 @@ import java.util.List;
  * 
  */
 @Entity
-@NamedQuery(name="Categoriamapa.findAll", query="SELECT c FROM Categoriamapa c")
-public class Categoriamapa implements Serializable {
-	private static final long serialVersionUID = 1L;
+@Table(name="CATEGORIAMAPA")
+public class Categoriamapa extends GenericModel {
 
 	@Id
+	@Column(name="IDCATMAPA")
 	private long idcatmapa;
 
+	@Column(name="NOMBRECATMAPA")
 	private String nombrecatmapa;
 
 	//bi-directional many-to-one association to Mapa

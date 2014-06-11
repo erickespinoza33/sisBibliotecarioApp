@@ -1,6 +1,15 @@
 package models;
 
-import java.io.Serializable;
+import play.db.jpa.GenericModel;
+import play.db.jpa.Model;
+import play.data.validation.Required;
+import play.data.validation.MaxSize;
+
+import java.math.BigDecimal;
+import java.util.Date;
+import java.util.List;
+
+import javax.persistence.*;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -13,20 +22,22 @@ import java.util.List;
  */
 @Entity
 @Table(name="TRABAJO_GRADUACION")
-@NamedQuery(name="TrabajoGraduacion.findAll", query="SELECT t FROM TrabajoGraduacion t")
-public class TrabajoGraduacion implements Serializable {
-	private static final long serialVersionUID = 1L;
+public class TrabajoGraduacion extends GenericModel {
 
-	@EmbeddedId
-	private TrabajoGraduacionPK id;
+	@Id
+	@Column(name="IDTG")
+	private long idtg;
 
+	@Column(name="ASSESOR")
 	private String asesor;
 
+	@Column(name="CD")
 	private BigDecimal cd;
 
-	@Temporal(TemporalType.DATE)
+	@Column(name="FECHAARCHIVADO")
 	private Date fechaarchivado;
 
+	@Column(name="TEMA")
 	private String tema;
 
 	//bi-directional many-to-many association to Autor
@@ -34,7 +45,6 @@ public class TrabajoGraduacion implements Serializable {
 	@JoinTable(
 		name="TRABAJOSG_AUTORES"
 		, joinColumns={
-			@JoinColumn(name="IDMATERIAL", referencedColumnName="IDMATERIAL"),
 			@JoinColumn(name="IDTG", referencedColumnName="IDTG")
 			}
 		, inverseJoinColumns={
@@ -49,14 +59,6 @@ public class TrabajoGraduacion implements Serializable {
 	private Material material;
 
 	public TrabajoGraduacion() {
-	}
-
-	public TrabajoGraduacionPK getId() {
-		return this.id;
-	}
-
-	public void setId(TrabajoGraduacionPK id) {
-		this.id = id;
 	}
 
 	public String getAsesor() {

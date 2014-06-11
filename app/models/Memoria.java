@@ -1,8 +1,20 @@
 package models;
 
-import java.io.Serializable;
-import javax.persistence.*;
+import play.db.jpa.GenericModel;
+import play.db.jpa.Model;
+import play.data.validation.Required;
+import play.data.validation.MaxSize;
+
+import java.math.BigDecimal;
 import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.*;
 
 
 /**
@@ -10,16 +22,18 @@ import java.util.Date;
  * 
  */
 @Entity
-@NamedQuery(name="Memoria.findAll", query="SELECT m FROM Memoria m")
-public class Memoria implements Serializable {
+@Table(name="MEMORIA")
+public class Memoria extends GenericModel {
 	private static final long serialVersionUID = 1L;
 
-	@EmbeddedId
-	private MemoriaPK id;
+	@Id
+	@Column(name="IDMEMORIA")
+	private long idMemoria;
 
-	@Temporal(TemporalType.DATE)
+	@Column(name="FECHAPUBLICACION")
 	private Date fechapublicacion;
 
+	@Column(name="TITULO")
 	private String titulo;
 
 	//bi-directional many-to-one association to Autor
@@ -33,14 +47,6 @@ public class Memoria implements Serializable {
 	private Material material;
 
 	public Memoria() {
-	}
-
-	public MemoriaPK getId() {
-		return this.id;
-	}
-
-	public void setId(MemoriaPK id) {
-		this.id = id;
 	}
 
 	public Date getFechapublicacion() {

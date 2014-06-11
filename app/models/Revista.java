@@ -10,15 +10,18 @@ import java.math.BigDecimal;
  * 
  */
 @Entity
-@NamedQuery(name="Revista.findAll", query="SELECT r FROM Revista r")
+@Table(name="REVISTA")
 public class Revista implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@EmbeddedId
-	private RevistaPK id;
-
+	@Column(name="IDREVISTA")
+	private long idrevista;
+	
+	@Column(name="EDICICON")
 	private BigDecimal edicion;
 
+	@Column(name="TITULO")
 	private String titulo;
 
 	//bi-directional many-to-one association to Hemerografia
@@ -30,14 +33,6 @@ public class Revista implements Serializable {
 	private Hemerografia hemerografia;
 
 	public Revista() {
-	}
-
-	public RevistaPK getId() {
-		return this.id;
-	}
-
-	public void setId(RevistaPK id) {
-		this.id = id;
 	}
 
 	public BigDecimal getEdicion() {

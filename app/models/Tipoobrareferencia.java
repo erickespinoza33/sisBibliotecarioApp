@@ -1,7 +1,18 @@
 package models;
 
-import java.io.Serializable;
+import play.db.jpa.GenericModel;
+import play.db.jpa.Model;
+import play.data.validation.Required;
+import play.data.validation.MaxSize;
+
+import java.math.BigDecimal;
+import java.util.Date;
+import java.util.List;
+
 import javax.persistence.*;
+import javax.persistence.*;
+import java.math.BigDecimal;
+import java.util.Date;
 import java.util.List;
 
 
@@ -10,13 +21,15 @@ import java.util.List;
  * 
  */
 @Entity
-@NamedQuery(name="Tipoobrareferencia.findAll", query="SELECT t FROM Tipoobrareferencia t")
-public class Tipoobrareferencia implements Serializable {
+@Table(name="TIPOOBRAREFERENCIA")
+public class Tipoobrareferencia extends GenericModel {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@Column(name="IDTIPOOBRAREF")
 	private long idtipoobraref;
 
+	@Column(name="TIPOREF")
 	private String tiporef;
 
 	//bi-directional many-to-one association to ObraReferencia

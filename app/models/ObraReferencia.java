@@ -1,9 +1,19 @@
 package models;
 
-import java.io.Serializable;
-import javax.persistence.*;
+import play.db.jpa.GenericModel;
+import play.db.jpa.Model;
+import play.data.validation.Required;
+import play.data.validation.MaxSize;
+
+import java.math.BigDecimal;
+import java.util.Date;
 import java.util.List;
 
+import javax.persistence.*;
+import javax.persistence.*;
+import java.math.BigDecimal;
+import java.util.Date;
+import java.util.List;
 
 /**
  * The persistent class for the OBRA_REFERENCIA database table.
@@ -11,13 +21,14 @@ import java.util.List;
  */
 @Entity
 @Table(name="OBRA_REFERENCIA")
-@NamedQuery(name="ObraReferencia.findAll", query="SELECT o FROM ObraReferencia o")
-public class ObraReferencia implements Serializable {
+public class ObraReferencia extends GenericModel {
 	private static final long serialVersionUID = 1L;
 
-	@EmbeddedId
-	private ObraReferenciaPK id;
-
+	@Id
+	@Column(name="IDOBRAREF")
+	private long idobraref;
+	
+	@Column(name="TITULO")
 	private String titulo;
 
 	//bi-directional many-to-many association to Autor
@@ -25,7 +36,6 @@ public class ObraReferencia implements Serializable {
 	@JoinTable(
 		name="OBRASREF_AUTORES"
 		, joinColumns={
-			@JoinColumn(name="IDMATERIAL", referencedColumnName="IDMATERIAL"),
 			@JoinColumn(name="IDOBRAREF", referencedColumnName="IDOBRAREF")
 			}
 		, inverseJoinColumns={
@@ -45,14 +55,6 @@ public class ObraReferencia implements Serializable {
 	private Tipoobrareferencia tipoobrareferencia;
 
 	public ObraReferencia() {
-	}
-
-	public ObraReferenciaPK getId() {
-		return this.id;
-	}
-
-	public void setId(ObraReferenciaPK id) {
-		this.id = id;
 	}
 
 	public String getTitulo() {

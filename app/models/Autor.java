@@ -1,46 +1,53 @@
 package models;
 
-import java.io.Serializable;
-import javax.persistence.*;
+import play.db.jpa.GenericModel;
+import play.db.jpa.Model;
+import play.data.validation.Required;
+import play.data.validation.MaxSize;
+
+import java.math.BigDecimal;
+import java.util.Date;
 import java.util.List;
 
+import javax.persistence.*;
 
 /**
  * The persistent class for the AUTOR database table.
  * 
  */
 @Entity
-@NamedQuery(name="Autor.findAll", query="SELECT a FROM Autor a")
-public class Autor implements Serializable {
+@Table(name="AUTOR")
+public class Autor extends GenericModel {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@Column(name="IDAUTOR")
 	private long idautor;
 
+	@Column(name="APELLIDOSAUTOR")
 	private String apellidosautor;
 
+	@Column(name="DIRECCIONAUTOR")
 	private String direccionautor;
 
+	@Column(name="NOMBRESAUTOR")
 	private String nombresautor;
 
+	@Column(name="TELEFONOAUTOR")
 	private String telefonoautor;
 
 	//bi-directional many-to-many association to Libro
 	@ManyToMany(mappedBy="autors")
 	private List<Libro> libros;
-
 	//bi-directional many-to-many association to Mapa
 	@ManyToMany(mappedBy="autors")
 	private List<Mapa> mapas;
-
 	//bi-directional many-to-one association to Memoria
 	@OneToMany(mappedBy="autor")
 	private List<Memoria> memorias;
-
 	//bi-directional many-to-many association to ObraReferencia
 	@ManyToMany(mappedBy="autors")
 	private List<ObraReferencia> obraReferencias;
-
 	//bi-directional many-to-many association to TrabajoGraduacion
 	@ManyToMany(mappedBy="autors")
 	private List<TrabajoGraduacion> trabajoGraduacions;
@@ -141,5 +148,15 @@ public class Autor implements Serializable {
 	public void setTrabajoGraduacions(List<TrabajoGraduacion> trabajoGraduacions) {
 		this.trabajoGraduacions = trabajoGraduacions;
 	}
+
+	@Override
+	public String toString() {
+		return "Autor [idautor=" + idautor + ", apellidosautor="
+				+ apellidosautor + ", direccionautor=" + direccionautor
+				+ ", nombresautor=" + nombresautor + ", telefonoautor="
+				+ telefonoautor + "]";
+	}
+	
+	
 
 }

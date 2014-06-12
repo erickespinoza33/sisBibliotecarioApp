@@ -1,22 +1,33 @@
 package models;
 
-import java.io.Serializable;
-import javax.persistence.*;
+import play.db.jpa.GenericModel;
+import play.db.jpa.Model;
+import play.data.validation.Required;
+import play.data.validation.MaxSize;
+
+import java.math.BigDecimal;
+import java.util.Date;
 import java.util.List;
 
+import javax.persistence.*;
+import javax.persistence.*;
+import java.math.BigDecimal;
+import java.util.Date;
+import java.util.List;
 
 /**
  * The persistent class for the CATEGORIADVD database table.
  * 
  */
 @Entity
-@NamedQuery(name="Categoriadvd.findAll", query="SELECT c FROM Categoriadvd c")
-public class Categoriadvd implements Serializable {
-	private static final long serialVersionUID = 1L;
+@Table(name="CATEGORIADVD")
+public class Categoriadvd extends GenericModel {
 
 	@Id
+	@Column(name="IDCATDVD")
 	private long idcatdvd;
 
+	@Column(name="NOMBRE")
 	private String nombre;
 
 	//bi-directional many-to-one association to Dvd

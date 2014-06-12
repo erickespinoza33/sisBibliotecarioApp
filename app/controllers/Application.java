@@ -74,6 +74,7 @@ public class Application extends Controller {
 		}
     	*/
     	
+    	/*
     	List<Mapa> mapas = Mapa.findAll();
     	for (Mapa mapa : mapas) {
 			Logger.log4j.info(mapa.getTitulo());
@@ -84,6 +85,46 @@ public class Application extends Controller {
 			}
 			
 		}
+    	*/
+    	
+    	/*
+    	List<Revista> revistas = Revista.findAll();
+    	for (Revista revista : revistas) {
+			Logger.log4j.info(revista.getHemerografia().getMaterial().getDescripcionmaterial());
+		}
+		*/
+
+    	/*
+    	List<Periodico> periodicos = Periodico.findAll();
+    	for (Periodico periodico : periodicos) {
+			Logger.log4j.info(periodico.getHemerografia().getMaterial().getDescripcionmaterial());
+		}
+		*/
+    	
+    	
+    	List<Libro> libros = Libro.findAll();
+    	for (Libro libro : libros) {
+			Logger.log4j.info(libro.getEditorial().getNombreeditorial());
+			List<Autor> autore = libro.getAutors();
+			for (Autor autor : autore) {
+				Logger.log4j.info(autor);
+			}
+		}
+		
+    	
+    	/*
+    	List<Cd> cds = Cd.findAll();
+    	for (Cd cd : cds) {
+			Logger.log4j.info(cd.getArtista().getNombreartista());
+
+		}
+    
+    	List<Dvd> dvds = Dvd.findAll();
+    	for (Dvd dvd : dvds) {
+			Logger.log4j.info(dvd.getTitulo());
+
+		}
+		*/
     	
     	render();
         

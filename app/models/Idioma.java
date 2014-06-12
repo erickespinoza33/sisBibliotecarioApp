@@ -1,7 +1,18 @@
 package models;
 
-import java.io.Serializable;
+import play.db.jpa.GenericModel;
+import play.db.jpa.Model;
+import play.data.validation.Required;
+import play.data.validation.MaxSize;
+
+import java.math.BigDecimal;
+import java.util.Date;
+import java.util.List;
+
 import javax.persistence.*;
+import javax.persistence.*;
+import java.math.BigDecimal;
+import java.util.Date;
 import java.util.List;
 
 
@@ -10,13 +21,14 @@ import java.util.List;
  * 
  */
 @Entity
-@NamedQuery(name="Idioma.findAll", query="SELECT i FROM Idioma i")
-public class Idioma implements Serializable {
-	private static final long serialVersionUID = 1L;
+@Table(name="IDIOMA")
+public class Idioma extends GenericModel {
 
 	@Id
+	@Column(name="IDIDIOMA")
 	private long ididioma;
 
+	@Column(name="NOMBREIDIOMA")
 	private String nombreidioma;
 
 	//bi-directional many-to-many association to Libro

@@ -1,8 +1,19 @@
 package models;
 
-import java.io.Serializable;
+import play.db.jpa.GenericModel;
+import play.db.jpa.Model;
+import play.data.validation.Required;
+import play.data.validation.MaxSize;
+
+import java.math.BigDecimal;
+import java.util.Date;
+import java.util.List;
+
+import javax.persistence.*;
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.Date;
+import java.util.List;
 
 
 /**
@@ -11,10 +22,10 @@ import java.math.BigDecimal;
  */
 @Entity
 @Table(name="REVISTA")
-public class Revista implements Serializable {
+public class Revista extends GenericModel {
 	private static final long serialVersionUID = 1L;
 
-	@EmbeddedId
+	@Id
 	@Column(name="IDREVISTA")
 	private long idrevista;
 	

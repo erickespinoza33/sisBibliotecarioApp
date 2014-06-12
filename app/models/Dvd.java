@@ -1,21 +1,37 @@
 package models;
 
-import java.io.Serializable;
-import javax.persistence.*;
+import play.db.jpa.GenericModel;
+import play.db.jpa.Model;
+import play.data.validation.Required;
+import play.data.validation.MaxSize;
 
+import java.math.BigDecimal;
+import java.util.Date;
+import java.util.List;
+
+import javax.persistence.*;
+import javax.persistence.*;
+import java.math.BigDecimal;
+import java.util.Date;
+import java.util.List;
 
 /**
  * The persistent class for the DVD database table.
  * 
  */
 @Entity
-@NamedQuery(name="Dvd.findAll", query="SELECT d FROM Dvd d")
-public class Dvd implements Serializable {
-	private static final long serialVersionUID = 1L;
+@Table(name="DVD")
+public class Dvd extends GenericModel {
 
-	@EmbeddedId
-	private DvdPK id;
+	@Id
+	@Column(name="ID")
+	private long id;
+	
+	@Id
+	@Column(name="IDDVD")
+	private long iddvd;
 
+	@Column(name="TITULO")
 	private String titulo;
 
 	//bi-directional many-to-one association to Categoriadvd
@@ -27,19 +43,10 @@ public class Dvd implements Serializable {
 	@ManyToOne
 	@JoinColumns({
 		@JoinColumn(name="ID", referencedColumnName="ID"),
-		@JoinColumn(name="IDMATERIAL", referencedColumnName="IDMATERIAL")
 		})
 	private MedioDigital medioDigital;
 
 	public Dvd() {
-	}
-
-	public DvdPK getId() {
-		return this.id;
-	}
-
-	public void setId(DvdPK id) {
-		this.id = id;
 	}
 
 	public String getTitulo() {

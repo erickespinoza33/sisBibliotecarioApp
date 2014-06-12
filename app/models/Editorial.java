@@ -1,7 +1,18 @@
 package models;
 
-import java.io.Serializable;
+import play.db.jpa.GenericModel;
+import play.db.jpa.Model;
+import play.data.validation.Required;
+import play.data.validation.MaxSize;
+
+import java.math.BigDecimal;
+import java.util.Date;
+import java.util.List;
+
 import javax.persistence.*;
+import javax.persistence.*;
+import java.math.BigDecimal;
+import java.util.Date;
 import java.util.List;
 
 
@@ -10,23 +21,25 @@ import java.util.List;
  * 
  */
 @Entity
-@NamedQuery(name="Editorial.findAll", query="SELECT e FROM Editorial e")
-public class Editorial implements Serializable {
-	private static final long serialVersionUID = 1L;
+@Table(name="EDITORIAL")
+public class Editorial extends GenericModel {
 
 	@Id
+	@Column(name="IDEDITORIAL")
 	private long ideditorial;
 
+	@Column(name="DIRECCIONEDITORIAL")
 	private String direccioneditorial;
 
+	@Column(name="NOMBREEDITORIAL")
 	private String nombreeditorial;
 
+	@Column(name="TELEFONOEDITORIAL")
 	private String telefonoeditorial;
 
 	//bi-directional many-to-one association to Hemerografia
 	@OneToMany(mappedBy="editorial")
 	private List<Hemerografia> hemerografias;
-
 	//bi-directional many-to-one association to Libro
 	@OneToMany(mappedBy="editorial")
 	private List<Libro> libros;

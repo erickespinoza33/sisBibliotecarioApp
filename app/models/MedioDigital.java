@@ -1,9 +1,19 @@
 package models;
 
-import java.io.Serializable;
-import javax.persistence.*;
+import play.db.jpa.GenericModel;
+import play.db.jpa.Model;
+import play.data.validation.Required;
+import play.data.validation.MaxSize;
+
+import java.math.BigDecimal;
+import java.util.Date;
 import java.util.List;
 
+import javax.persistence.*;
+import javax.persistence.*;
+import java.math.BigDecimal;
+import java.util.Date;
+import java.util.List;
 
 /**
  * The persistent class for the MEDIO_DIGITAL database table.
@@ -11,37 +21,26 @@ import java.util.List;
  */
 @Entity
 @Table(name="MEDIO_DIGITAL")
-@NamedQuery(name="MedioDigital.findAll", query="SELECT m FROM MedioDigital m")
-public class MedioDigital implements Serializable {
-	private static final long serialVersionUID = 1L;
+public class MedioDigital extends GenericModel {
 
-	@EmbeddedId
-	private MedioDigitalPK id;
-
+	@Id
+	@Column(name="ID")
+	private long id;
+	
+	@Column(name="DESCRIPCIONMEDIO")
 	private String descripcionmedio;
 
 	//bi-directional many-to-one association to Cd
 	@OneToMany(mappedBy="medioDigital")
 	private List<Cd> cds;
-
 	//bi-directional many-to-one association to Dvd
 	@OneToMany(mappedBy="medioDigital")
 	private List<Dvd> dvds;
-
 	//bi-directional many-to-one association to Material
 	@ManyToOne
-	@JoinColumn(name="IDMATERIAL")
 	private Material material;
 
 	public MedioDigital() {
-	}
-
-	public MedioDigitalPK getId() {
-		return this.id;
-	}
-
-	public void setId(MedioDigitalPK id) {
-		this.id = id;
 	}
 
 	public String getDescripcionmedio() {

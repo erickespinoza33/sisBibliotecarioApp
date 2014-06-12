@@ -1,27 +1,39 @@
 package models;
 
-import java.io.Serializable;
-import javax.persistence.*;
+import play.db.jpa.GenericModel;
+import play.db.jpa.Model;
+import play.data.validation.Required;
+import play.data.validation.MaxSize;
+
 import java.math.BigDecimal;
+import java.util.Date;
 import java.util.List;
 
+import javax.persistence.*;
+import javax.persistence.*;
+import java.math.BigDecimal;
+import java.util.Date;
+import java.util.List;
 
 /**
  * The persistent class for the MATERIAL database table.
  * 
  */
 @Entity
-@NamedQuery(name="Material.findAll", query="SELECT m FROM Material m")
-public class Material implements Serializable {
-	private static final long serialVersionUID = 1L;
+@Table(name="MATERIAL")
+public class Material extends GenericModel {
 
 	@Id
+	@Column(name="IDMATERIAL")
 	private long idmaterial;
 
+	@Column(name="DESCRIPCIONMATERIAL")
 	private String descripcionmaterial;
 
+	@Column(name="EXISTENCIAS")
 	private BigDecimal existencias;
 
+	@Column(name="UBICACION")
 	private String ubicacion;
 
 	//bi-directional many-to-one association to Hemerografia

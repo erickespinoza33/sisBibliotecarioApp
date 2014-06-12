@@ -1,8 +1,19 @@
 package models;
 
-import java.io.Serializable;
+import play.db.jpa.GenericModel;
+import play.db.jpa.Model;
+import play.data.validation.Required;
+import play.data.validation.MaxSize;
+
+import java.math.BigDecimal;
+import java.util.Date;
+import java.util.List;
+
+import javax.persistence.*;
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.Date;
+import java.util.List;
 
 
 /**
@@ -10,15 +21,21 @@ import java.math.BigDecimal;
  * 
  */
 @Entity
-@NamedQuery(name="Cd.findAll", query="SELECT c FROM Cd c")
-public class Cd implements Serializable {
-	private static final long serialVersionUID = 1L;
+@Table(name="CD")
+public class Cd extends GenericModel {
 
-	@EmbeddedId
-	private CdPK id;
+	@Id
+	@Column(name="ID")
+	private long id;
 
+	@Id
+	@Column(name="IDCD")
+	private long idcd;
+
+	@Column(name="ALBUM")
 	private String album;
 
+	@Column(name="ANO")
 	private BigDecimal ano;
 
 	//bi-directional many-to-one association to Artista
@@ -30,19 +47,10 @@ public class Cd implements Serializable {
 	@ManyToOne
 	@JoinColumns({
 		@JoinColumn(name="ID", referencedColumnName="ID"),
-		@JoinColumn(name="IDMATERIAL", referencedColumnName="IDMATERIAL")
 		})
 	private MedioDigital medioDigital;
 
 	public Cd() {
-	}
-
-	public CdPK getId() {
-		return this.id;
-	}
-
-	public void setId(CdPK id) {
-		this.id = id;
 	}
 
 	public String getAlbum() {

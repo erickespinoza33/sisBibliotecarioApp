@@ -1,8 +1,18 @@
 package models;
 
-import java.io.Serializable;
+import play.db.jpa.GenericModel;
+import play.db.jpa.Model;
+import play.data.validation.Required;
+import play.data.validation.MaxSize;
+
+import java.math.BigDecimal;
+import java.util.Date;
+import java.util.List;
+
+import javax.persistence.*;
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.Date;
 import java.util.List;
 
 
@@ -11,23 +21,29 @@ import java.util.List;
  * 
  */
 @Entity
-@NamedQuery(name="Libro.findAll", query="SELECT l FROM Libro l")
-public class Libro implements Serializable {
-	private static final long serialVersionUID = 1L;
+@Table(name="LIBRO")
+public class Libro extends GenericModel {
 
-	@EmbeddedId
-	private LibroPK id;
+	@Id
+	@Column(name="ISBN")
+	private long isbn;
 
+	@Column(name="COSTO")
 	private BigDecimal costo;
 
+	@Column(name="DONADO")
 	private BigDecimal donado;
 
+	@Column(name="EDICION")
 	private BigDecimal edicion;
 
+	@Column(name="LOGO")
 	private String logo;
 
+	@Column(name="TITULO")
 	private String titulo;
 
+	@Column(name="VOLUMEN")
 	private BigDecimal volumen;
 
 	//bi-directional many-to-many association to Autor
@@ -35,7 +51,6 @@ public class Libro implements Serializable {
 	@JoinTable(
 		name="LIBROS_AUTOR"
 		, joinColumns={
-			@JoinColumn(name="IDMATERIAL", referencedColumnName="IDMATERIAL"),
 			@JoinColumn(name="ISBN", referencedColumnName="ISBN")
 			}
 		, inverseJoinColumns={
@@ -54,7 +69,6 @@ public class Libro implements Serializable {
 	@JoinTable(
 		name="LIBROS_IDIOMAS"
 		, joinColumns={
-			@JoinColumn(name="IDMATERIAL", referencedColumnName="IDMATERIAL"),
 			@JoinColumn(name="ISBN", referencedColumnName="ISBN")
 			}
 		, inverseJoinColumns={
@@ -69,14 +83,6 @@ public class Libro implements Serializable {
 	private Material material;
 
 	public Libro() {
-	}
-
-	public LibroPK getId() {
-		return this.id;
-	}
-
-	public void setId(LibroPK id) {
-		this.id = id;
 	}
 
 	public BigDecimal getCosto() {

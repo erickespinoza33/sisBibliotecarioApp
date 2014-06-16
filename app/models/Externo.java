@@ -31,7 +31,6 @@ import javax.persistence.Table;
 @Entity
 @Table(name="EXTERNO")
 public class Externo extends GenericModel {
-	private static final long serialVersionUID = 1L;
 
 	@Id
 	@Column(name="ID_USUARIO")

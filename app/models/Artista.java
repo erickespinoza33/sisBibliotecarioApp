@@ -1,8 +1,15 @@
 package models;
 
-import java.io.Serializable;
-import javax.persistence.*;
+import play.db.jpa.GenericModel;
+import play.db.jpa.Model;
+import play.data.validation.Required;
+import play.data.validation.MaxSize;
+
+import java.math.BigDecimal;
+import java.util.Date;
 import java.util.List;
+
+import javax.persistence.*;
 
 
 /**
@@ -10,13 +17,14 @@ import java.util.List;
  * 
  */
 @Entity
-@NamedQuery(name="Artista.findAll", query="SELECT a FROM Artista a")
-public class Artista implements Serializable {
-	private static final long serialVersionUID = 1L;
+@Table(name="ARTISTA")
+public class Artista extends GenericModel {
 
 	@Id
+	@Column(name="IDARTISTA")
 	private long idartista;
 
+	@Column(name="NOMBREARTISTA")
 	private String nombreartista;
 
 	//bi-directional many-to-one association to Cd

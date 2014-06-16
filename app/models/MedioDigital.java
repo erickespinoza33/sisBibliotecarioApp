@@ -11,6 +11,7 @@ import java.util.List;
 
 import javax.persistence.*;
 import javax.persistence.*;
+
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
@@ -19,6 +20,8 @@ import java.util.List;
  * The persistent class for the MEDIO_DIGITAL database table.
  * 
  */
+@IdClass(MedioDigitalPK.class)
+
 @Entity
 @Table(name="MEDIO_DIGITAL")
 public class MedioDigital extends GenericModel {
@@ -26,6 +29,9 @@ public class MedioDigital extends GenericModel {
 	@Id
 	@Column(name="ID")
 	private long id;
+	
+	@Column(name="IDMATERIAL")
+	private long idmaterial;
 	
 	@Column(name="DESCRIPCIONMEDIO")
 	private String descripcionmedio;
@@ -38,6 +44,7 @@ public class MedioDigital extends GenericModel {
 	private List<Dvd> dvds;
 	//bi-directional many-to-one association to Material
 	@ManyToOne
+	@JoinColumn(name="IDMATERIAL")
 	private Material material;
 
 	public MedioDigital() {

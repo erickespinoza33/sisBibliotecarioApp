@@ -7,7 +7,6 @@ import javax.persistence.*;
  * The primary key class for the ESTUDIANTE database table.
  * 
  */
-@Embeddable
 public class EstudiantePK implements Serializable {
 	//default serial version id, required for serializable classes.
 	private static final long serialVersionUID = 1L;

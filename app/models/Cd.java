@@ -11,6 +11,7 @@ import java.util.List;
 
 import javax.persistence.*;
 import javax.persistence.*;
+
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
@@ -47,6 +48,7 @@ public class Cd extends GenericModel {
 	@ManyToOne
 	@JoinColumns({
 		@JoinColumn(name="ID", referencedColumnName="ID"),
+		@JoinColumn(name="IDMATERIAL", referencedColumnName="IDMATERIAL")
 		})
 	private MedioDigital medioDigital;
 

@@ -7,7 +7,7 @@ import javax.persistence.*;
  * The primary key class for the ADMINISTRADOR database table.
  * 
  */
-@Embeddable
+
 public class AdministradorPK implements Serializable {
 	//default serial version id, required for serializable classes.
 	private static final long serialVersionUID = 1L;

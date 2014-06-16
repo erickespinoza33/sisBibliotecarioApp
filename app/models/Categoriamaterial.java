@@ -1,7 +1,18 @@
 package models;
 
-import java.io.Serializable;
+import play.db.jpa.GenericModel;
+import play.db.jpa.Model;
+import play.data.validation.Required;
+import play.data.validation.MaxSize;
+
+import java.math.BigDecimal;
+import java.util.Date;
+import java.util.List;
+
 import javax.persistence.*;
+import javax.persistence.*;
+import java.math.BigDecimal;
+import java.util.Date;
 import java.util.List;
 
 
@@ -10,15 +21,17 @@ import java.util.List;
  * 
  */
 @Entity
-@NamedQuery(name="Categoriamaterial.findAll", query="SELECT c FROM Categoriamaterial c")
-public class Categoriamaterial implements Serializable {
-	private static final long serialVersionUID = 1L;
+@Table(name="CATEGORIAMATERIAL")
+public class Categoriamaterial extends GenericModel {
 
 	@Id
+	@Column(name="IDCATEGORIAMAT")
 	private long idcategoriamat;
 
+	@Column(name="CATEGORIAMAT")
 	private String categoriamat;
 
+	@Column(name="DESCRIPCIONCATEGORIA")
 	private String descripcioncategoria;
 
 	//bi-directional many-to-one association to Material

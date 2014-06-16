@@ -23,13 +23,12 @@ import java.util.List;
 @Entity
 @Table(name="REVISTA")
 public class Revista extends GenericModel {
-	private static final long serialVersionUID = 1L;
 
 	@Id
 	@Column(name="IDREVISTA")
 	private long idrevista;
 	
-	@Column(name="EDICICON")
+	@Column(name="EDICION")
 	private BigDecimal edicion;
 
 	@Column(name="TITULO")

@@ -7,7 +7,6 @@ import javax.persistence.*;
  * The primary key class for the BIBLIOTECOLOGO database table.
  * 
  */
-@Embeddable
 public class BibliotecologoPK implements Serializable {
 	//default serial version id, required for serializable classes.
 	private static final long serialVersionUID = 1L;

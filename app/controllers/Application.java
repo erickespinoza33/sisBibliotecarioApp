@@ -1,13 +1,18 @@
 package controllers;
 
 import play.*;
+import play.db.jpa.JPA;
 import play.db.jpa.JPABase;
 import play.mvc.*;
+import play.mvc.With; 
 
 import java.util.*;
 
+import javax.persistence.Query;
+
 import models.*;
 
+@With(Secure.class)
 public class Application extends Controller {
 
     public static void index() {
@@ -101,7 +106,7 @@ public class Application extends Controller {
 		}
 		*/
     	
-    	
+    	/*
     	List<Libro> libros = Libro.findAll();
     	for (Libro libro : libros) {
 			Logger.log4j.info(libro.getEditorial().getNombreeditorial());
@@ -110,7 +115,7 @@ public class Application extends Controller {
 				Logger.log4j.info(autor);
 			}
 		}
-		
+    	*/
     	
     	/*
     	List<Cd> cds = Cd.findAll();
@@ -125,7 +130,11 @@ public class Application extends Controller {
 
 		}
 		*/
-    	
+    	/*
+    	Usuario user = Usuario.find("byNombres", "ERICK").first();
+    	Logger.log4j.info(user.getNombres());
+    	Logger.log4j.info(Play.configuration.getProperty("db.default.schema"));
+    	*/
     	render();
         
     }

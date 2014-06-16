@@ -18,7 +18,6 @@ import javax.persistence.*;
 @Entity
 @Table(name="AUTOR")
 public class Autor extends GenericModel {
-	private static final long serialVersionUID = 1L;
 
 	@Id
 	@Column(name="IDAUTOR")

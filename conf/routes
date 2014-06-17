@@ -11,7 +11,7 @@
 # Home page
 GET     /index                                  Application.index
 GET		/										Secure.login
-
+GET		/test									Application.testing
 #GET     /										Application.signin
 #GET     /signin								Application.signin
 # Ignore favicon requests

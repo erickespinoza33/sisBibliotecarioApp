@@ -4,8 +4,10 @@ import play.*;
 import play.db.jpa.JPA;
 import play.db.jpa.JPABase;
 import play.mvc.*;
-import play.mvc.With; 
 
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.*;
 
 import javax.persistence.Query;
@@ -137,6 +139,18 @@ public class Application extends Controller {
     	*/
     	render();
         
+    }
+    
+    public static void testing(){
+    
+		Connection conn = play.db.DB.getConnection();
+		try {
+			CallableStatement prepareCall = conn.prepareCall("call INSERTAR_cd(1, 'BIBLIOTECA ALGO2', 2, 'MATERIAL MUSICAL2', 'MEDIO MAGNETICO',1, 'CD1', 2014)");
+			Logger.log4j.info(prepareCall.execute());
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
     
     public static void signin(){

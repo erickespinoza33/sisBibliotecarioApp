@@ -1,0 +1,74 @@
+#{extends 'main.html' /}
+#{set title:'Lisar CD' /}
+
+<div class="bs-example">
+	<table class="table table-striped">
+	<thead>
+	<tr>
+		<th  width="10%">
+			id
+		</th >
+		<th  width="20%">
+			Album
+		</th>
+		<th  width="10%">
+			Año
+		</th>
+		<th  width="20%">
+			Artista
+		</th>
+		<th wit width="15%">
+			Acciones
+		</th>
+	</tr>
+	</thead>
+	<tbody>
+	#{list items:listCds, as:'cd'}
+		<tr>
+			<td>
+				${cd.id}
+			</td>
+			<td>
+				${cd.album}
+			</td>
+			<td>
+				${cd.ano}
+			</td>
+			<td>
+				${cd.artista.nombreartista}
+			</td>
+			<td>
+				<div class="btn-group">
+					<button type="button" class="btn btn-default"><a href="/material/cd/mostrar/${cd.id}">Editar</a></button>
+					<button 
+				  			data-url="/material/cd/eliminar/${cd.id}"
+							data-extra="true"
+							type="button" 
+							class="btn btn-default grid-delete">
+							<a>Eliminar</a>
+					</button>
+				</div>
+			</td>
+		</tr>	
+	 #{/list}
+
+
+	</tbody>
+	</table>
+</div>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+	
+	$(".grid-delete").click(function(){
+
+		var url = $(this).data().url;
+		console.log(url)
+
+		deleteCallAjax(url)
+
+	});
+
+});
+</script>

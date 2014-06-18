@@ -12,6 +12,14 @@
 GET     /index                                  Application.index
 GET		/										Secure.login
 GET		/test									Application.testing
+
+# CD's
+GET		/material/cd/listar						Cds.listarCD
+GET		/material/cd/nuevo						Cds.nuevoCD
+POST	/material/cd/guardar					Cds.guardarCD
+GET		/material/cd/mostrar/{id}				Cds.mostrarCD
+GET		/material/cd/eliminar/{id}				Cds.eliminarCD
+
 #GET     /										Application.signin
 #GET     /signin								Application.signin
 # Ignore favicon requests

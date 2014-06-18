@@ -87,4 +87,20 @@ public class Cd extends GenericModel {
 		this.medioDigital = medioDigital;
 	}
 
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public long getIdcd() {
+		return idcd;
+	}
+
+	public void setIdcd(long idcd) {
+		this.idcd = idcd;
+	}
+
 }

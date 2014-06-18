@@ -1,0 +1,82 @@
+#{extends 'main.html' /}
+#{set title:'Nuevo CD' /}
+
+<form class="form-horizontal" action="/material/cd/guardar"  method="POST">
+	<fieldset>
+		<!-- Form Name -->
+		<legend>Nuevo Material - CD</legend>
+		<!-- Select Basic -->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="selectbasic">Categoría Material</label>
+			<div class="col-md-4">
+				<select id="selectbasic" name="cdCategM" class="form-control">
+				    	  #{list items:categorias, as:'categoria'}
+				      		<option value="${categoria.idcategoriamat}">${categoria.categoriamat}</option>	
+				      	  #{/list}
+				</select>
+			</div>
+		</div>
+		<!-- Text input-->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="textinput">Ubicación</label>
+			<div class="col-md-5">
+				<input id="textinput" name="cdUbicaM" type="text" placeholder="" class="form-control input-md">
+				<span class="help-block">Ubicación en la biblioteca pasillo, estante</span>
+			</div>
+		</div>
+		<!-- Text input-->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="textinput">Existencias</label>
+			<div class="col-md-4">
+				<input id="textinput" name="cdExistM" type="text" placeholder="" class="form-control input-md">
+			</div>
+		</div>
+		<!-- Text input-->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="textinput">Descripción de Material</label>
+			<div class="col-md-5">
+				<input id="textinput" name="cdDescM" type="text" placeholder="" class="form-control input-md">
+			</div>
+		</div>
+		<!-- Text input-->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="textinput">Descripción de Medio Digital</label>
+			<div class="col-md-4">
+				<input id="textinput" name="cdDescMd" type="text" placeholder="" class="form-control input-md">
+			</div>
+		</div>
+		<!-- Select Basic -->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="selectbasic">Artista</label>
+			<div class="col-md-4">
+				<select id="selectbasic" name="cdArtista" class="form-control">
+				    	  #{list items:artistas, as:'artista'}
+				      		<option value="${artista.idartista}">${artista.nombreartista}</option>	
+				      	  #{/list}
+				</select>
+			</div>
+		</div>
+		<!-- Text input-->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="textinput">Album</label>
+			<div class="col-md-4">
+				<input id="textinput" name="cdAlbum" type="text" placeholder="" class="form-control input-md">
+			</div>
+		</div>
+		<!-- Text input-->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="textinput">Año</label>
+			<div class="col-md-4">
+				<input id="textinput" name="cdAnio" type="text" placeholder="" class="form-control input-md">
+			</div>
+		</div>
+		<!-- Button (Double) -->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="guardarCD"></label>
+			<div class="col-md-8">
+				<button type="submit" id="guardarCD" name="guardarCD" class="btn btn-success">Guardar</button>
+				<button id="cancelarCD" name="cancelarCD" class="btn btn-danger">Cancelar</button>
+			</div>
+		</div>
+	</fieldset>
+</form>

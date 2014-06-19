@@ -1,0 +1,92 @@
+#{extends 'main.html' /}
+#{set title:'Listar Periodico' /}
+
+<div class="bs-example">
+	<table class="table table-striped">
+	<thead>
+	<tr>
+		<th  width="5%">
+			ID
+		</th >
+		<th  width="15%">
+			Empresa
+		</th>
+		<th  width="20%">
+			Titular
+		</th>
+		<th  width="15%">
+			Editorial
+		</th>
+		<th  width="10%">
+			Fecha de Publicacion
+		</th>
+		<th  width="10%">
+			Lugar de Edicion
+		</th>
+		<th  width="5%">
+			Precio
+		</th>
+		<th wit width="20%">
+			Acciones
+		</th>
+	</tr>
+	</thead>
+	<tbody>
+	#{list items:listPeriodicos, as:'period'}
+		<tr>
+			<td>
+				${period.idperiodico}
+			</td>
+			<td>
+				${period.empresa}
+			</td>
+			<td>
+				${period.titular}
+			</td>
+			<td>
+				${period.hemerografia.editorial.nombreeditorial}
+			</td>
+			<td>
+				${period.hemerografia.fechapublicacion}
+			</td>
+			<td>
+				${period.hemerografia.lugaredicion}
+			</td>
+			<td>
+				${period.hemerografia.precio}
+			</td>
+			<td>
+				<div class="btn-group">
+					<button type="button" class="btn btn-default"><a href="/material/periodico/mostrar/${period.idperiodico}">Editar</a></button>
+					<button 
+				  			data-url="/material/periodico/eliminar/${period.idperiodico}"
+							data-extra="true"
+							type="button" 
+							class="btn btn-default grid-delete">
+							<a>Eliminar</a>
+					</button>
+				</div>
+			</td>
+		</tr>	
+	 #{/list}
+
+
+	</tbody>
+	</table>
+</div>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+	
+	$(".grid-delete").click(function(){
+
+		var url = $(this).data().url;
+		console.log(url)
+
+		deleteCallAjax(url)
+
+	});
+
+});
+</script>

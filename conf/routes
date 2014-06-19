@@ -21,11 +21,36 @@ GET		/material/revista/mostrar/{id}				Revistas.mostrarRevista
 GET		/material/revista/eliminar/{id}				Revistas.eliminarRevista
 
 # CD's
-GET		/material/cd/listar						Cds.listarCD
-GET		/material/cd/nuevo						Cds.nuevoCD
-POST	/material/cd/guardar					Cds.guardarCD
-GET		/material/cd/mostrar/{id}				Cds.mostrarCD
-GET		/material/cd/eliminar/{id}				Cds.eliminarCD
+GET		/material/cd/listar							Cds.listarCD
+GET		/material/cd/nuevo							Cds.nuevoCD
+POST	/material/cd/guardar						Cds.guardarCD
+GET		/material/cd/mostrar/{id}					Cds.mostrarCD
+GET		/material/cd/eliminar/{id}					Cds.eliminarCD
+
+# Libros
+GET		/material/libro/listar						Libros.listarLibros
+GET		/material/libro/nuevo						Libros.nuevoLibro
+POST	/material/libro/guardar						Libros.guardarLibro
+GET		/material/libro/mostrar/{id}				Libros.mostrarLibro
+GET		/material/libro/eliminar/{id}				Libros.eliminarLibro
+
+# Periodicos
+GET		/material/periodico/listar					Periodicos.listarPeriodico
+GET		/material/periodico/nuevo					Periodicos.nuevoPeriodico
+POST	/material/periodico/guardar					Periodicos.guardarPeriodico
+GET		/material/periodico/mostrar/{id}			Periodicos.mostrarPeriodico
+GET		/material/periodico/eliminar/{id}			Periodicos.eliminarPeriodico
+
+# PRESTAMOS
+GET		/prestamo/listar							Prestamos.listarPrestamo
+GET		/prestamo/nuevo								Prestamos.nuevoPrestamo
+POST	/prestamo/guardar							Prestamos.guardarPrestamo
+GET		/prestamo/mostrar/{id}						Prestamos.mostrarPrestamo
+
+# SEARCH
+GET		/search/bibliotecologo						Prestamos.buscarBibliotecologo
+#GET		/search/prestamista
+#GET		/search/material
 
 #GET     /										Application.signin
 #GET     /signin								Application.signin

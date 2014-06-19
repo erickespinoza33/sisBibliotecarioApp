@@ -1,0 +1,178 @@
+#{extends 'main.html' /}
+#{set title:'Mostrar prestamo' /}
+
+<form class="form-horizontal">
+	<fieldset>
+		<!-- Form Name -->
+		<legend>Detalles de Prestamo</legend>
+		<!-- Appended Input-->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="presBiblioId">Bibliotecologo</label>
+			<div class="col-md-5">
+				<select id="presBiblioId" name="presBiblioId" style="width:400px">
+					<option></option>
+					#{list items:litsBiblio, as:'bibliotecologo'}
+					<option value="${bibliotecologo.idbiblio}" #{ if (bibliotecologo.idbiblio == prestamo.bibliotecologo.idbiblio) } selected="selected"  #{/if}>
+						${bibliotecologo.usuario.nombres} ${bibliotecologo.usuario.apellidos}</option> #{/list}
+				</select>
+					<!-- input id="presBiblioId" name="presBiblioId" class="form-control" placeholder="" type="text" value="${prestamo.bibliotecologo.usuario.nombres} ${prestamo.bibliotecologo.usuario.apellidos}">
+					<span class="input-group-btn">
+						<button class="btn btn-default" type="button">Bzscar</button>
+					</span-->
+			</div>
+		</div>
+		<!-- Appended Input-->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="prestPrestId">Prestamista</label>
+			<div class="col-md-4">
+				<select id="prestPrestId" name="prestPrestId" style="width:400px">
+					<option></option>
+					#{list items:litsPresta, as:'prestamista'}
+					<option value="${prestamista.carnet}" #{ if (prestamista.carnet== prestamo.prestamista.carnet) } selected="selected"  #{/if}>
+						${prestamista.usuario.nombres} ${prestamista.usuario.apellidos}</option> #{/list}
+				</select>
+				<!-- 
+				<div class="input-group">
+					<input id="prestPrestId" name="prestPrestId" class="form-control" placeholder="" type="text" 
+						#{list items:prestamo.prestamista.estudiantes, as:'estudiante'}				
+							#{ if (estudiante.carnet == prestamo.prestamista.carnet) } 
+								value="${estudiante.prestamista.usuario.nombres}  ${estudiante.prestamista.usuario.apellidos}"
+							#{/if}
+						#{/list}
+						
+						#{list items:prestamo.prestamista.externos, as:'externo'}				
+							#{ if (externo.carnet == prestamo.prestamista.carnet) } 
+								value="${externo.prestamista.usuario.nombres}  ${externo.prestamista.usuario.apellidos}"
+							#{/if}
+						#{/list}
+						
+						#{list items:prestamo.prestamista.profesors, as:'profesor'}				
+							#{ if (profesor.carnet == prestamo.prestamista.carnet) } 
+								value="${profesor.prestamista.usuario.nombres}  ${profesor.prestamista.usuario.apellidos}"
+							#{/if}
+						#{/list}					
+					>
+					<span class="input-group-btn">
+						<button class="btn btn-default" type="button">Búscar</button>
+					</span>
+				</div>
+				 -->
+			</div>
+		</div>
+		<!-- Select Basic -->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="presTipoMat">Tipo de Material</label>
+			<div class="col-md-4">
+				<select id="presTipoMat" name="presTipoMat" class="form-control">
+				    	  #{list items:listaTipoMateial, as:'categoria'}
+				      		<option value="${categoria.idcategoriamat}"  #{ if (categoria.idcategoriamat == prestamo.material.categoriamaterial.idcategoriamat) } selected="selected"  #{/if}>${categoria.categoriamat}</option>	
+				      	  #{/list}
+				</select>
+			</div>
+		</div>
+		<!-- Appended Input-->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="presMatId">Material</label>
+			<div class="col-md-5">
+				<div class="input-group">
+					<input id="presMatId" name="presMatId" class="form-control" placeholder="" type="text" value="${prestamo.material.descripcionmaterial}">
+					<span class="input-group-btn">
+						<button class="btn btn-default" type="button">Búscar</button>
+					</span>
+				</div>
+			</div>
+		</div>
+		<!-- Select Basic -->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="presTipoPres">Tipo de Prestamo</label>
+			<div class="col-md-4">
+				<select id="presTipoPres" name="presTipoPres" class="form-control">
+				    	  #{list items:listaTipoPrestamo, as:'tipoPrestamo'}
+				      		<option value="${tipoPrestamo.idtipoprestamo}"  #{ if (tipoPrestamo.idtipoprestamo == prestamo.tipoprestamo.idtipoprestamo) } selected="selected"  #{/if}>${tipoPrestamo.tipo}</option>	
+				      	  #{/list}
+				</select>
+			</div>
+		</div>
+		<!-- Select Basic -->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="presEstado">Estado Prestamo</label>
+			<div class="col-md-2">
+				<select id="presEstado" name="presEstado" class="form-control">
+					<option value="1" #{ if (prestamo.estado == 1)} selected="selected"  #{/if}>Activo</option>
+					<option value="0" #{ if (prestamo.estado == 0)} selected="selected"  #{/if}>Inactivo</option>
+				</select>
+			</div>
+		</div>
+		<!-- Text input-->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="presFechaIn">Fecha Inicio</label>
+			<div class="col-md-4 input-group date" id="datetimepicker1" data-date-format="DD/MM/YYYY" style="padding-left: 15px;">
+				<input id="presFechaIn" name="presFechaIn" type="text" placeholder="" class="form-control input-md" value="${prestamo.fechainicio.format('dd/MM/yyyy')}">
+				<span class="input-group-addon">
+					<span class="glyphicon-calendar glyphicon"></span>
+                </span>
+			</div>
+		</div>
+		<!-- Text input-->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="presFechaFin">Fecha Fin</label>
+			<div class="col-md-4 input-group date" id="datetimepicker2" data-date-format="DD/MM/YYYY" style="padding-left: 15px;">
+				<input id="presFechaFin" name="presFechaFin" type="text" placeholder="" class="form-control input-md" value="${prestamo.fechafin.format('dd/MM/yyyy')}">
+				<span class="input-group-addon">
+					<span class="glyphicon-calendar glyphicon"></span>
+                </span>
+			</div>
+		</div>
+		<!-- Text input-->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="presFecahDev">Fecha de Devolución </label>
+			<div class="col-md-4 input-group date" id="datetimepicker3" data-date-format="DD/MM/YYYY" style="padding-left: 15px;">
+				<input id="presFecahDev" name="presFecahDev" type="text" placeholder="" class="form-control input-md" value="${prestamo.fechadevolucion.format('dd/MM/yyyy')}" >
+				<span class="input-group-addon">
+					<span class="glyphicon-calendar glyphicon"></span>
+                </span>
+			</div>
+		</div>
+		<!-- Button (Double) -->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="btnGuardar"></label>
+			<div class="col-md-8">
+				<button id="btnGuardar" name="btnGuardar" class="btn btn-success">Guardar</button>
+				<button id="btnCancelar" name="btnCancelar" class="btn btn-danger">Cancelar</button>
+			</div>
+		</div>
+	</fieldset>
+</form>
+
+<script type="text/javascript">
+    $(function () {
+        $('#datetimepicker1').datetimepicker({
+            pickTime: false
+        });
+        $('#datetimepicker2').datetimepicker({
+            pickTime: false
+        });
+        $('#datetimepicker3').datetimepicker({
+            pickTime: false
+        });
+
+		$("#datetimepicker1").on("dp.change",function (e) {
+		    $('#datetimepicker2').data("DateTimePicker").setMinDate(e.date);
+		 });
+		$("#datetimepicker1").on("dp.change",function (e) {
+		    $('#datetimepicker3').data("DateTimePicker").setMinDate(e.date);
+		 });
+		 
+		$("#presBiblioId").select2({
+		    placeholder: "Seleccionar Bibliotecologo"
+		});
+
+		$("#prestPrestId").select2({
+		    placeholder: "Seleccionar Prestamista"
+		});
+
+		$("#presTipoMat").select2({
+		    placeholder: "Seleccionar Prestamista"
+		});
+    });
+</script>

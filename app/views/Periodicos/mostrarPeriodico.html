@@ -1,0 +1,129 @@
+#{extends 'main.html' /}
+#{set title:'Editar Periodico' /}
+
+<form class="form-horizontal" action="/material/periodico/guardar"  method="POST">
+	<fieldset>
+	
+		<input name="perIdMat" value="${period.hemerografia.material.idmaterial}" type="hidden">
+		<input name="perCodHem" value="${period.hemerografia.codigo}" type="hidden">
+		<input name="perIdPer" value="${period.idperiodico}" type="hidden">
+		
+		<!-- Form Name -->
+		<legend>Editar Material - Periodico</legend>
+		
+		<!-- Select Basic -->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="perCatMat">Categoría Material</label>
+		  <div class="col-md-4">
+		    <select id="perCatMat" name="perCatMat" class="form-control">
+		    	  #{list items:categorias, as:'categoria'}
+		      		<option value="${categoria.idcategoriamat}" #{ if (categoria.idcategoriamat == period.hemerografia.material.categoriamaterial.idcategoriamat) } selected="selected"  #{/if}>${categoria.categoriamat}</option>	
+		      	  #{/list}
+		    </select>
+		  </div>
+		</div>
+		
+		<!-- Text input-->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="perUbic">Ubicación</label>  
+		  <div class="col-md-4">
+		  <input id="perUbic" name="perUbic" type="text" placeholder="" class="form-control input-md" required="" value="${period.hemerografia.material.ubicacion}">
+		    
+		  </div>
+		</div>
+		
+		<!-- Text input-->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="perExist">Existencias</label>  
+		  <div class="col-md-4">
+		  <input id="perExist" name="perExist" type="text" placeholder="" class="form-control input-md" required="" value="${period.hemerografia.material.existencias}">
+		    
+		  </div>
+		</div>
+		
+		<!-- Text input-->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="perDescM">Descripción de Material</label>  
+		  <div class="col-md-4">
+		  <input id="perDescM" name="perDescM" type="text" placeholder="" class="form-control input-md" required="" value="${period.hemerografia.material.descripcionmaterial}">
+		    
+		  </div>
+		</div>
+		
+		<!-- Select Basic -->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="perEdit">Editorial</label>
+		  <div class="col-md-4">
+		    <select id="perEdit" name="perEdit" class="form-control">
+		    	  #{list items:editorial, as:'edit'}
+		      		<option value="${edit.ideditorial}" #{ if (editorial.ideditorial == period.hemerografia.editorial.ideditorial) } selected="selected"  #{/if}>${edit.nombreeditorial}</option>	
+		      	  #{/list}
+		    </select>
+		  </div>
+		</div>
+		
+		<!-- Text input-->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="perFechaP">Fecha de Publicación</label>  
+		  <div class="col-md-4">
+		  <input id="perFechaP" name="perFechaP" type="text" placeholder="" class="form-control input-md" required="" value="${period.hemerografia.fechapublicacion}">
+		    
+		  </div>
+		</div>
+		
+		<!-- Text input-->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="perPrec">Precio</label>  
+		  <div class="col-md-4">
+		  <input id="perPrec" name="perPrec" type="text" placeholder="" class="form-control input-md" required="" value="${period.hemerografia.precio}">
+		    
+		  </div>
+		</div>
+		
+		<!-- Text input-->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="perLugar">Lugar de Edición</label>  
+		  <div class="col-md-4">
+		  <input id="perLugar" name="perLugar" type="text" placeholder="" class="form-control input-md" required=""  value="${period.hemerografia.lugaredicion}">
+		    
+		  </div>
+		</div>
+		
+		<!-- Text input-->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="perDescH">Descripción de Hemerografía</label>  
+		  <div class="col-md-4">
+		  <input id="perDescH" name="perDescH" type="text" placeholder="" class="form-control input-md" required=""  value="${period.hemerografia.descripcionhem}">
+		    
+		  </div>
+		</div>
+		
+		<!-- Text input-->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="perEmpr">Empresa</label>  
+		  <div class="col-md-4">
+		  <input id="perEmpr" name="perEmpr" type="text" placeholder="" class="form-control input-md" required=""  value="${period.empresa}">
+		    
+		  </div>
+		</div>
+		
+		<!-- Text input-->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="perTitu">Titular</label>  
+		  <div class="col-md-4">
+		  <input id="perTitu" name="perTitu" type="text" placeholder="" class="form-control input-md" required=""  value="${period.titular}">
+		    
+		  </div>
+		</div>
+		
+		<!-- Button (Double) -->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="guardar">Acciones</label>
+		  <div class="col-md-8">
+		    <button type="submit" id="guardar" name="guardar" class="btn btn-primary">Guardar</button>
+		    <button id="cancelar" name="cancelar" class="btn btn-default">Cancelar</button>
+		  </div>
+		</div>
+	
+	</fieldset>
+</form>

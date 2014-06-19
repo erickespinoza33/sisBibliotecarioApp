@@ -58,6 +58,10 @@ public class Hemerografia extends GenericModel {
 	public Hemerografia() {
 	}
 
+	public long getCodigohem() {
+		return this.codigo;
+	}
+	
 	public String getDescripcionhem() {
 		return this.descripcionhem;
 	}

@@ -7,11 +7,18 @@
         <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/main.css'}">
         <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/bootstrap.min.css'}">
         <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/bootstrap-theme.min.css'}">
+        <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/bootstrap-datetimepicker.min.css'}">
+        <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/select2.css'}">
+        <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/select2-bootstrap.css'}">
+
         #{get 'moreStyles' /}
         <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}">
         <script src="@{'/public/javascripts/jquery-1.11.1.js'}" type="text/javascript" charset="${_response_encoding}"></script>
         <script src="@{'/public/javascripts/bootstrap.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+        <script src="@{'/public/javascripts/moment.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+        <script src="@{'/public/javascripts/bootstrap-datetimepicker.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
         <script src="@{'/public/javascripts/main.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+        <script src="@{'/public/javascripts/select2.js'}"></script>
         #{get 'moreScripts' /}
     </head>
     <body>
@@ -27,6 +34,21 @@
 						<button type="button" class="btn btn-default" id="cancelDelete"
 							data-dismiss="modal">Cancel</button>
 						<button type="button" class="btn btn-primary" id="confirmDelete">OK</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="modal-search-biblio" class="modal fade" tabindex="-1">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-body">
+						<button type="button" class="close" data-dismiss="modal"
+							aria-hidden="true">&times;</button>
+						<p class="content-body"></p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" id="cancel"
+							data-dismiss="modal">Cancel</button>
 					</div>
 				</div>
 			</div>
@@ -59,23 +81,25 @@
 									<ul class="dropdown-menu">
 										<li class="menu-item "><a href="/material/revista/listar">Revistas</a></li>
 										<li class="menu-item "><a href="/material/cd/listar">CD's</a></li>
+										<li class="menu-item "><a href="/material/periodico/listar">Periodicos</a></li>
 									</ul>
 								<li class="menu-item dropdown dropdown-submenu">
 									<a href="#" class="dropdown-toggle" data-toggle="dropdown">Crear Materiales</a>
 									<ul class="dropdown-menu">
 										<li class="menu-item "><a href="/material/cd/nuevo">CD</a></li>
 										<li class="menu-item "><a href="/material/revista/nuevo">Revista</a></li>
+										<li class="menu-item "><a href="/material/periodico/nuevo">Periodico</a></li>
 									</ul>
 								</li>
                             </ul>
                         </li>
-                        <li>
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Prestamos <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Ver Prestamos</a></li>
-                                <li><a href="#">Crear Prestamos</a></li>
-                            </ul>
-                        </li>
+						<li>
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Prestamos <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="/prestamo/listar">Ver Prestamos</a></li>
+							<li><a href="#">Crear Prestamos</a></li>
+						</ul>
+						</li>
                         <li>
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Moras <b class="caret"></b></a>
                             <ul class="dropdown-menu">
@@ -100,10 +124,10 @@
             </div>
         </div>
 
-        <div id="footer">
+        <div id="footer" class="hidden">
             <div class="container">
                 <p class="text-muted">
-                    Universidad de El Salvador. Facultad de Ingenierina y Arquitectura.
+                    Universidad de El Salvador. Facultad de Ingenieria y Arquitectura.
                 </p>
             </div>
         </div>

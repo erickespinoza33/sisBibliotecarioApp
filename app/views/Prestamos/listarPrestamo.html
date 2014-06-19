@@ -1,0 +1,109 @@
+#{extends 'main.html' /}
+#{set title:'Listar prestamo' /}
+
+<div class="bs-example">
+	<table class="table table-striped">
+	<thead>
+	<tr>
+		
+		
+		<th  width="5%">
+			Carnet
+		</th>
+		<th  width="20%">
+			Nombre
+		</th>
+		<th  width="10%">
+			Material
+		</th>
+		<th  width="10%">
+			Tipo de prestamo
+		</th>
+		<th  width="5%">
+			Estado
+		</th>
+		<th  width="10%">
+			Inicio
+		</th>
+		<th  width="10%">
+			Fin
+		</th>
+		<th  width="10%">
+			Devolución
+		</th>
+		<th wit width="15%">
+			Acciones
+		</th>
+		
+	</tr>
+	</thead>
+	<tbody>
+	#{list items:listPrestamo, as:'prestamo'}
+		<tr>
+			<td>
+				${prestamo.prestamista.carnet}
+			</td>
+			<td>
+				#{list items:prestamo.prestamista.estudiantes, as:'estudiante'}				
+					#{ if (estudiante.carnet == prestamo.prestamista.carnet) } ${estudiante.prestamista.usuario.nombres}  ${estudiante.prestamista.usuario.apellidos}#{/if}
+				#{/list}
+				
+				#{list items:prestamo.prestamista.externos, as:'externo'}				
+					#{ if (externo.carnet == prestamo.prestamista.carnet) } ${externo.prestamista.usuario.nombres}  ${externo.prestamista.usuario.apellidos}#{/if}
+				#{/list}
+				
+				#{list items:prestamo.prestamista.profesors, as:'profesor'}				
+					#{ if (profesor.carnet == prestamo.prestamista.carnet) } ${profesor.prestamista.usuario.nombres}  ${profesor.prestamista.usuario.apellidos}#{/if}
+				#{/list}
+
+			</td>
+			<td>
+				${prestamo.material.categoriamaterial.categoriamat}
+			</td>
+			<td>
+				${prestamo.tipoprestamo.tipo}
+			</td>
+			<td>
+				#{ if (prestamo.estado == 1) } Activo #{/if} #{else} Inactivo #{/else} 
+			</td>
+			<td>
+			
+				${prestamo.fechainicio.format('dd/MM/yyyy')}
+			</td>
+			<td>
+				${prestamo.fechafin.format('dd/MM/yyyy')}
+			</td>
+			<td>
+				${prestamo.fechadevolucion.format('dd/MM/yyyy')}
+			</td>
+			<td>
+				<div class="btn-group">
+					
+					<button type="button" class="btn btn-default"><a href="/prestamo/mostrar/${prestamo.idprestamo}">Detalles</a></button>
+					<button type="button" class="btn btn-default"><a href="/prestamo/mostrar/${prestamo.idprestamo}">Editar</a></button>
+										
+				</div>
+			</td>
+		</tr>	
+	 #{/list}
+
+
+	</tbody>
+	</table>
+</div>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+	
+	$(".grid-delete").click(function(){
+
+		var url = $(this).data().url;
+		console.log(url)
+
+		deleteCallAjax(url)
+
+	});
+
+});
+</script>

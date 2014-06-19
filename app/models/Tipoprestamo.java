@@ -1,9 +1,20 @@
 package models;
 
-import java.io.Serializable;
+import play.db.jpa.GenericModel;
+import play.db.jpa.Model;
+import play.data.validation.Required;
+import play.data.validation.MaxSize;
+
+import java.math.BigDecimal;
+import java.util.Date;
+import java.util.List;
+
+import javax.persistence.*;
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.Date;
 import java.util.List;
+
 
 
 /**
@@ -11,15 +22,17 @@ import java.util.List;
  * 
  */
 @Entity
-@NamedQuery(name="Tipoprestamo.findAll", query="SELECT t FROM Tipoprestamo t")
-public class Tipoprestamo implements Serializable {
-	private static final long serialVersionUID = 1L;
+@Table(name="Tipoprestamo")
+public class Tipoprestamo extends GenericModel {
 
 	@Id
+	@Column(name="IDTIPOPRESTAMO")
 	private long idtipoprestamo;
-
+	
+	@Column(name="ACTIVO")
 	private BigDecimal activo;
 
+	@Column(name="TIPO")
 	private String tipo;
 
 	//bi-directional many-to-one association to Prestamo

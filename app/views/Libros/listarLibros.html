@@ -1,5 +1,5 @@
 #{extends 'main.html' /}
-#{set title:'Listar CD' /}
+#{set title:'Listar Libros' /}
 
 <div class="bs-example">
 	<table class="table table-striped">
@@ -9,39 +9,51 @@
 			id
 		</th >
 		<th  width="20%">
-			Album
+			Titulo
 		</th>
 		<th  width="10%">
-			Año
+			volumen
 		</th>
-		<th  width="20%">
-			Artista
+		<th  width="15%">
+			Edición
 		</th>
 		<th wit width="15%">
+			Editorial
+		</th>
+		<th wit width="10%">
+			Idioma
+		</th>
+		<th wit width="20%">
 			Acciones
 		</th>
 	</tr>
 	</thead>
 	<tbody>
-	#{list items:listCds, as:'cd'}
+	#{list items:listLibros, as:'libro'}
 		<tr>
 			<td>
-				${cd.id}
+				${libro.isbn}
 			</td>
 			<td>
-				${cd.album}
+				${libro.titulo}
 			</td>
 			<td>
-				${cd.ano}
+				${libro.volumen}
 			</td>
 			<td>
-				${cd.artista.nombreartista}
+				${libro.edicion}
+			</td>
+			<td>
+				${libro.editorial.nombreeditorial}
+			</td>
+			<td>
+				${libro.idiomas.nombreidioma}
 			</td>
 			<td>
 				<div class="btn-group">
-					<button type="button" class="btn btn-default"><a href="/material/cd/mostrar/${cd.id}">Editar</a></button>
+					<button type="button" class="btn btn-default"><a href="/material/libro/mostrar/${libro.isbn}">Editar</a></button>
 					<button 
-				  			data-url="/material/cd/eliminar/${cd.id}"
+				  			data-url="/material/libro/eliminar/${libro.isbn}"
 							data-extra="true"
 							type="button" 
 							class="btn btn-default grid-delete">

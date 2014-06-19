@@ -20,6 +20,13 @@ POST	/material/cd/guardar					Cds.guardarCD
 GET		/material/cd/mostrar/{id}				Cds.mostrarCD
 GET		/material/cd/eliminar/{id}				Cds.eliminarCD
 
+# Periodicos
+GET		/material/periodico/listar				Periodicos.listarPeriodico
+GET		/material/periodico/nuevo				Periodicos.nuevoPeriodico
+POST	/material/periodico/guardar				Periodicos.guardarPeriodico
+GET		/material/periodico/mostrar/{id}		Periodicos.mostrarPeriodico
+GET		/material/periodico/eliminar/{id}		Periodicos.eliminarPeriodico
+
 #GET     /										Application.signin
 #GET     /signin								Application.signin
 # Ignore favicon requests

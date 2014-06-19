@@ -45,7 +45,11 @@ public class Periodico extends GenericModel {
 
 	public Periodico() {
 	}
-
+	
+	public long getIdperiodico() {
+		return idperiodico;
+	}
+	
 	public String getEmpresa() {
 		return this.empresa;
 	}

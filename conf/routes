@@ -13,6 +13,13 @@ GET     /index                                  Application.index
 GET		/										Secure.login
 GET		/test									Application.testing
 
+# REVISTAS
+GET		/material/revista/listar					Revistas.listarRevista
+GET		/material/revista/nuevo						Revistas.nuevoRevista
+POST	/material/revista/guardar					Revistas.guardarRevista
+GET		/material/revista/mostrar/{id}				Revistas.mostrarRevista
+GET		/material/revista/eliminar/{id}				Revistas.eliminarRevista
+
 # CD's
 GET		/material/cd/listar						Cds.listarCD
 GET		/material/cd/nuevo						Cds.nuevoCD

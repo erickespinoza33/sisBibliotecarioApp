@@ -1,0 +1,106 @@
+#{extends 'main.html' /}
+#{set title:'Nueva Revista' /}
+
+<form class="form-horizontal" action="/material/revista/guardar"  method="POST">
+	<fieldset>
+		<!-- Form Name -->
+		<legend>Nuevo Material - Revista</legend>
+
+		
+		<!-- Select Basic -->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="selectbasic">Categoría Material</label>
+			<div class="col-md-4">
+				<select id="selectbasic" name="revCategM" class="form-control">
+				    	  #{list items:categorias, as:'categoria'}
+				      		<option value="${categoria.idcategoriamat}" >${categoria.categoriamat}</option>	
+				      	  #{/list}
+				</select>
+			</div>
+		</div>
+		<!-- Text input-->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="textinput">Ubicación</label>
+			<div class="col-md-5">
+				<input id="textinput" name="revUbicaM" type="text" placeholder="" class="form-control input-md" >
+				<span class="help-block">Ubicación en la biblioteca pasillo, estante</span>
+			</div>
+		</div>
+		<!-- Text input-->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="textinput">Existencias</label>
+			<div class="col-md-4">
+				<input id="textinput" name="revExistM" type="text" placeholder="" class="form-control input-md" >
+			</div>
+		</div>
+		<!-- Text input-->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="textinput">Descripción de Material</label>
+			<div class="col-md-5">
+				<input id="textinput" name="revDescM" type="text" placeholder="" class="form-control input-md">
+			</div>
+		</div>
+		<!-- Select Basic -->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="selectbasic">Editorial</label>
+			<div class="col-md-4">
+				<select id="selectbasic" name="revEditorial" class="form-control">
+				    	  #{list items:editoriales, as:'editorial'}
+				      		<option value="${editorial.ideditorial}">${editorial.nombreeditorial}</option>	
+				      	  #{/list}
+				</select>
+			</div>
+		</div>
+		<!-- Text input-->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="textinput">Fecha de publicacion</label>
+			<div class="col-md-4">
+				<input id="textinput" name="revFechaPub" type="text" placeholder="" class="form-control input-md" >
+			</div>
+		</div>
+		<!-- Text input-->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="textinput">Precio</label>
+			<div class="col-md-4">
+				<input id="textinput" name="revPrecio" type="text" placeholder="" class="form-control input-md" >
+			</div>
+		</div>
+		<!-- Text input-->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="textinput">Lugar de edicion</label>
+			<div class="col-md-4">
+				<input id="textinput" name="revLugarEd" type="text" placeholder="" class="form-control input-md" >
+			</div>
+		</div>
+		<!-- Text input-->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="textinput">Descripción de Hemerografia</label>
+			<div class="col-md-4">
+				<input id="textinput" name="revDescH" type="text" placeholder="" class="form-control input-md">
+			</div>
+		</div>
+		<!-- Text input-->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="textinput">Titulo</label>
+			<div class="col-md-4">
+				<input id="textinput" name="revTitulo" type="text" placeholder="" class="form-control input-md">
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="textinput">Edicion</label>
+			<div class="col-md-4">
+				<input id="textinput" name="revEdicion" type="text" placeholder="" class="form-control input-md">
+			</div>
+		</div>
+		
+		
+		<!-- Button (Double) -->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="guardarRevista"></label>
+			<div class="col-md-8">
+				<button type="submit" id="guardarRevista" name="guardarRevista" class="btn btn-success">Guardar</button>
+				<button id="cancelarRevista" name="cancelarRevista" class="btn btn-danger">Cancelar</button>
+			</div>
+		</div>
+	</fieldset>
+</form>

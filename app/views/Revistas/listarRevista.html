@@ -1,0 +1,100 @@
+#{extends 'main.html' /}
+#{set title:'Listar Revista' /}
+
+<div class="bs-example">
+	<table class="table table-striped">
+	<thead>
+	<tr>
+		
+		<th  width="10%">
+			Titulo
+		</th>
+		<th  width="10%">
+			Edicion
+		</th>
+		<th  width="10%">
+			Editorial
+		</th>
+		<th  width="10%">
+			Fecha de publicacion
+		</th>
+		<th  width="10%">
+			Precio
+		</th>
+		<th  width="10%">
+			Lugar de edicion
+		</th>
+		<th  width="10%">
+			Ubicacion
+		</th>
+		<th  width="10%">
+			Existencias
+		</th>
+		<th wit width="20%">
+			Acciones
+		</th>
+		
+	</tr>
+	</thead>
+	<tbody>
+	#{list items:listRev, as:'Rev'}
+		<tr>
+			<td>
+				${Rev.titulo}
+			</td>
+			<td>
+				${Rev.edicion}
+			</td>
+			<td>
+				${Rev.hemerografia.editorial.nombreeditorial}
+			</td>
+			<td>
+				${Rev.hemerografia.fechapublicacion}
+			</td>
+			<td>
+				${Rev.hemerografia.precio}
+			</td>
+			<td>
+				${Rev.hemerografia.lugaredicion}
+			</td>
+			<td>
+				${Rev.hemerografia.material.ubicacion}
+			</td>
+			<td>
+				${Rev.hemerografia.material.existencias}
+			</td>
+			<td>
+				<div class="btn-group">
+					<button type="button" class="btn btn-default"><a href="/material/revista/mostrar/${Rev.idrevista}">Editar</a></button>
+					<button 
+				  			data-url="/material/revista/eliminar/${Rev.idrevista}"
+							data-extra="true"
+							type="button" 
+							class="btn btn-default grid-delete">
+							<a>Eliminar</a>
+					</button>
+				</div>
+			</td>
+		</tr>	
+	 #{/list}
+
+
+	</tbody>
+	</table>
+</div>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+	
+	$(".grid-delete").click(function(){
+
+		var url = $(this).data().url;
+		console.log(url)
+
+		deleteCallAjax(url)
+
+	});
+
+});
+</script>

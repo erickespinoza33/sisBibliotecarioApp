@@ -68,5 +68,9 @@ public class Revista extends GenericModel {
 	public void setHemerografia(Hemerografia hemerografia) {
 		this.hemerografia = hemerografia;
 	}
+	
+	public long getIdRevista() {
+		return this.idrevista;
+	}
 
 }

@@ -149,5 +149,10 @@ public class Hemerografia extends GenericModel {
 
 		return revista;
 	}
+	
+	public long getCodigo() {
+		return this.codigo;
+	}
+
 
 }

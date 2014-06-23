@@ -137,9 +137,11 @@
 		<!-- Text input-->
 		<div class="form-group">
 		  <label class="col-md-4 control-label" for="fechasusc">Fecha Suscripcion</label>  
-		  <div class="col-md-4">
+		  <div class="col-md-4 input-group date" id="fechaSusc" data-date-format="DD/MM/YYYY" style="padding-left: 15px;">
 		  <input id="fechasusc" name="fechasusc" type="text" placeholder="" class="form-control input-md" required="">
-		    
+		  <span class="input-group-addon">
+			<span class="glyphicon-calendar glyphicon"></span>
+          </span>  
 		  </div>
 		</div>
 		
@@ -189,10 +191,18 @@
 		<div class="form-group">
 		  <label class="col-md-4 control-label" for="guardar">Acciones</label>
 		  <div class="col-md-8">
-		    <button type="submit" id="guardar" name="guardar" class="btn btn-primary">Guardar</button>
-		    <button id="cancelar" name="cancelar" class="btn btn-default">Cancelar</button>
+		    <button type="submit" id="guardar" name="guardar" class="btn btn-success">Guardar</button>
+		    <button id="cancelar" name="cancelar" class="btn btn-danger">Cancelar</button>
 		  </div>
 		</div>
 		
 	</fieldset>
 </form>
+
+<script type="text/javascript">
+    $(function () {
+        $('#fechaSusc').datetimepicker({
+            pickTime: false
+        });
+    });
+</script>

@@ -61,9 +61,11 @@
 		<!-- Text input-->
 		<div class="form-group">
 		  <label class="col-md-4 control-label" for="perFechaP">Fecha de Publicación</label>  
-		  <div class="col-md-4">
-		  <input id="perFechaP" name="perFechaP" type="text" placeholder="" class="form-control input-md" required="">
-		    
+		  <div class="col-md-4 input-group date" id="fechaP" data-date-format="DD/MM/YYYY" style="padding-left: 15px;">
+			  <input id="perFechaP" name="perFechaP" type="text" placeholder="" class="form-control input-md" required="" value="">
+			  <span class="input-group-addon">
+				<span class="glyphicon-calendar glyphicon"></span>
+	          </span>
 		  </div>
 		</div>
 		
@@ -123,3 +125,11 @@
 	
 	</fieldset>
 </form>
+
+<script type="text/javascript">
+    $(function () {
+        $('#fechaP').datetimepicker({
+            pickTime: false
+        });
+    });
+</script>

@@ -66,15 +66,7 @@ public class Estudiante extends GenericModel {
 
 	public Estudiante() {
 	}
-	/*
-	public EstudiantePK getId() {
-		return this.id;
-	}
 
-	public void setId(EstudiantePK id) {
-		this.id = id;
-	}
-	*/
 	public String getCarrera() {
 		return this.carrera;
 	}
@@ -114,6 +106,24 @@ public class Estudiante extends GenericModel {
 		return penalizacion;
 	}
 
+	public long getIdUsuario() {
+		return idUsuario;
+	}
+	public void setIdUsuario(long idUsuario) {
+		this.idUsuario = idUsuario;
+	}
+	public long getCarnet() {
+		return carnet;
+	}
+	public void setCarnet(long carnet) {
+		this.carnet = carnet;
+	}
+	public long getIdestudiante() {
+		return idestudiante;
+	}
+	public void setIdestudiante(long idestudiante) {
+		this.idestudiante = idestudiante;
+	}
 	public Penalizacion removePenalizacion(Penalizacion penalizacion) {
 		getPenalizacions().remove(penalizacion);
 		penalizacion.setEstudiante(null);
@@ -128,5 +138,6 @@ public class Estudiante extends GenericModel {
 				+ ", institucion=" + institucion + ", prestamista="
 				+ prestamista + ", penalizacions=" + penalizacions + "]";
 	}
+
 
 }

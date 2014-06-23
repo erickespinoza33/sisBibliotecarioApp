@@ -89,6 +89,22 @@ public class Prestamista extends GenericModel {
 
 	public Prestamista() {
 	}
+	
+	public long getCarnet() {
+		return carnet;
+	}
+
+	public void setCarnet(long carnet) {
+		this.carnet = carnet;
+	}
+
+	public long getIdUsuario() {
+		return idUsuario;
+	}
+
+	public void setIdUsuario(long idUsuario) {
+		this.idUsuario = idUsuario;
+	}
 
 	public BigDecimal getCarnetrecibido() {
 		return this.carnetrecibido;

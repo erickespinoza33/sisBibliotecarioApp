@@ -5,16 +5,13 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
-import models.Artista;
-import models.Cd;
-import models.Editorial;
 import models.Categoriamaterial;
-import models.Material;
-import models.Hemerografia;
+import models.Editorial;
 import models.Periodico;
+import play.mvc.*;
 import play.Logger;
 import play.db.jpa.JPABase;
-import play.mvc.*;
+
 
 public class Periodicos extends Controller {
 	

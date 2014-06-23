@@ -1,5 +1,8 @@
 package controllers;
 
+import com.google.gson.Gson;
+
+import models.UserInfo;
 import models.Usuario;
 import play.Logger;
 import play.Play;
@@ -8,6 +11,7 @@ import play.db.jpa.JPAPlugin;
 import play.mvc.*;
  
 public class Security extends Secure.Security {
+	final static Gson gson = new Gson();
     
 	static boolean authenticate(String usuario, String password) {
 		Logger.log4j.info(usuario);
@@ -17,6 +21,8 @@ public class Security extends Secure.Security {
 		Logger.log4j.info(user.getNombreusuario());
 
 		if (user != null && user.getContrasena().equals(password)) {
+			UserInfo userinfo = new UserInfo(user.getIdUsuario(), user.getNombres(), user.getApellidos(), user.getRol().getRol());
+			setUserSession(userinfo);			
 			return setDBSchema(user);
 
 		} else {
@@ -72,4 +78,38 @@ public class Security extends Secure.Security {
 
 		return true;
 	}
+	
+	/**
+	 * Set user session.
+	 *
+	 * @param user the new user session
+	 * @return 
+	 */
+	public static int setUserSession(UserInfo user) {
+		Logger.log4j.info("Setting user information in session scope");
+		session.put("userInfo", gson.toJson(user));
+		return 0;
+	}
+	
+	/**
+	 * User logged.
+	 */
+	public static void userLogged() {
+		Gson gson = new Gson();
+		String userJSON = session.get("userInfo");
+
+		UserInfo user = gson.fromJson(userJSON, UserInfo.class);
+		renderJSON(user);
+	}
+	
+	/**
+	 * Sign out.
+	 */
+	public static void signOut() {
+		Logger.log4j.info("Clear session vars");
+		session.clear();
+		
+		redirect("/");
+	}
+
 }

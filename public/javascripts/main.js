@@ -1,4 +1,24 @@
+ var currentUser;
+
 $(document).ready(function() {
+    $.ajax({
+        type : 'GET',
+        url : '/currentUser',
+        /**
+         * Description
+         * @method success
+         * @param {} data
+         * @return 
+         */
+        success : function(data) {
+            currentUser = data;
+            $(".currentUser").html(data.nombres +" "+ data.apellidos);
+            if(data.rol == "PRESTAMISTA"){
+                $(".admin").remove();
+            }
+        }
+
+    }); // end ajax call
 
     $('ul.dropdown-menu [data-toggle=dropdown]').on('click', function(event) {
         // Avoid following the href location when clicking

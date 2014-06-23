@@ -68,19 +68,19 @@
 			</td>
 			<td>
 			
-				${prestamo.fechainicio.format('dd/MM/yyyy')}
+				${prestamo.fechainicio?.format('dd/MMM/yyyy')}
 			</td>
 			<td>
-				${prestamo.fechafin.format('dd/MM/yyyy')}
+				${prestamo.fechafin?.format('dd/MMM/yyyy')}
 			</td>
 			<td>
-				${prestamo.fechadevolucion.format('dd/MM/yyyy')}
+				${prestamo.fechadevolucion?.format('dd/MMM/yyyy')}
 			</td>
 			<td>
 				<div class="btn-group">
 					
 					<button type="button" class="btn btn-default"><a href="/prestamo/mostrar/${prestamo.idprestamo}">Detalles</a></button>
-					<button type="button" class="btn btn-default"><a href="/prestamo/mostrar/${prestamo.idprestamo}">Editar</a></button>
+					<!-- button type="button" class="btn btn-default"><a href="/prestamo/mostrar/${prestamo.idprestamo}">Editar</a></button -->
 										
 				</div>
 			</td>

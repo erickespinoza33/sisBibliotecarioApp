@@ -1,30 +1,30 @@
 #{extends 'main.html' /}
-#{set title:'Listar Periodico' /}
+#{set title:'Listar Estudiantes' /}
 
 <div class="bs-example">
 	<table class="table table-striped">
 	<thead>
 	<tr>
-		<th  width="5%">
-			ID
+		<th  width="15%">
+			Nombres
 		</th >
 		<th  width="15%">
-			Empresa
-		</th>
-		<th  width="20%">
-			Titular
-		</th>
-		<th  width="15%">
-			Editorial
+			Apellidos
 		</th>
 		<th  width="10%">
-			Fecha de Publicacion
-		</th>
-		<th  width="10%">
-			Lugar de Edicion
+			Nombre de Usuario
 		</th>
 		<th  width="5%">
-			Precio
+			Tel Movil
+		</th>
+		<th  width="15%">
+			Direccion
+		</th>
+		<th  width="10%">
+			Correo
+		</th>
+		<th  width="10%">
+			Carrera
 		</th>
 		<th wit width="20%">
 			Acciones
@@ -32,34 +32,34 @@
 	</tr>
 	</thead>
 	<tbody>
-	#{list items:listPeriodicos, as:'period'}
+	#{list items:listEstudiantes, as:'estudiante'}
 		<tr>
 			<td>
-				${period.idperiodico}
+				${estudiante.prestamista.usuario.nombres}
 			</td>
 			<td>
-				${period.empresa}
+				${estudiante.prestamista.usuario.apellidos}
 			</td>
 			<td>
-				${period.titular}
+				${estudiante.prestamista.usuario.nombreusuario}
 			</td>
 			<td>
-				${period.hemerografia.editorial.nombreeditorial}
+				${estudiante.prestamista.telmovil}
 			</td>
 			<td>
-				${period.hemerografia.fechapublicacion.format('dd/MM/yyyy')}
+				${estudiante.prestamista.direccionprestamista}
 			</td>
 			<td>
-				${period.hemerografia.lugaredicion}
+				${estudiante.prestamista.correo}
 			</td>
 			<td>
-				${period.hemerografia.precio}
+				${estudiante.carrera}
 			</td>
 			<td>
 				<div class="btn-group">
-					<button type="button" class="btn btn-default"><a href="/material/periodico/mostrar/${period.idperiodico}">Editar</a></button>
+					<button type="button" class="btn btn-default"><a href="/estudiante/mostrar/${estudiante.idestudiante}">Editar</a></button>
 					<button 
-				  			data-url="/material/periodico/eliminar/${period.idperiodico}"
+				  			data-url="/estudiante/eliminar/${estudiante.idestudiante}"
 							data-extra="true"
 							type="button" 
 							class="btn btn-default grid-delete">

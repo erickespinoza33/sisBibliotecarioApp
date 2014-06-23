@@ -50,6 +50,14 @@ public class Bibliotecologo extends GenericModel {
 	public Bibliotecologo() {
 	}
 
+	public long getIdbiblio() {
+		return idbiblio;
+	}
+
+	public void setIdbiblio(long idbiblio) {
+		this.idbiblio = idbiblio;
+	}
+
 	public Usuario getUsuario() {
 		return this.usuario;
 	}

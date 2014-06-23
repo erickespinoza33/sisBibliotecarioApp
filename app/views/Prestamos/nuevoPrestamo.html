@@ -5,22 +5,16 @@
 	<fieldset>
 		<!-- Form Name -->
 		<legend>Detalles de Prestamo</legend>
-		
-		<input name="prestamoId" type="hidden" value="${prestamo.idprestamo}">
 		<!-- Appended Input-->
 		<div class="form-group">
 			<label class="col-md-4 control-label" for="presBiblioId">Bibliotecologo</label>
 			<div class="col-md-5">
-				<select id="presBiblioId" name="presBiblioId" style="width:400px" requ>
+				<select id="presBiblioId" name="presBiblioId" style="width:400px">
 					<option></option>
 					#{list items:litsBiblio, as:'bibliotecologo'}
-					<option value="${bibliotecologo.idbiblio}" #{ if (bibliotecologo.idbiblio == prestamo.bibliotecologo.idbiblio) } selected="selected"  #{/if}>
+					<option value="${bibliotecologo.idbiblio}">
 						${bibliotecologo.usuario.nombres} ${bibliotecologo.usuario.apellidos}</option> #{/list}
 				</select>
-					<!-- input id="presBiblioId" name="presBiblioId" class="form-control" placeholder="" type="text" value="${prestamo.bibliotecologo.usuario.nombres} ${prestamo.bibliotecologo.usuario.apellidos}">
-					<span class="input-group-btn">
-						<button class="btn btn-default" type="button">Bzscar</button>
-					</span-->
 			</div>
 		</div>
 		<!-- Appended Input-->
@@ -30,7 +24,7 @@
 				<select id="prestPrestId" name="prestPrestId" style="width:400px">
 					<option></option>
 					#{list items:litsPresta, as:'prestamista'}
-					<option value="${prestamista.carnet}" #{ if (prestamista.carnet== prestamo.prestamista.carnet) } selected="selected"  #{/if}>
+					<option value="${prestamista.carnet}">
 						${prestamista.usuario.nombres} ${prestamista.usuario.apellidos}</option> #{/list}
 				</select>
 			</div>
@@ -40,9 +34,9 @@
 			<label class="col-md-4 control-label" for="presTipoMat">Tipo de Material</label>
 			<div class="col-md-4">
 				<select id="presTipoMat" name="presTipoMat" class="form-control" onchange="setMaterial(this);">
-					<option></option>
+					<option></option> 
 					#{list items:listaTipoMateial, as:'categoria'}
-						<option value="${categoria.idcategoriamat}"  #{ if (categoria.idcategoriamat == prestamo.material.categoriamaterial.idcategoriamat) } selected="selected"  #{/if}>${categoria.categoriamat}</option>	
+						<option value="${categoria.idcategoriamat}">${categoria.categoriamat}</option>
 					#{/list}
 				</select>
 			</div>
@@ -51,9 +45,8 @@
 		<div class="form-group">
 			<label class="col-md-4 control-label" for="presMatId">Material</label>
 			<div class="col-md-5">
-				<div class="input-group">				
+				<div class="input-group">	
 					<select id="presMatIdSelect" name="presMatIdSelect" style="width: 400px">
-						<option value="${prestamo.material.idmaterial}" >${prestamo.material.descripcionmaterial}</option>
 					</select>
 				</div>
 			</div>
@@ -64,7 +57,7 @@
 			<div class="col-md-4">
 				<select id="presTipoPres" name="presTipoPres" class="form-control">
 				    	  #{list items:listaTipoPrestamo, as:'tipoPrestamo'}
-				      		<option value="${tipoPrestamo.idtipoprestamo}"  #{ if (tipoPrestamo.idtipoprestamo == prestamo.tipoprestamo.idtipoprestamo) } selected="selected"  #{/if}>${tipoPrestamo.tipo}</option>	
+				      		<option value="${tipoPrestamo.idtipoprestamo}">${tipoPrestamo.tipo}</option>	
 				      	  #{/list}
 				</select>
 			</div>
@@ -73,9 +66,9 @@
 		<div class="form-group">
 			<label class="col-md-4 control-label" for="presEstado">Estado Prestamo</label>
 			<div class="col-md-2">
-				<select id="presEstado" name="presEstado" class="form-control" required="">
-					<option value="1" #{ if (prestamo.estado == 1)} selected="selected"  #{/if}>Activo</option>
-					<option value="0" #{ if (prestamo.estado == 0)} selected="selected"  #{/if}>Inactivo</option>
+				<select id="presEstado" name="presEstado" class="form-control">
+					<option value="1">Activo</option>
+					<option value="0">Inactivo</option>
 				</select>
 			</div>
 		</div>
@@ -83,38 +76,39 @@
 		<div class="form-group">
 			<label class="col-md-4 control-label" for="presFechaIn">Fecha Inicio</label>
 			<div class="col-md-4 input-group date" id="datetimepicker1" data-date-format="DD/MMM/YYYY" style="padding-left: 15px;">
-				<input id="presFechaIn" name="presFechaIn" type="text" placeholder="" class="form-control input-md" value="${prestamo.fechainicio.format('dd/MMM/yyyy')}" required="">
+				<input id="presFechaIn" name="presFechaIn" type="text" placeholder="" class="form-control input-md" value="" required="">
 				<span class="input-group-addon">
 					<span class="glyphicon-calendar glyphicon"></span>
                 </span>
 			</div>
 		</div>
-		<!-- Text input-->
+		<!-- Text input
 		<div class="form-group">
 			<label class="col-md-4 control-label" for="presFechaFin">Fecha Fin</label>
 			<div class="col-md-4 input-group date" id="datetimepicker2" data-date-format="DD/MMM/YYYY" style="padding-left: 15px;">
-				<input id="presFechaFin" name="presFechaFin" type="text" placeholder="" class="form-control input-md" value="${prestamo.fechafin?.format('dd/MMM/yyyy')}">
+				<input id="presFechaFin" name="presFechaFin" type="text" placeholder="" class="form-control input-md" value="">
 				<span class="input-group-addon">
 					<span class="glyphicon-calendar glyphicon"></span>
                 </span>
 			</div>
 		</div>
-		<!-- Text input-->
+		<!-- Text input
 		<div class="form-group">
 			<label class="col-md-4 control-label" for="presFecahDev">Fecha de Devolución </label>
 			<div class="col-md-4 input-group date" id="datetimepicker3" data-date-format="DD/MMM/YYYY" style="padding-left: 15px;">
-				<input id="presFecahDev" name="presFecahDev" type="text" placeholder="" class="form-control input-md" value="${prestamo.fechadevolucion?.format('dd/MMM/yyyy')}">
+				<input id="presFecahDev" name="presFecahDev" type="text" placeholder="" class="form-control input-md" value="">
 				<span class="input-group-addon">
 					<span class="glyphicon-calendar glyphicon"></span>
                 </span>
 			</div>
 		</div>
+		-->
 		<!-- Button (Double) -->
 		<div class="form-group">
 			<label class="col-md-4 control-label" for="btnGuardar"></label>
 			<div class="col-md-8">
 				<button type="submit" id="btnGuardar" name="btnGuardar" class="btn btn-success">Guardar</button>
-				<button type="button" id="btnCancelar" name="btnCancelar" class="btn btn-danger">Cancelar</button>
+				<button id="btnCancelar" name="btnCancelar" class="btn btn-danger">Cancelar</button>
 			</div>
 		</div>
 	</fieldset>
@@ -122,10 +116,6 @@
 
 <script type="text/javascript">
     $(function () {
-        $('#btnCancelar').click( function(){
-            console.log("Redireccionar")
-        	window.location.href ="/prestamo/listar";
-        });
         $('#datetimepicker1').datetimepicker({
             pickTime: false
         });
@@ -152,7 +142,7 @@
 		});
 
 		$("#presTipoMat").select2({
-		    placeholder: "Seleccionar Prestamista"
+		    placeholder: "Seleccionar Tipo de Materia"
 		});
     });
 

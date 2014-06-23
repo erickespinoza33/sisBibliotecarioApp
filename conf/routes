@@ -3,15 +3,25 @@
 # ~~~~
 
 # Import Secure routes
-*      /                						module:secure
+*      	/                							module:secure
+GET		/currentUser								Security.userLogged
+GET		/signOut									Security.signOut
+
 
 # Import CRUD routes
-*     /admin									module:crud
+*     	/admin										module:crud
 
 # Home page
-GET     /index                                  Application.index
-GET		/										Secure.login
-GET		/test									Application.testing
+GET     /index                                  	Application.index
+GET		/											Secure.login
+GET		/test										Application.testing
+
+# Estudiantes
+GET		/estudiante/listar							Estudiantes.listarEstudiante
+GET		/estudiante/nuevo							Estudiantes.nuevoEstudiante
+POST	/estudiante/guardar							Estudiantes.guardarEstudiante
+GET		/estudiante/mostrar/{id}					Estudiantes.mostrarEstudiante
+GET		/estudiante/eliminar/{id}					Estudiantes.eliminarEstudiante
 
 # REVISTAS
 GET		/material/revista/listar					Revistas.listarRevista
@@ -49,16 +59,16 @@ GET		/prestamo/mostrar/{id}						Prestamos.mostrarPrestamo
 
 # SEARCH
 GET		/search/bibliotecologo						Prestamos.buscarBibliotecologo
-#GET		/search/prestamista
-#GET		/search/material
+#GET	/search/prestamista
+GET		/busqueda/material							Prestamos.buscarMaterial
 
-#GET     /										Application.signin
-#GET     /signin								Application.signin
+#GET     /											Application.signin
+#GET     /signin									Application.signin
 # Ignore favicon requests
-GET     /favicon.ico                            404
+GET     /favicon.ico                            	404
 
 # Map static resources from the /app/public folder to the /public path
-GET     /public/                                staticDir:public
+GET     /public/                                	staticDir:public
 
 # Catch all
-*       /{controller}/{action}                  {controller}.{action}
+*       /{controller}/{action}                  	{controller}.{action}

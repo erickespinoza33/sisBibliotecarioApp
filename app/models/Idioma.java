@@ -38,10 +38,10 @@ public class Idioma extends GenericModel {
 	public Idioma() {
 	}
 
-	public long getIdidioma() {
+	public long getIdidiomas() {
 		return this.ididioma;
 	}
-
+	
 	public void setIdidioma(long ididioma) {
 		this.ididioma = ididioma;
 	}

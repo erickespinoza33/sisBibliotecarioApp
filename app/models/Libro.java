@@ -164,5 +164,8 @@ public class Libro extends GenericModel {
 	public void setMaterial(Material material) {
 		this.material = material;
 	}
+	public long getISBN() {
+		return this.isbn;
+	}
 
 }

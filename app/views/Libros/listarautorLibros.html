@@ -1,0 +1,69 @@
+#{extends 'main.html' /}
+#{set title:'Listar Autor Libros' /}
+
+<input name="autorISBN" value="${libro.isbn}" type="hidden">
+
+<div class="bs-example">
+	<table class="table table-striped">
+	<thead>
+	<tr>
+		<th  width="20%">
+			Nombres
+		</th >
+		<th  width="20%">
+			Apellidos
+		</th>
+		<th  width="20%">
+			Telefono
+		</th>
+		<th  width="20%">
+			Direccion
+		</th>
+		<th wit width="20%">
+			Acciones
+		</th>
+	</tr>
+	</thead>
+	<tbody>
+	#{list items:listAutor, as:'autor'}
+		<tr>
+			<td>
+				${autor.nombresautor}
+			</td>
+			<td>
+				${autor.apellidosautor}
+			</td>
+			<td>
+				${autor.direccionautor}
+			</td>
+			<td>
+				${autor.telefonoautor}
+			</td>
+			<td>
+				<div class="btn-group">										
+					<button type="button" class="btn btn-default"><a href="/material/libro/autor/mostrar/${autor.idautor}">Editar</a></button>
+				</div>
+			</td>
+		</tr>	
+	 #{/list}
+
+
+	</tbody>
+	</table>
+</div>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+	
+	$(".grid-delete").click(function(){
+
+		var url = $(this).data().url;
+		console.log(url)
+
+		deleteCallAjax(url)
+
+	});
+
+});
+</script>

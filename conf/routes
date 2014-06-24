@@ -62,6 +62,9 @@ GET		/search/bibliotecologo						Prestamos.buscarBibliotecologo
 #GET	/search/prestamista
 GET		/busqueda/material							Prestamos.buscarMaterial
 
+# REPORTES
+GET		/reporte1									Reportes.getReportLibroCategoria
+
 #GET     /											Application.signin
 #GET     /signin									Application.signin
 # Ignore favicon requests

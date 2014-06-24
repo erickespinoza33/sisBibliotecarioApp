@@ -14,7 +14,7 @@
 		<div class="form-group">
 			<label class="col-md-4 control-label" for="selectbasic">Categoría Material</label>
 			<div class="col-md-4">
-				<select id="selectbasic" name="revCategM" class="form-control">
+				<select id="selectbasic" name="revCategM" class="form-control" required>
 				    	  #{list items:categorias, as:'categoria'}
 				      		<option value="${categoria.idcategoriamat}"  #{ if (categoria.idcategoriamat == Rev.hemerografia.material.categoriamaterial.idcategoriamat) } selected="selected"  #{/if}>${categoria.categoriamat}</option>	
 				      	  #{/list}
@@ -25,7 +25,7 @@
 		<div class="form-group">
 			<label class="col-md-4 control-label" for="textinput">Ubicación</label>
 			<div class="col-md-5">
-				<input id="textinput" name="revUbicaM" type="text" placeholder="" class="form-control input-md" value="${Rev.hemerografia.material.ubicacion}">
+				<input id="textinput" name="revUbicaM" type="text" placeholder="" class="form-control input-md" value="${Rev.hemerografia.material.ubicacion}" maxlength="25" required>
 				<span class="help-block">Ubicación en la biblioteca pasillo, estante</span>
 			</div>
 		</div>
@@ -33,21 +33,21 @@
 		<div class="form-group">
 			<label class="col-md-4 control-label" for="textinput">Existencias</label>
 			<div class="col-md-4">
-				<input id="textinput" name="revExistM" type="text" placeholder="" class="form-control input-md" value="${Rev.hemerografia.material.existencias}">
+				<input id="textinput" name="revExistM" type="text" placeholder="" class="form-control input-md" value="${Rev.hemerografia.material.existencias}" pattern="[0-9]{1,9}$" title="Solo puede contener numeros" required >
 			</div>
 		</div>
 		<!-- Text input-->
 		<div class="form-group">
 			<label class="col-md-4 control-label" for="textinput">Descripción de Material</label>
 			<div class="col-md-5">
-				<input id="textinput" name="revDescM" type="text" placeholder="" class="form-control input-md" value="${Rev.hemerografia.material.descripcionmaterial}">
+				<input id="textinput" name="revDescM" type="text" placeholder="" class="form-control input-md" value="${Rev.hemerografia.material.descripcionmaterial}" maxlength="50" required>
 			</div>
 		</div>
 		<!-- Select Basic -->
 		<div class="form-group">
 			<label class="col-md-4 control-label" for="selectbasic">Editorial</label>
 			<div class="col-md-4">
-				<select id="selectbasic" name="revEditorial" class="form-control">
+				<select id="selectbasic" name="revEditorial" class="form-control" required>
 				    	  #{list items:editoriales, as:'editorial'}
 				      		<option value="${editorial.ideditorial}" #{ if (editorial.ideditorial == Rev.hemerografia.editorial.ideditorial) } selected="selected"  #{/if}>${editorial.nombreeditorial}</option>	
 				      	  #{/list}
@@ -57,42 +57,46 @@
 		<!-- Text input-->
 		<div class="form-group">
 			<label class="col-md-4 control-label" for="textinput">Fecha de publicacion</label>
-			<div class="col-md-4">
-				<input id="textinput" name="revFechaPub" type="text" placeholder="" class="form-control input-md" value="${Rev.hemerografia.fechapublicacion}">
+			<div class="col-md-4 input-group date" id="datetimepicker1" data-date-format="DD/MMM/YYYY" style="padding-left: 15px;">
+				<input id="presFechaIn" name="revFechaPub" type="text" placeholder="" class="form-control input-md" value="" required>
+				<span class="input-group-addon">
+					<span class="glyphicon-calendar glyphicon"></span>
+                </span>
 			</div>
 		</div>
 		<!-- Text input-->
 		<div class="form-group">
 			<label class="col-md-4 control-label" for="textinput">Precio</label>
 			<div class="col-md-4">
-				<input id="textinput" name="revPrecio" type="text" placeholder="" class="form-control input-md" value="${Rev.hemerografia.precio}">
+				<input id="textinput" name="revPrecio" type="text" placeholder="" class="form-control input-md" value="${Rev.hemerografia.precio}" pattern="^[0-9]+(\.[0-9]+)?$" required>
 			</div>
 		</div>
 		<!-- Text input-->
 		<div class="form-group">
 			<label class="col-md-4 control-label" for="textinput">Lugar de edicion</label>
 			<div class="col-md-4">
-				<input id="textinput" name="revLugarEd" type="text" placeholder="" class="form-control input-md" value="${Rev.hemerografia.lugaredicion}">
+				<input id="textinput" name="revLugarEd" type="text" placeholder="" class="form-control input-md" value="${Rev.hemerografia.lugaredicion}" maxlength="50" required>
 			</div>
 		</div>
 		<!-- Text input-->
 		<div class="form-group">
 			<label class="col-md-4 control-label" for="textinput">Descripción de Hemerografia</label>
 			<div class="col-md-4">
-				<input id="textinput" name="revDescH" type="text" placeholder="" class="form-control input-md" value="${Rev.hemerografia.descripcionhem}">
+				<input id="textinput" name="revDescH" type="text" placeholder="" class="form-control input-md" value="${Rev.hemerografia.descripcionhem}" maxlength="50" required>
 			</div>
 		</div>
 		<!-- Text input-->
 		<div class="form-group">
 			<label class="col-md-4 control-label" for="textinput">Titulo</label>
 			<div class="col-md-4">
-				<input id="textinput" name="revTitulo" type="text" placeholder="" class="form-control input-md" value="${Rev.titulo}">
+				<input id="textinput" name="revTitulo" type="text" placeholder="" class="form-control input-md" value="${Rev.titulo}"
+				pattern="[a-zA-Z\s_-]{3,50}$" title="Solo puede contener letras y espacios, maximo 50" required>
 			</div>
 		</div>
 		<div class="form-group">
 			<label class="col-md-4 control-label" for="textinput">Edicion</label>
 			<div class="col-md-4">
-				<input id="textinput" name="revEdicion" type="text" placeholder="" class="form-control input-md" value="${Rev.edicion}">
+				<input id="textinput" name="revEdicion" type="text" placeholder="" class="form-control input-md" value="${Rev.edicion}" pattern="[0-9]{1,9}$" required>
 			</div>
 		</div>
 		
@@ -107,3 +111,13 @@
 		</div>
 	</fieldset>
 </form>
+
+<script type="text/javascript">
+    $(function () {
+        $('#datetimepicker1').datetimepicker({
+            pickTime: false
+        });
+        
+    });
+    
+ </script>

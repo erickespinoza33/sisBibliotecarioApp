@@ -5,25 +5,34 @@
 	<table class="table table-striped">
 	<thead>
 	<tr>
-		<th  width="10%">
-			id
+		<th  width="5%">
+			ISBN
 		</th >
-		<th  width="20%">
+		<th  width="10%">
 			Titulo
 		</th>
-		<th  width="10%">
+		<th  width="5%">
 			volumen
 		</th>
-		<th  width="15%">
+		<th  width="5%">
 			Edición
 		</th>
-		<th wit width="15%">
+		<th wit width="10%">
 			Editorial
 		</th>
-		<th wit width="10%">
+		<th wit width="5%">
 			Idioma
 		</th>
-		<th wit width="20%">
+		<th wit width="5%">
+			Donado
+		</th>
+		<th wit width="10%">
+			Ubicacion
+		</th>
+		<th wit width="5%">
+			Cantidad
+		</th>
+		<th wit width="30%">
 			Acciones
 		</th>
 	</tr>
@@ -50,15 +59,28 @@
 				${libro.idiomas.nombreidioma}
 			</td>
 			<td>
+				#{ if (libro.donado == 1) } Donado #{/if} #{else} Comprado #{/else}
+			</td>
+			<td>
+				${libro.material.ubicacion}
+			</td>
+			<td>
+				${libro.material.existencias}
+			</td>
+			<td>
 				<div class="btn-group">
-					<button type="button" class="btn btn-default"><a href="/material/libro/mostrar/${libro.isbn}">Editar</a></button>
+					<button type="button" class="btn btn-default"><a href="/material/libro/mostrar/${libro.isbn}">Editar libro</a></button>
 					<button 
 				  			data-url="/material/libro/eliminar/${libro.isbn}"
 							data-extra="true"
 							type="button" 
 							class="btn btn-default grid-delete">
-							<a>Eliminar</a>
+							<a>Eliminar libro</a>
 					</button>
+					<button type="button" class="btn btn-default"><a href="/material/libro/autor/listar/${libro.isbn}">Ver autores</a></button>
+					<br>
+					<button type="button" class="btn btn-default"><a href="/material/libro/autor/nuevo/${libro.isbn}">Nuevo autor</a></button>
+					
 				</div>
 			</td>
 		</tr>	

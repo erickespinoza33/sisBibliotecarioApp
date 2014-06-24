@@ -1,0 +1,132 @@
+#{extends 'main.html' /}
+#{set title:'Editar Libro' /}
+
+<form class="form-horizontal" action="/material/libro/guardar"  method="POST">
+	<fieldset>
+		<!-- Form Name -->
+		<legend>Editar Material - Libro</legend>
+
+		<input name="libIdM" value="${libro.material.idmaterial}" type="hidden">
+				
+		<!-- Select Basic -->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="selectbasic">Categoría Material</label>
+			<div class="col-md-4">
+				<select id="selectbasic" name="libCategM" class="form-control">
+				    	  #{list items:categorias, as:'categoria'}
+				    	  	<option value="${categoria.idcategoriamat}" #{ if (categoria.idcategoriamat == libro.material.categoriamaterial.idcategoriamat) } selected="selected"  #{/if}>${categoria.categoriamat}</option>
+				      	  #{/list}
+				</select>
+			</div>
+		</div>
+		<!-- Text input-->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="textinput">Ubicación</label>
+			<div class="col-md-5">
+				<input id="textinput" name="libUbicaM" type="text" placeholder="" class="form-control input-md" value="${libro.material.ubicacion}">
+				<span class="help-block">Ubicación en la biblioteca pasillo, estante</span>
+			</div>
+		</div>
+		<!-- Text input-->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="textinput">Existencias</label>
+			<div class="col-md-4">
+				<input id="textinput" name="libExistM" type="number" placeholder="" class="form-control input-md" value="${libro.material.existencias}" >
+			</div>
+		</div>
+		<!-- Text input-->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="textinput">Descripción de Material</label>
+			<div class="col-md-5">
+				<input id="textinput" name="libDescM" type="text" placeholder="" class="form-control input-md" value="${libro.material.descripcionmaterial}">
+			</div>
+		</div>
+		<!-- Text input-->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="textinput">ISBN</label>
+			<div class="col-md-4">
+				<input id="textinput" name="libISBN" type="number" placeholder="" class="form-control input-md" value="${libro.isbn}">
+			</div>
+		</div>
+		<!-- Select Basic -->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="selectbasic">Editorial</label>
+			<div class="col-md-4">
+				<select id="selectbasic" name="libEditorial" class="form-control">
+				    	  #{list items:editoriales, as:'editorial'}
+				      		<option value="${editorial.ideditorial}" #{ if (editorial.ideditorial == libro.editorial.ideditorial) } selected="selected"  #{/if}>${editorial.nombreeditorial}</option>	
+				      	  #{/list}
+				</select>
+			</div>
+		</div>
+		<!-- Text input-->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="textinput">Titulo</label>
+			<div class="col-md-4">
+				<input id="textinput" name="libTitulo" type="text" placeholder="" class="form-control input-md" value="${libro.titulo}">
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="textinput">Edicion</label>
+			<div class="col-md-4">
+				<input id="textinput" name="libEdicion" type="text" placeholder="" class="form-control input-md" value="${libro.edicion}">
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="textinput">Volumen</label>
+			<div class="col-md-4">
+				<input id="textinput" name="libVolumen" type="text" placeholder="" class="form-control input-md" value="${libro.volumen}">
+			</div>
+		</div>
+		
+		<!-- Multiple Radios -->
+		<div class="form-group">
+  			<label class="col-md-4 control-label" for="Donado">Donado</label>
+  				<div class="col-md-4" value="${libro.donado}">
+  					<div class="radio">
+    					<label for="Donado-0">
+      						<input type="radio" name="Donado" id="Donado-0" value="1" checked="checked">
+      								Si
+    					</label>
+					</div>
+  					<div class="radio">
+    					<label for="Donado-1">
+      						<input type="radio" name="Donado" id="Donado-1" value="2">
+      								No
+    					</label>
+					</div>
+  				</div>
+		</div>
+		
+		<!-- Text input-->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="textinput">Costo</label>
+			<div class="col-md-4">
+				<input id="textinput" name="libCosto" type="text" placeholder="" class="form-control input-md" value="${libro.costo}">
+			</div>
+		</div>
+		
+		<!-- Select Basic -->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="selectbasic">Idioma</label>
+			<div class="col-md-4">
+				<select id="selectbasic" name="libIdioma" class="form-control">
+				    	  #{list items:idiomas, as:'idioma'}
+				      		<option value="${idioma.ididioma}"  #{ if (idioma.ididioma == libro.idiomas.ididioma) } selected="selected"  #{/if}>${idioma.nombreidioma}</option>	
+				      	  #{/list}
+				</select>
+			</div>
+		</div>
+		
+					
+		<!-- Button (Double) -->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="guardarLibro"></label>
+			<div class="col-md-8">
+				<button type="submit" id="guardarLibro" name="guardarLibro" class="btn btn-success">Guardar</button>
+				<button id="cancelarLibro" name="cancelarLibro" class="btn btn-danger">Cancelar</button>
+			</div>
+		</div>
+	</fieldset>
+</form>

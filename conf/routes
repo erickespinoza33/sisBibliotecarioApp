@@ -43,6 +43,10 @@ GET		/material/libro/nuevo						Libros.nuevoLibro
 POST	/material/libro/guardar						Libros.guardarLibro
 GET		/material/libro/mostrar/{id}				Libros.mostrarLibro
 GET		/material/libro/eliminar/{id}				Libros.eliminarLibro
+GET		/material/libro/autor/listar/{id}			Libros.listarautorLibros
+GET		/material/libro/autor/nuevo/{id}			Libros.nuevoautorLibro
+POST	/material/libro/autor/guardar				Libros.guardarautorLibro
+GET		/material/libro/autor/mostrar/{id}			Libros.mostrarautorLibro
 
 # Periodicos
 GET		/material/periodico/listar					Periodicos.listarPeriodico

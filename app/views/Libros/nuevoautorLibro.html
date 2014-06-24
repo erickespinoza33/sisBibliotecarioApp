@@ -1,0 +1,49 @@
+#{extends 'main.html' /}
+#{set title:'Nuevo Autor de Libro' /}
+
+<form class="form-horizontal" action="/material/libro/autor/guardar"  method="POST">
+	<fieldset>
+		<!-- Form Name -->
+		<legend>Editar Material - Autor de Libro</legend>
+					<input name="autorIdM" value="${libro.material.idmaterial}" type="hidden">
+					<input name="autorISBN" value="${libro.isbn}" type="hidden">
+		
+					<!-- Text input-->
+					<div class="form-group">
+						<label class="col-md-4 control-label" for="textinput">Nombres</label>
+							<div class="col-md-5">
+								<input id="textinput" name="nomAutor" type="text" placeholder=""
+								 class="form-control input-md" pattern="[a-zA-Z\s_-]{3,50}$" title="Solo puede contener letras y espacios, maximo 50" required>
+							</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-4 control-label" for="textinput">Apellidos</label>
+							<div class="col-md-5">
+								<input id="textinput" name="apeAutor" type="text" placeholder="" class="form-control input-md"
+								pattern="[a-zA-Z\s_-]{3,50}$" title="Solo puede contener letras y espacios, maximo 50" required>
+							</div>
+					</div>	
+					<div class="form-group">
+						<label class="col-md-4 control-label" for="textinput">Telefono</label>
+							<div class="col-md-5">
+								<input id="textinput" name="telAutor" type="text" placeholder="" class="form-control input-md" 
+								pattern="[0-9]{7,9}$" title="Solo puede contener numeros, minimo 7 y maximo 9"required>
+							</div>
+					</div>
+					<div class="form-group">
+						<label class="col-md-4 control-label" for="textinput">Direccion</label>
+							<div class="col-md-5">
+								<input id="textinput" name="dirAutor" type="text" placeholder="" class="form-control input-md" maxlength="50" required>
+							</div>
+					</div>			
+				
+		<!-- Button (Double) -->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="guardarautorLibro"></label>
+			<div class="col-md-8">
+				<button type="submit" id="guardarautorLibro" name="guardarautorLibro" class="btn btn-success">Guardar</button>
+				<button id="cancelarLibro" name="cancelarLibro" class="btn btn-danger">Cancelar</button>
+			</div>
+		</div>
+	</fieldset>
+</form>

@@ -68,6 +68,7 @@ GET		/busqueda/material							Prestamos.buscarMaterial
 
 # REPORTES
 GET		/reporte1									Reportes.getReportLibroCategoria
+GET		/reporte2									Reportes.getReporttg_por_nombre
 
 #GET     /											Application.signin
 #GET     /signin									Application.signin

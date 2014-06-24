@@ -1,0 +1,153 @@
+#{extends 'main.html' /}
+#{set title:'Modificar Profesor' /}
+
+<form class="form-horizontal" action="/profesor/guardar"  method="POST">
+	<fieldset>
+	
+		<!-- Form Name -->
+		<legend>Modificar Profesor</legend>
+		
+		<legend>Datos de Usuario</legend>
+		
+		<input name="profIdUsuario" value="${profesor.prestamista.usuario.idUsuario}" type="hidden">
+		<input name="profCarnet" value="${profesor.prestamista.carnet}" type="hidden">
+		<input name="profIdProfesor" value="${profesor.idprofesor}" type="hidden">
+			
+		<!-- Text input-->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="nombres">Nombres del Profesor</label>  
+		  <div class="col-md-4">
+		  <input id="nombres" name="nombresP" type="text" placeholder="" class="form-control input-md" required="" value="${profesor.prestamista.usuario.nombres}" maxlength="50">
+		    
+		  </div>
+		</div>
+		
+		<!-- Text input-->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="apellidos">Apellidos del Profesor</label>  
+		  <div class="col-md-4">
+		  <input id="apellidos" name="apellidosP" type="text" placeholder="" class="form-control input-md" required="" value="${profesor.prestamista.usuario.apellidos}" maxlength="50">
+		    
+		  </div>
+		</div>
+		
+		<!-- Select Basic -->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="genero">Genero</label>
+		  <div class="col-md-4">
+		    <select id="genero" name="generoP" class="form-control">
+		      <option value="M" #{ if (profesor.prestamista.usuario.genero == 'M') } selected="selected"  #{/if}>Masculino</option>
+		      <option value="F" #{ if (profesor.prestamista.usuario.genero == 'F') } selected="selected"  #{/if}>Femenino</option>
+		    </select>
+		  </div>
+		</div>
+		
+		<!-- Text input-->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="username">Nombre de Usuario</label>  
+		  <div class="col-md-4">
+		  <input id="username" name="username" type="text" placeholder="" class="form-control input-md" required="" value="${profesor.prestamista.usuario.nombreusuario}" maxlength="25">
+		    
+		  </div>
+		</div>		
+				
+		<legend>Datos de Prestamista</legend>
+		
+		<!-- Text input-->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="movil">Telefono Movil</label>  
+		  <div class="col-md-4">
+		  <input id="movil" name="telmovilP" type="text" placeholder="" class="form-control input-md" required="" value="${profesor.prestamista.telmovil}" maxlength="9">
+		    
+		  </div>
+		</div>
+		
+		<!-- Text input-->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="fijo">Telefono Fijo</label>  
+		  <div class="col-md-4">
+		  <input id="fijo" name="telfijoP" type="text" placeholder="" class="form-control input-md" required="" value="${profesor.prestamista.telfijo}" maxlength="9">
+		    
+		  </div>
+		</div>
+		
+		<!-- Text input-->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="direccion">Direccion</label>  
+		  <div class="col-md-4">
+		  <input id="direccion" name="direccionP" type="text" placeholder="" class="form-control input-md" required="" value="${profesor.prestamista.direccionprestamista}" maxlength="50">
+		    
+		  </div>
+		</div>
+		
+		<!-- Text input-->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="correo">Correo</label>  
+		  <div class="col-md-4">
+		  <input id="correo" name="correoP" type="email" placeholder="" class="form-control input-md" required="" value="${profesor.prestamista.correo}" maxlength="50">
+		    
+		  </div>
+		</div>
+		
+		<!-- Text input-->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="documento">Nº de Documento</label>  
+		  <div class="col-md-4">
+		  <input id="documento" name="documentoP" type="text" placeholder="" class="form-control input-md" required="" value="${profesor.prestamista.documento}" maxlength="15">
+		    
+		  </div>
+		</div>
+		
+		<!-- Multiple Radios -->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="carnet">Carnet Entregado</label>
+		  <div class="col-md-4">
+		  <div class="radio">
+		    <label for="carnet-0">
+		      <input type="radio" name="carnet" id="carnet-0" value="0" #{ if (profesor.prestamista.carnetrecibido == 0) } checked="checked"  #{/if}>
+		      No
+		    </label>
+			</div>
+		  <div class="radio">
+		    <label for="carnet-1">
+		      <input type="radio" name="carnet" id="carnet-1" value="1" #{ if (profesor.prestamista.carnetrecibido == 1) } checked="checked"  #{/if}>
+		      Si
+		    </label>
+			</div>
+		  </div>
+		</div>
+		
+		<legend>Datos de Estudiante</legend>
+		
+		<!-- Select Basic -->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="infra">Codigo Infraestructura</label>
+		  <div class="col-md-4">
+		    <select id="infra" name="infra" class="form-control">
+		    	 #{list items:instituciones, as:'institucion'}
+		      		<option value="${institucion.codinfraestructura}" #{ if (institucion.codinfraestructura == profesor.institucion.codinfraestructura) } selected="selected"  #{/if}>${institucion.nombreinstitucion}</option>	
+		      	  #{/list}
+		    </select>
+		  </div>
+		</div>
+		
+		<!-- Text input-->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="carrera">Extension Telefonica</label>  
+		  <div class="col-md-4">
+		  <input id="carrera" name="exTel" type="text" placeholder="" class="form-control input-md" required="" value="${profesor.exttelefonica}" maxlength="10">
+		    
+		  </div>
+		</div>
+		
+		<!-- Button (Double) -->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="guardar"></label>
+		  <div class="col-md-8">
+		    <button type="submit" id="guardar" name="guardar" class="btn btn-success">Guardar</button>
+		    <button id="cancelar" name="cancelar" class="btn btn-danger">Cancelar</button>
+		  </div>
+		</div>
+		
+	</fieldset>
+</form>

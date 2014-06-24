@@ -1,0 +1,107 @@
+#{extends 'main.html' /}
+#{set title:'Nuevo TG' /}
+
+<form class="form-horizontal" action="/material/tg/guardar"  method="POST">
+	<fieldset>		
+		<!-- Form Name -->
+		<legend>Nuevo Material - Trabajo de Graduación</legend>
+		
+		<!-- Select Basic -->
+		<div class="form-group">
+			  <label class="col-md-4 control-label" for="tgCategM">Categoría Material</label>
+			  <div class="col-md-4">
+			    <select id="tgCategM" name="tgCategM" class="form-control" required="">
+			      		#{list items:categorias, as:'categoria'}
+				      		<option value="${categoria.idcategoriamat}">${categoria.categoriamat}</option>	
+				      	#{/list}
+			    </select>
+			  </div>
+		</div>
+		
+		<!-- Text input-->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="tgUbicaM">Ubicación</label>  
+		  <div class="col-md-5">
+		  <input id="tgUbicaM" name="tgUbicaM" placeholder="" class="form-control input-md" type="text" required="" maxlength="25">
+		  <span class="help-block">Ubicacion en la biblioteca, pasillo, estante, etc.</span>  
+		  </div>
+		</div>
+		
+		<!-- Text input-->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="tgExistM">Existencias</label>  
+		  <div class="col-md-2">
+		  <input id="tgExistM" name="tgExistM" placeholder="" class="form-control input-md" type="text" required="" >
+		    
+		  </div>
+		</div>
+		
+		<!-- Text input-->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="tgDescM">Descripción de Material</label>  
+		  <div class="col-md-5">
+		  <input id="tgDescM" name="tgDescM" placeholder="" class="form-control input-md" type="text" maxlength="50">
+		    
+		  </div>
+		</div>
+		
+		<!-- Text input-->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="tgTema">Tema</label>  
+		  <div class="col-md-5">
+		  <input id="tgTema" name="tgTema" placeholder="" class="form-control input-md" type="text" required="" maxlength="50">
+		    
+		  </div>
+		</div>
+		
+		<!-- Text input-->
+					
+		
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="tgFecha">Fecha de Archivado</label>  
+		  <div class="col-md-4 input-group date" id="tgFecha" data-date-format="DD/MM/YYYY" style="padding-left: 15px;">
+		  	<input id="tgFecha" name="tgFecha" type="text" placeholder="" class="form-control input-md" value="" required="">
+		    <span class="input-group-addon">
+				<span class="glyphicon-calendar glyphicon"></span>
+	        </span>
+		  </div>
+		</div>
+		
+		<!-- Text input-->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="tgAsesor">Asesor</label>  
+		  <div class="col-md-4">
+		  <input id="tgAsesor" name="tgAsesor" placeholder="" class="form-control input-md" type="text" required="" maxlength="50">
+		    
+		  </div>
+		</div>
+		
+		<!-- Text input-->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="tgCD">CD</label>  
+		  <div class="col-md-2">
+		  <input id="tgCD" name="tgCD" placeholder="" class="form-control input-md" type="text" required="">
+		    
+		  </div>
+		</div>	
+		
+		
+		<!-- Button (Double) -->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="guardarTG"></label>
+		  <div class="col-md-8">
+		    <button type="submit" id="guardarTG" name="guardarTG" class="btn btn-success">Guardar</button>
+		    <button id="cancelarTG" name="cancelarTG" class="btn btn-danger">Cancelar</button>
+		  </div>
+		</div>
+	
+	</fieldset>
+</form>
+
+<script type="text/javascript">
+    $(function () {
+        $('#tgFecha').datetimepicker({
+            pickTime: false
+        });
+    });
+</script>

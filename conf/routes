@@ -55,6 +55,33 @@ POST	/material/periodico/guardar					Periodicos.guardarPeriodico
 GET		/material/periodico/mostrar/{id}			Periodicos.mostrarPeriodico
 GET		/material/periodico/eliminar/{id}			Periodicos.eliminarPeriodico
 
+# TrabajosGraduacion
+GET		/material/tg/listar						TrabajosGraduacion.listarTG
+GET		/material/tg/nuevo						TrabajosGraduacion.nuevoTG
+POST	/material/tg/guardar					TrabajosGraduacion.guardarTG
+GET		/material/tg/mostrar/{id}				TrabajosGraduacion.mostrarTG
+GET		/material/tg/eliminar/{id}				TrabajosGraduacion.eliminarTG
+GET     /material/tg/agregar/{id}				TrabajosGraduacion.agregarAutorTG
+POST	/material/tg/guardarAutor				TrabajosGraduacion.guardarAutor
+GET 	/material/tg/listar/{id}				TrabajosGraduacion.listarAutor
+
+# ObrasReferencia
+GET		/material/or/listar						ObrasReferencia.listarOR
+GET		/material/or/nuevo						ObrasReferencia.nuevaOR
+POST	/material/or/guardar					ObrasReferencia.guardarOR
+GET		/material/or/mostrar/{id}				ObrasReferencia.mostrarOR
+GET		/material/or/eliminar/{id}				ObrasReferencia.eliminarOR
+GET     /material/or/agregar/{id}				ObrasReferencia.agregarAutorOR
+POST	/material/or/guardarAutor				ObrasReferencia.guardarAutor
+GET 	/material/or/listar/{id}				ObrasReferencia.listarAutor
+
+#Profesores
+GET		/profesor/listar				Profesores.listarProfesor
+GET		/profesor/nuevo					Profesores.nuevoProfesor
+POST	/profesor/guardar				Profesores.guardarProfesor
+GET		/profesor/mostrar/{id}			Profesores.mostrarProfesor
+GET		/profesor/eliminar/{id}			Profesores.eliminarProfesor
+
 # PRESTAMOS
 GET		/prestamo/listar							Prestamos.listarPrestamo
 GET		/prestamo/nuevo								Prestamos.nuevoPrestamo

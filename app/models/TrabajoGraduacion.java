@@ -28,7 +28,7 @@ public class TrabajoGraduacion extends GenericModel {
 	@Column(name="IDTG")
 	private long idtg;
 
-	@Column(name="ASSESOR")
+	@Column(name="ASESOR")
 	private String asesor;
 
 	@Column(name="CD")
@@ -42,14 +42,9 @@ public class TrabajoGraduacion extends GenericModel {
 
 	//bi-directional many-to-many association to Autor
 	@ManyToMany
-	@JoinTable(
-		name="TRABAJOSG_AUTORES"
-		, joinColumns={
-			@JoinColumn(name="IDTG", referencedColumnName="IDTG")
-			}
-		, inverseJoinColumns={
-			@JoinColumn(name="IDAUTOR")
-			}
+	@JoinTable(name="TRABAJOSG_AUTORES"
+		, joinColumns={@JoinColumn(name="IDTG", referencedColumnName="IDTG")}
+		, inverseJoinColumns={@JoinColumn(name="IDAUTOR")}
 		)
 	private List<Autor> autors;
 
@@ -61,7 +56,7 @@ public class TrabajoGraduacion extends GenericModel {
 	public TrabajoGraduacion() {
 	}
 
-	public String getAsesor() {
+	public String getAssesor() {
 		return this.asesor;
 	}
 
@@ -107,6 +102,14 @@ public class TrabajoGraduacion extends GenericModel {
 
 	public void setMaterial(Material material) {
 		this.material = material;
+	}
+	
+	public long getIdtg() {
+		return idtg;
+	}
+
+	public void setIdtg(long idtg) {
+		this.idtg = idtg;
 	}
 
 }

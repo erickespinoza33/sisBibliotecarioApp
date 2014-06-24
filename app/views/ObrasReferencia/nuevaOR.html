@@ -1,0 +1,81 @@
+#{extends 'main.html' /}
+#{set title:'Nueva Obra Referencia' /}
+
+<form class="form-horizontal" action="/material/or/guardar"  method="POST">
+	<fieldset>		
+		<!-- Form Name -->
+		<legend>Nuevo Material - Obra de Referencia</legend>
+		
+		<!-- Select Basic -->
+		<div class="form-group">
+			  <label class="col-md-4 control-label" for="orCategM">Categoría Material</label>
+			  <div class="col-md-4">
+			    <select id="tgCategM" name="orCategM" class="form-control">
+			      		#{list items:categorias, as:'categoria'}
+				      		<option value="${categoria.idcategoriamat}">${categoria.categoriamat}</option>	
+				      	#{/list}
+			    </select>
+			  </div>
+		</div>
+		
+		<!-- Text input-->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="orUbicaM">Ubicación</label>  
+		  <div class="col-md-5">
+		  <input id="textinput" name="orUbicaM" placeholder="" class="form-control input-md" type="text" required="" maxlength="25">
+		  <span class="help-block">Ubicacion en la biblioteca, pasillo, estante, etc.</span>  
+		  </div>
+		</div>
+		
+		<!-- Text input-->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="orExistM">Existencias</label>  
+		  <div class="col-md-2">
+		  <input id="textinput" name="orExistM" placeholder="" class="form-control input-md" type="text" required="">
+		    
+		  </div>
+		</div>
+		
+		<!-- Text input-->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="orDescM">Descripción de Material</label>  
+		  <div class="col-md-5">
+		  <input id="textinput" name="orDescM" placeholder="" class="form-control input-md" type="text" maxlength="50">
+		    
+		  </div>
+		</div>
+		
+		<!-- Text input-->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="orTipoR">Tipo Obra de Referencia</label>  
+		  <div class="col-md-4">
+		  	 <select id="tgCategM" name="orTipoR" class="form-control">
+		      		#{list items:tiposor, as:'tipoOR'}
+			      		<option value="${tipoOR.idtipoobraref}">${tipoOR.tiporef}</option>	
+			      	#{/list}
+		    </select>
+		    
+		  </div>
+		</div>
+		
+		<!-- Text input-->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="orTitulo">Titulo</label>  
+		  <div class="col-md-4">
+		  <input id="textinput" name="orTitulo" placeholder="" class="form-control input-md" type="text" required="" maxlength="50">
+		    
+		  </div>
+		</div>	
+		
+		
+		<!-- Button (Double) -->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="guardarTG"></label>
+		  <div class="col-md-8">
+		    <button type="submit" id="guardarTG" name="guardarTG" class="btn btn-success">Guardar</button>
+		    <button id="cancelarTG" name="cancelarTG" class="btn btn-danger">Cancelar</button>
+		  </div>
+		</div>
+	
+	</fieldset>
+</form>

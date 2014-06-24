@@ -104,5 +104,12 @@ public class Profesor extends GenericModel {
 				+ ", prestamista=" + prestamista + "]";
 	}
 
+	public long getIdprofesor() {
+		return this.idprofesor;
+	}
+
+	public void setIdprofesor(long idprofesor) {
+		this.idprofesor = idprofesor;
+	} 
 	
 }

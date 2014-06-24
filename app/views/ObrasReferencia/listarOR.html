@@ -1,0 +1,74 @@
+#{extends 'main.html' /}
+#{set title:'Listar Obra Referencia' /}
+
+<div class="bs-example">
+	<table class="table table-striped">
+	<thead>
+	<tr>		
+		<th  width="23%">
+			Titulo
+		</th>
+		<th  width="18%">
+			Tipo de Referencia
+		</th>
+		<th  width="18%">
+			Ubicacion
+		</th>
+		<th wit width="4%">
+			Existencias
+		</th>
+		<th wit width="20%">
+			Acciones
+		</th>		
+	</tr>
+	</thead>
+	<tbody>
+	#{list items:listOR, as:'or'}
+		<tr>			
+			<td>
+				${or.titulo}
+			</td>
+			<td>
+				${or.tipoobrareferencia.tiporef}
+			</td>
+			<td>
+				${or.material.ubicacion}
+			</td>			
+			<td>
+				${or.material.existencias}
+			</td>
+			<td>
+				<div class="btn-group">
+					<button type="button" class="btn btn-default"><a href="/material/or/mostrar/${or.idobraref}">Editar</a></button>
+					<button 
+				  			data-url="/material/or/eliminar/${or.idobraref}"
+							data-extra="true"
+							type="button" 
+							class="btn btn-default grid-delete">
+							<a>Eliminar</a>
+					</button>
+					<button type="button" class="btn btn-default"><a href="/material/or/agregar/${or.idobraref}">Agregar Autor</a></button>
+					<button type="button" class="btn btn-default"><a href="/material/or/listar/${or.idobraref}">Ver Autores</a></button>
+				</div>
+			</td>
+		</tr>	
+	 #{/list}
+	</tbody>
+	</table>
+</div>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+	
+	$(".grid-delete").click(function(){
+
+		var url = $(this).data().url;
+		console.log(url)
+
+		deleteCallAjax(url)
+
+	});
+
+});
+</script>

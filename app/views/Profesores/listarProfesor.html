@@ -1,0 +1,86 @@
+#{extends 'main.html' /}
+#{set title:'Listar Profesores' /}
+
+<div class="bs-example">
+	<table class="table table-striped">
+	<thead>
+	<tr>
+		<th  width="15%">
+			Nombres
+		</th >
+		<th  width="15%">
+			Apellidos
+		</th>
+		<th  width="10%">
+			Nombre de Usuario
+		</th>
+		<th  width="5%">
+			Tel Movil
+		</th>
+		<th  width="20%">
+			Direccion
+		</th>
+		<th  width="10%">
+			Correo
+		</th>		
+		<th wit width="15%">
+			Acciones
+		</th>
+	</tr>
+	</thead>
+	<tbody>
+	#{list items:listProfesor, as:'profesor'}
+		<tr>
+			<td>
+				${profesor.prestamista.usuario.nombres}
+			</td>
+			<td>
+				${profesor.prestamista.usuario.apellidos}
+			</td>
+			<td>
+				${profesor.prestamista.usuario.nombreusuario}
+			</td>
+			<td>
+				${profesor.prestamista.telmovil}
+			</td>
+			<td>
+				${profesor.prestamista.direccionprestamista}
+			</td>
+			<td>
+				${profesor.prestamista.correo}
+			</td>			
+			<td>
+				<div class="btn-group">
+					<button type="button" class="btn btn-default"><a href="/profesor/mostrar/${profesor.idprofesor}">Editar</a></button>
+					<button 
+				  			data-url="/profesor/eliminar/${profesor.idprofesor}"
+							data-extra="true"
+							type="button" 
+							class="btn btn-default grid-delete">
+							<a>Eliminar</a>
+					</button>
+				</div>
+			</td>
+		</tr>	
+	 #{/list}
+
+
+	</tbody>
+	</table>
+</div>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+	
+	$(".grid-delete").click(function(){
+
+		var url = $(this).data().url;
+		console.log(url)
+
+		deleteCallAjax(url)
+
+	});
+
+});
+</script>

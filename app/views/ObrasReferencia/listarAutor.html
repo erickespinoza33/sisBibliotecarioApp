@@ -1,0 +1,66 @@
+#{extends 'main.html' /}
+#{set title:'Listar Autores' /}
+
+<div class="bs-example">
+	
+	<legend>Autores de Obra de Referencia.</legend>
+	
+	
+	<table class="table table-striped">
+	<thead>
+	<tr>		
+		<th  width="23%">
+			Nombres 
+		</th>
+		<th  width="18%">
+			Apellidos 
+		</th>
+		<th  width="18%">
+			Direccion
+		</th>
+		<th wit width="4%">
+			Telefono
+		</th>		
+	</tr>
+	</thead>
+	<tbody>
+	#{list items:lista, as:'list'}
+		<tr>			
+			<td>
+				${list.nombresautor}
+			</td>
+			<td>
+				${list.apellidosautor}
+			</td>
+			<td>
+				${list.direccionautor}
+			</td>
+			<td>
+				${list.telefonoautor}
+			</td>			
+			
+		</tr>	
+	#{/list}
+	</tbody>
+	</table>
+</div>
+
+<div class="btn-group">
+	<button type="button" class="btn btn-default"><a href="/material/or/listar">Regresar</a></button>
+</div>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+	
+	$(".grid-delete").click(function(){
+
+		var url = $(this).data().url;
+		console.log(url)
+
+		deleteCallAjax(url)
+
+	});
+
+});
+</script>

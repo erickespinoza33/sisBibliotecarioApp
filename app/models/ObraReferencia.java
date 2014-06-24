@@ -88,5 +88,13 @@ public class ObraReferencia extends GenericModel {
 	public void setTipoobrareferencia(Tipoobrareferencia tipoobrareferencia) {
 		this.tipoobrareferencia = tipoobrareferencia;
 	}
+	
+	public long getIdobraref(){
+		return idobraref;
+	}
+	
+	public void setIdobraref(long idobraref){
+		this.idobraref = idobraref;
+	}
 
 }

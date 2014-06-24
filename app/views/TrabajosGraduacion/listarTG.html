@@ -1,0 +1,80 @@
+#{extends 'main.html' /}
+#{set title:'Listar TG' /}
+
+<div class="bs-example">
+	<table class="table table-striped">
+	<thead>
+	<tr>		
+		<th  width="23%">
+			Tema
+		</th>
+		<th  width="18%">
+			Fecha Archivado
+		</th>
+		<th  width="18%">
+			Asesor
+		</th>
+		<th wit width="4%">
+			CD
+		</th>
+		<th wit width="18%">
+			Ubicacion
+		</th>
+		<th wit width="20%">
+			Acciones
+		</th>
+	</tr>
+	</thead>
+	<tbody>
+	#{list items:listTGs, as:'tg'}
+		<tr>			
+			<td>
+				${tg.tema}
+			</td>
+			<td>
+				${tg.fechaarchivado}
+			</td>
+			<td>
+				${tg.asesor}
+			</td>
+			<td>
+				${tg.cd}
+			</td>
+			<td>
+				${tg.material.ubicacion}
+			</td>
+			<td>
+				<div class="btn-group">
+					<button type="button" class="btn btn-default"><a href="/material/tg/mostrar/${tg.idtg}">Editar</a></button>
+					<button 
+				  			data-url="/material/tg/eliminar/${tg.idtg}"
+							data-extra="true"
+							type="button" 
+							class="btn btn-default grid-delete">
+							<a>Eliminar</a>
+					</button>
+					<button type="button" class="btn btn-default"><a href="/material/tg/agregar/${tg.idtg}">Agregar Autor</a></button>
+					<button type="button" class="btn btn-default"><a href="/material/tg/listar/${tg.idtg}">Ver Autores</a></button>
+				</div>
+			</td>
+		</tr>	
+	 #{/list}
+	</tbody>
+	</table>
+</div>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+	
+	$(".grid-delete").click(function(){
+
+		var url = $(this).data().url;
+		console.log(url)
+
+		deleteCallAjax(url)
+
+	});
+
+});
+</script>

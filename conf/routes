@@ -82,6 +82,16 @@ POST	/profesor/guardar				Profesores.guardarProfesor
 GET		/profesor/mostrar/{id}			Profesores.mostrarProfesor
 GET		/profesor/eliminar/{id}			Profesores.eliminarProfesor
 
+# Mapas
+GET		/material/mapa/listar					Mapas.listarMapa
+GET		/material/mapa/nuevo					Mapas.nuevoMapa
+POST	/material/mapa/guardar					Mapas.guardarMapa
+GET		/material/mapa/mostrar/{id}				Mapas.mostrarMapa
+GET		/material/mapa/eliminar/{id}			Mapas.eliminarMapa
+GET     /material/mapa/agregar/{id}				Mapas.agregarAutorMapa
+POST	/material/mapa/guardarAutor				Mapas.guardarAutor
+GET 	/material/mapa/listar/{id}				Mapas.listarAutor
+
 # PRESTAMOS
 GET		/prestamo/listar							Prestamos.listarPrestamo
 GET		/prestamo/nuevo								Prestamos.nuevoPrestamo
@@ -95,7 +105,15 @@ GET		/busqueda/material							Prestamos.buscarMaterial
 
 # REPORTES
 GET		/reporte1									Reportes.getReportLibroCategoria
-GET		/reporte2									Reportes.getReporttg_por_nombre
+GET		/reporte2									Reportes.getReportTgNombre
+GET		/reporte3									Reportes.getReportTgAsesor
+GET		/reporte4									Reportes.getReportRevistaFecha
+GET		/reporte5									Reportes.getReportPeriodicoFecha
+GET		/reporte6									Reportes.getReportRevistaTitulo
+GET		/reporte7									Reportes.getReportPeriodicoTitulo
+GET		/reporte8									Reportes.getReportLibroExistencia
+GET		/reporte9									Reportes.getReportUsuarioMora
+GET		/reporte10									Reportes.getReportUsuarioSolvente
 
 #GET     /											Application.signin
 #GET     /signin									Application.signin

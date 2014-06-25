@@ -82,6 +82,16 @@ POST	/profesor/guardar				Profesores.guardarProfesor
 GET		/profesor/mostrar/{id}			Profesores.mostrarProfesor
 GET		/profesor/eliminar/{id}			Profesores.eliminarProfesor
 
+# Mapas
+GET		/material/mapa/listar					Mapas.listarMapa
+GET		/material/mapa/nuevo					Mapas.nuevoMapa
+POST	/material/mapa/guardar					Mapas.guardarMapa
+GET		/material/mapa/mostrar/{id}				Mapas.mostrarMapa
+GET		/material/mapa/eliminar/{id}			Mapas.eliminarMapa
+GET     /material/mapa/agregar/{id}				Mapas.agregarAutorMapa
+POST	/material/mapa/guardarAutor				Mapas.guardarAutor
+GET 	/material/mapa/listar/{id}				Mapas.listarAutor
+
 # PRESTAMOS
 GET		/prestamo/listar							Prestamos.listarPrestamo
 GET		/prestamo/nuevo								Prestamos.nuevoPrestamo

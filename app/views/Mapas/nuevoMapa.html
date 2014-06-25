@@ -1,0 +1,101 @@
+#{extends 'main.html' /}
+#{set title:'Nuevo Mapa' /}
+
+<form class="form-horizontal" action="/material/mapa/guardar"  method="POST">
+	<fieldset>		
+		<!-- Form Name -->
+		<legend>Nuevo Material - Mapa</legend>
+		
+		<!-- Select Basic -->
+		<div class="form-group">
+			  <label class="col-md-4 control-label" for="orCategM">Categoría Material</label>
+			  <div class="col-md-4">
+			    <select id="mapaCategM" name="mapaCategM" class="form-control">
+			      		#{list items:categorias, as:'categoria'}
+				      		<option value="${categoria.idcategoriamat}">${categoria.categoriamat}</option>	
+				      	#{/list}
+			    </select>
+			  </div>
+		</div>
+		
+		<!-- Text input-->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="orUbicaM">Ubicación</label>  
+		  <div class="col-md-5">
+		  <input id="textinput" name="mapaUbicaM" placeholder="" class="form-control input-md" type="text" required="" maxlength="25">
+		  <span class="help-block">Ubicacion en la biblioteca, pasillo, estante, etc.</span>  
+		  </div>
+		</div>
+		
+		<!-- Text input-->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="orExistM">Existencias</label>  
+		  <div class="col-md-2">
+		  <input id="textinput" name="mapaExistM" placeholder="" class="form-control input-md" type="text" required="">
+		    
+		  </div>
+		</div>
+		
+		<!-- Text input-->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="orDescM">Descripción de Material</label>  
+		  <div class="col-md-5">
+		  <input id="textinput" name="mapaDescM" placeholder="" class="form-control input-md" type="text" maxlength="50">
+		    
+		  </div>
+		</div>
+		
+		<!-- Text input-->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="orTipoR">Categoria de Mapa</label>  
+		  <div class="col-md-3">
+		  	 <select id="mapaCategM" name="catMapa" class="form-control">
+		      		#{list items:catmapa, as:'catm'}
+			      		<option value="${catm.idcatmapa}">${catm.nombrecatmapa}</option>	
+			      	#{/list}
+		    </select>
+		    
+		  </div>
+		</div>
+		
+		<!-- Text input-->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="orTitulo">Titulo</label>  
+		  <div class="col-md-4">
+		  <input id="textinput" name="mapaTitulo" placeholder="" class="form-control input-md" type="text" required="" maxlength="50">		    
+		  </div>
+		</div>	
+		
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="orTitulo">Fuente</label>  
+		  <div class="col-md-3">
+		  <input id="textinput" name="mapaFuente" placeholder="" class="form-control input-md" type="text" maxlength="25">		    
+		  </div>
+		</div>
+		
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="orTitulo">Escala</label>  
+		  <div class="col-md-3">
+		  <input id="textinput" name="mapaEscala" placeholder="" class="form-control input-md" type="text" maxlength="25">		    
+		  </div>
+		</div>	
+		
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="orTitulo">Lugar</label>  
+		  <div class="col-md-4">
+		  <input id="textinput" name="mapaLugar" placeholder="" class="form-control input-md" type="text" required="" maxlength="50">		    
+		  </div>
+		</div>	
+		
+		
+		<!-- Button (Double) -->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="guardarTG"></label>
+		  <div class="col-md-8">
+		    <button type="submit" id="guardarTG" name="guardarTG" class="btn btn-success">Guardar</button>
+		    <button id="cancelarTG" name="cancelarTG" class="btn btn-danger">Cancelar</button>
+		  </div>
+		</div>
+	
+	</fieldset>
+</form>

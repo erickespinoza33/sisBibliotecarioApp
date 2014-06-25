@@ -1,0 +1,80 @@
+#{extends 'main.html' /}
+#{set title:'Listar Mapa' /}
+
+<div class="bs-example">
+	<table class="table table-striped">
+	<thead>
+	<tr>		
+		<th  width="23%">
+			Titulo
+		</th>
+		<th  width="18%">
+			Fuente
+		</th>
+		<th  width="15%">
+			Escala
+		</th>
+		<th wit width="18%">
+			Ubicacion
+		</th>
+		<th wit width="4%">
+			Existencias
+		</th>
+		<th wit width="20%">
+			Acciones
+		</th>		
+	</tr>
+	</thead>
+	<tbody>
+	#{list items:listM, as:'mapa'}
+		<tr>			
+			<td>
+				${mapa.titulo}
+			</td>
+			<td>
+				${mapa.fuente}
+			</td>
+			<td>
+				${mapa.escala}
+			</td>			
+			<td>
+				${mapa.material.ubicacion}
+			</td>
+			<td>
+				${mapa.material.existencias}
+			</td>
+			<td>
+				<div class="btn-group">
+					<button type="button" class="btn btn-default"><a href="/material/mapa/mostrar/${mapa.idmapa}">Editar</a></button>
+					<button 
+				  			data-url="/material/mapa/eliminar/${mapa.idmapa}"
+							data-extra="true"
+							type="button" 
+							class="btn btn-default grid-delete">
+							<a>Eliminar</a>
+					</button>
+					<button type="button" class="btn btn-default"><a href="/material/mapa/agregar/${mapa.idmapa}">Agregar Autor</a></button>
+					<button type="button" class="btn btn-default"><a href="/material/mapa/listar/${mapa.idmapa}">Ver Autores</a></button>
+				</div>
+			</td>
+		</tr>	
+	 #{/list}
+	</tbody>
+	</table>
+</div>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+	
+	$(".grid-delete").click(function(){
+
+		var url = $(this).data().url;
+		console.log(url)
+
+		deleteCallAjax(url)
+
+	});
+
+});
+</script>

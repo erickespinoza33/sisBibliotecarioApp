@@ -1,17 +1,19 @@
 package models;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
 
-public class Reporttg_por_nombre{
+public class ReportTgNombre{
 	
 	@Column(name="TEMA")
 	String tema;
 	
 	@Column(name="FECHAARCHIVADO")
-	String fechaarchivado;
+	Date fechaarchivado;
 	
 	@Column(name="ASESOR")
 	String asesor;
@@ -30,11 +32,11 @@ public class Reporttg_por_nombre{
 		this.tema = tema;
 	}
 
-	public String getFechaarchivado() {
+	public Date getFechaarchivado() {
 		return fechaarchivado;
 	}
 
-	public void setFechaarchivado(String fechaarchivado) {
+	public void setFechaarchivado(Date fechaarchivado) {
 		this.fechaarchivado = fechaarchivado;
 	}
 
@@ -62,12 +64,12 @@ public class Reporttg_por_nombre{
 		this.apellidosautor = apellidosautor;
 	}
 
-	public Reporttg_por_nombre() {
+	public ReportTgNombre() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Reporttg_por_nombre(String tema, String fechaarchivado,
+	public ReportTgNombre(String tema, Date fechaarchivado,
 			String asesor, String nombresautor, String apellidosautor) {
 		super();
 		this.tema = tema;

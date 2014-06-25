@@ -1,0 +1,48 @@
+#{extends 'main.html' /}
+#{set title:'Reporte Trabajos de Graduacion por Tema' /}
+
+<div class="bs-example">
+	<table class="table table-striped">
+	<thead>
+	<tr>
+		<th  width="15%">
+			Categoria de Material
+		</th >
+		<th  width="15%">
+			Titular
+		</th>
+		<th  width="15%">
+			Empresa
+		</th>
+		<th  width="15%">
+			Editorial
+		</th>
+		<th  width="15%">
+			Publicación
+		</th>
+		<th  width="10%">
+			Ubicación
+		</th>
+		<th  width="5%">
+			Existencias
+		</th>
+	</tr>
+	</thead>
+	<tbody>
+	#{list items:list, as:'item'}
+		<tr>
+			<td>${item.categoramaterial}</td>
+			<td>${item.titular}</td>
+			<td>${item.empresa}</td>
+			<td>${item.nombreeditorial}</td>
+			<td>${item.fechapublicacion.format('dd/MMM/yyyy')}</td>
+			<td>${item.ubicacion}</td>
+			<td>${item.existencias}</td>
+		</tr>
+
+	#{/list}							
+	</tbody>
+	</table>
+	
+</div>
+

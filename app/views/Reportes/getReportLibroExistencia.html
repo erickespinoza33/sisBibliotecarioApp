@@ -8,34 +8,38 @@
 	<thead>
 	<tr>
 		<th  width="15%">
-			Descripcion Categoria
+			ID
 		</th >
 		<th  width="10%">
-			Ubicacion
-		</th>
-		<th  width="10%">
-			Existencias
-		</th>
-		<th  width="25%">
 			Titulo
 		</th>
 		<th  width="10%">
 			Edicion
 		</th>
+		<th  width="25%">
+			Editorial
+		</th>
 		<th  width="10%">
-			Volumen
+			Total
+		</th>
+		<th  width="10%">
+			Ejemplares
+		</th>
+		<th wit width="20%">
+			Ubicacion
 		</th>
 	</tr>
 	</thead>
 	<tbody>
 	#{list items:list, as:'item'}
 		<tr>
-			<td>${item.descripcioncategoria}</td>
-			<td>${item.ubicacion}</td>
-			<td>${item.existencias}</td>
-			<td>${item.titulo}</td>
+			<td>${item.id}</td>
+			<td>${item.titulolibro}</td>
 			<td>${item.edicion}</td>
-			<td>${item.volumen}</td>
+			<td>${item.nombreeditorial}</td>
+			<td>${item.totallibros}</td>
+			<td>${item.ejemplares}</td>
+			<td>${item.ubicacion}</td>
 
 		</tr>
 

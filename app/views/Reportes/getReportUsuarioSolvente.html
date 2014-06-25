@@ -8,35 +8,26 @@
 	<thead>
 	<tr>
 		<th  width="15%">
-			Descripcion Categoria
+			Nombre
 		</th >
 		<th  width="10%">
-			Ubicacion
+			Carnet
 		</th>
 		<th  width="10%">
-			Existencias
+			Telefono
 		</th>
 		<th  width="25%">
-			Titulo
-		</th>
-		<th  width="10%">
-			Edicion
-		</th>
-		<th  width="10%">
-			Volumen
+			Correo
 		</th>
 	</tr>
 	</thead>
 	<tbody>
 	#{list items:list, as:'item'}
 		<tr>
-			<td>${item.descripcioncategoria}</td>
-			<td>${item.ubicacion}</td>
-			<td>${item.existencias}</td>
-			<td>${item.titulo}</td>
-			<td>${item.edicion}</td>
-			<td>${item.volumen}</td>
-
+			<td>${item.nombre}</td>
+			<td>${item.carnet}</td>
+			<td>${item.telefono}</td>
+			<td>${item.correo}</td>
 		</tr>
 
 	#{/list}							

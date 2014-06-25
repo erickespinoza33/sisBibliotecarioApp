@@ -98,6 +98,14 @@ GET		/prestamo/nuevo								Prestamos.nuevoPrestamo
 POST	/prestamo/guardar							Prestamos.guardarPrestamo
 GET		/prestamo/mostrar/{id}						Prestamos.mostrarPrestamo
 
+# Moras
+GET		/mora/listar								Moras.listarMoras
+GET		/mora/mostrar/{id}							Moras.mostrarMoras
+
+#PENALIZACIONES
+GET		/penalizacion/nueva/{carnet}/{mora}			Penalizaciones.nuevaPenalizacion
+POST	/penalizacion/guardar						Penalizaciones.guardarPenalizacion
+
 # SEARCH
 GET		/search/bibliotecologo						Prestamos.buscarBibliotecologo
 #GET	/search/prestamista

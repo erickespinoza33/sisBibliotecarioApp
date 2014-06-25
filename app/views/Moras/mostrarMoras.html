@@ -1,0 +1,97 @@
+#{extends 'main.html' /}
+#{set title:'Ver detalle de Mora' /}
+
+<form class="form-horizontal" action="/mora/listar" method="GET">
+	<fieldset>
+		<!-- Form Name -->
+		<legend>Detalles de Mora</legend>
+		<!-- Text input-->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="material">Material Prestado</label>
+			<div class="col-md-4">
+				<input id="material" name="material" type="text" placeholder="" class="form-control input-md" value="${mora.prestamo.material.categoriamaterial.categoriamat}" disabled="">
+			</div>
+		</div>
+		<!-- Text input-->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="estado">Estado de Mora</label>
+			<div class="col-md-4">
+				<input id="estado" name="estado" type="text" placeholder="" class="form-control input-md" 
+				 #{ if (mora.estado == 0) } value="Inactiva" #{/if}
+				 #{ if (mora.estado == 1) } value="Activa" #{/if}
+				 #{ if (mora.estado == 2) } value="Penalizada" #{/if} disabled="">
+			</div>
+		</div>
+		<!-- Text input-->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="inicio">Inicio el:</label>
+			<div class="col-md-4">
+				<input id="inicio" name="inicio" type="text" placeholder="" class="form-control input-md" value="${mora.fechainicio.format('dd/MM/yyyy')}" disabled="">
+			</div>
+		</div>
+		<!-- Text input-->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="fin">Finaliza el:</label>
+			<div class="col-md-4">
+				<input id="fin" name="fin" type="text" placeholder="" class="form-control input-md" value="${mora.fechafin.format('dd/MM/yyyy')}" disabled="">
+			</div>
+		</div>
+		<!-- Text input-->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="monto">Monto Acumulado ($)</label>
+			<div class="col-md-4">
+				<input id="monto" name="monto" type="text" placeholder="" class="form-control input-md"value="${mora.monto}" disabled="">
+			</div>
+		</div>
+		<legend>Detalles del Usuario</legend>
+		<!-- Text input-->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="idusuario">ID Usuario</label>
+			<div class="col-md-4">
+				<input id="idusuario" name="idusuario" type="text" placeholder="" class="form-control input-md" value="${mora.prestamo.prestamista.usuario.idUsuario}" disabled="">
+			</div>
+		</div>
+		<!-- Text input-->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="carnet">Carnet</label>
+			<div class="col-md-4">
+				<input id="carnet" name="carnet" type="text" placeholder="" class="form-control input-md" value="${mora.prestamo.prestamista.carnet}" disabled="">
+			</div>
+		</div>
+		<!-- Text input-->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="nombres">Nombres</label>
+			<div class="col-md-4">
+				<input id="nombres" name="nombres" type="text" placeholder="" class="form-control input-md" value="${mora.prestamo.prestamista.usuario.nombres}" disabled="">
+			</div>
+		</div>
+		<!-- Text input-->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="apellidos">Apellidos</label>
+			<div class="col-md-4">
+				<input id="apellidos" name="apellidos" type="text" placeholder="" class="form-control input-md" value="${mora.prestamo.prestamista.usuario.apellidos}" disabled="">
+			</div>
+		</div>
+		<!-- Text input-->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="direccion">Direccion</label>
+			<div class="col-md-4">
+				<input id="direccion" name="direccion" type="text" placeholder="" class="form-control input-md" value="${mora.prestamo.prestamista.direccionprestamista}" disabled="">
+			</div>
+		</div>
+		<!-- Text input-->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="movil">Telefono Movil</label>
+			<div class="col-md-4">
+				<input id="movil" name="movil" type="text" placeholder="" class="form-control input-md" value="${mora.prestamo.prestamista.telmovil}" disabled="">
+			</div>
+		</div>
+		<!-- Button (Double) -->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="regresar"></label>
+			<div class="col-md-8">
+				<button id="regresar" name="regresar" class="btn btn-danger">Regresar</button>
+			</div>
+		</div>
+	</fieldset>
+</form>

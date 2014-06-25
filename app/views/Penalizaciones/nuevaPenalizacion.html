@@ -1,0 +1,103 @@
+#{extends 'main.html' /}
+#{set title:'Penalizar' /}
+
+<form class="form-horizontal" action="/penalizacion/guardar"  method="POST">
+	<fieldset>
+		<!-- Form Name -->
+		<input name="mora" value="${mora}" type="hidden">
+		#{ if (estudiante?.prestamista?.carnet != null) } 
+			<input name="idUEst" value="${estudiante.prestamista.usuario.idUsuario}" type="hidden">
+			<input name="carnetEst" value="${estudiante.prestamista.carnet}" type="hidden">
+			<input name="idEst" value="${estudiante.idestudiante}" type="hidden">
+			<input name="idUExt" value="" type="hidden">
+			<input name="carnetExt" value="" type="hidden">
+			<input name="idExt" value="" type="hidden">
+			<legend>Datos del Estudiante</legend>
+			<!-- Text input-->
+			<div class="form-group">
+				<label class="col-md-4 control-label" for="idUsuario">ID Usuario</label>
+				<div class="col-md-4">
+					<input id="idUsuario" name="idUsuario" type="text" placeholder="" class="form-control input-md" value="${estudiante.prestamista.usuario.idUsuario}">
+				</div>
+			</div>
+			<!-- Text input-->
+			<div class="form-group">
+				<label class="col-md-4 control-label" for="carnet">Carnet</label>
+				<div class="col-md-4">
+					<input id="carnet" name="carnet" type="text" placeholder="" class="form-control input-md" value="${estudiante.prestamista.carnet}">
+				</div>
+			</div>
+			<!-- Text input-->
+			<div class="form-group">
+				<label class="col-md-4 control-label" for="id">ID</label>
+				<div class="col-md-4">
+					<input id="id" name="id" type="text" placeholder="" class="form-control input-md" value="${estudiante.idestudiante}">
+				</div>
+			</div>
+		#{/if}
+		#{ if (externo?.prestamista?.carnet != null) } 
+			<input name="idUEst" value="" type="hidden">
+			<input name="carnetEst" value="" type="hidden">
+			<input name="idEst" value="" type="hidden">
+			<input name="idUExt" value="${externo.prestamista.usuario.idUsuario}" type="hidden">
+			<input name="carnetExt" value="${externo.prestamista.carnet}" type="hidden">
+			<input name="idExt" value="${externo.idexterno}" type="hidden">
+			<legend>Datos del Externo</legend>
+			<!-- Text input-->
+			<div class="form-group">
+				<label class="col-md-4 control-label" for="idUsuario">ID Usuario</label>
+				<div class="col-md-4">
+					<input id="idUsuario" name="idUsuario" type="text" placeholder="" class="form-control input-md" value="${externo.prestamista.usuario.idUsuario}">
+				</div>
+			</div>
+			<!-- Text input-->
+			<div class="form-group">
+				<label class="col-md-4 control-label" for="carnet">Carnet</label>
+				<div class="col-md-4">
+					<input id="carnet" name="carnet" type="text" placeholder="" class="form-control input-md" value="${externo.prestamista.carnet}">
+				</div>
+			</div>
+			<!-- Text input-->
+			<div class="form-group">
+				<label class="col-md-4 control-label" for="id">ID</label>
+				<div class="col-md-4">
+					<input id="id" name="id" type="text" placeholder="" class="form-control input-md" value="${externo.idexterno}">
+				</div>
+			</div>
+		#{/if}
+		<legend>Datos de Penalizacion</legend>
+		<!-- Text input-->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="tiempo">Fecha Hasta donde Llega:</label>
+			<div class="col-md-4 input-group date" id="tiempo" data-date-format="DD/MM/YYYY" style="padding-left: 15px;">
+				<input id="tiempo" name="tiempo" type="text" placeholder="" class="form-control input-md">
+				 <span class="input-group-addon">
+					<span class="glyphicon-calendar glyphicon"></span>
+		          </span>
+			</div>
+		</div>
+		<!-- Text input-->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="descripcion">Descripcion</label>
+			<div class="col-md-4">
+				<input id="descripcion" name="descripcion" type="text" placeholder="" class="form-control input-md">
+			</div>
+		</div>
+		<!-- Button (Double) -->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="guardar">Acciones</label>
+			<div class="col-md-8">
+				<button id="guardar" name="guardar" class="btn btn-success">Guardar</button>
+				<button id="cancelar" name="cancelar" class="btn btn-danger">Cancelar</button>
+			</div>
+		</div>
+	</fieldset>
+</form>
+
+<script type="text/javascript">
+    $(function () {
+        $('#tiempo').datetimepicker({
+            pickTime: false
+        });
+    });
+</script>

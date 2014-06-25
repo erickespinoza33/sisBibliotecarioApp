@@ -122,5 +122,13 @@ public class Mapa extends GenericModel {
 	public void setMaterial(Material material) {
 		this.material = material;
 	}
+	
+	public long getIdmapa() {
+		return idmapa;
+	}
+
+	public void setIdmapa(long idmapa) {
+		this.idmapa = idmapa;
+	}
 
 }

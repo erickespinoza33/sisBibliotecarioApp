@@ -1,0 +1,104 @@
+#{extends 'main.html' /}
+#{set title:'Editar Mapa' /}
+
+<form class="form-horizontal" action="/material/mapa/guardar"  method="POST">
+	<fieldset>		
+		<!-- Form Name -->
+		<legend>Nuevo Material - Mapa</legend>
+		
+		<input name="mapaIdM" value="${mapa.material.idmaterial}" hidden="true">
+		<input name="mIdMapa" value="${mapa.idmapa}" hidden="true">
+		
+		<!-- Select Basic -->
+		<div class="form-group">
+			  <label class="col-md-4 control-label" for="orCategM">Categoría Material</label>
+			  <div class="col-md-4">
+			    <select id="mapaCategM" name="mapaCategM" class="form-control">
+			      		#{list items:categorias, as:'categoria'}
+				      		<option value="${categoria.idcategoriamat}"  #{ if (categoria.idcategoriamat == mapa.material.categoriamaterial.idcategoriamat) } selected="selected"  #{/if}>${categoria.categoriamat}</option>	
+				      	#{/list}
+			    </select>
+			  </div>
+		</div>
+		
+		<!-- Text input-->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="orUbicaM">Ubicación</label>  
+		  <div class="col-md-5">
+		  <input id="textinput" name="mapaUbicaM" placeholder="" class="form-control input-md" type="text" value="${mapa.material.ubicacion}" required="" maxlength="25">
+		  <span class="help-block">Ubicacion en la biblioteca, pasillo, estante, etc.</span>  
+		  </div>
+		</div>
+		
+		<!-- Text input-->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="orExistM">Existencias</label>  
+		  <div class="col-md-2">
+		  <input id="textinput" name="mapaExistM" placeholder="" class="form-control input-md" type="text" value="${mapa.material.existencias}" required="">
+		    
+		  </div>
+		</div>
+		
+		<!-- Text input-->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="orDescM">Descripción de Material</label>  
+		  <div class="col-md-5">
+		  <input id="textinput" name="mapaDescM" placeholder="" class="form-control input-md" type="text" value="${mapa.material.descripcionmaterial}" maxlength="50">
+		    
+		  </div>
+		</div>
+		
+		<!-- Text input-->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="orTipoR">Categoria de Mapa</label>  
+		  <div class="col-md-3">
+		  	 <select id="mapaCategM" name="catMapa" class="form-control">
+		      		#{list items:catmapa, as:'catm'}		      			
+			      		<option value="${catm.idcatmapa}"  #{ if (catm.idcatmapa== mapa.categoriamapa.idcatmapa) } selected="selected"  #{/if}>${catm.nombrecatmapa}</option>	
+			      	#{/list}
+		    </select>
+		    
+		  </div>
+		</div>
+		
+		<!-- Text input-->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="orTitulo">Titulo</label>  
+		  <div class="col-md-4">
+		  <input id="textinput" name="mapaTitulo" placeholder="" class="form-control input-md" type="text"  value="${mapa.titulo}" required="" maxlength="50">		    
+		  </div>
+		</div>	
+		
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="orTitulo">Fuente</label>  
+		  <div class="col-md-3">
+		  <input id="textinput" name="mapaFuente" placeholder="" class="form-control input-md" type="text"  value="${mapa.fuente}" maxlength="25">		    
+		  </div>
+		</div>
+		
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="orTitulo">Escala</label>  
+		  <div class="col-md-3">
+		  <input id="textinput" name="mapaEscala" placeholder="" class="form-control input-md" type="text"  value="${mapa.escala}" maxlength="25">		    
+		  </div>
+		</div>	
+		
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="orTitulo">Lugar</label>  
+		  <div class="col-md-4">
+		  <input id="textinput" name="mapaLugar" placeholder="" class="form-control input-md" type="text"  value="${mapa.lugar}" required="" maxlength="50">		    
+		  </div>
+		</div>	
+		
+		
+		<!-- Button (Double) -->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="guardarTG"></label>
+		  <div class="col-md-8">
+		    <button type="submit" id="guardarTG" name="guardarTG" class="btn btn-success">Guardar</button>
+		    <button id="cancelarTG" name="cancelarTG" class="btn btn-danger">Cancelar</button>
+		  </div>
+		</div>
+	
+	</fieldset>
+</form>

@@ -1,0 +1,52 @@
+#{extends 'main.html' /}
+#{set title:'Reporte Libros Categorias' /}
+
+
+
+<div class="bs-example">
+	<table class="table table-striped">
+	<thead>
+	<tr>
+		<th  width="35%">
+			Cantidad de profesores
+		</th >
+		<th  width="35%">
+			Cantidad de estudiantes
+		</th>
+		<th  width="30%">
+			Cantidad de externos
+		</th>
+		
+	</tr>
+	</thead>
+	<tbody>
+	#{list items:list, as:'item'}
+		<tr>
+			<td>${item.profesores}</td>
+			<td>${item.estudiantes}</td>
+			<td>${item.externo}</td>
+			
+
+		</tr>
+
+	#{/list}							
+	</tbody>
+	</table>
+	
+</div>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+	
+	$(".grid-delete").click(function(){
+
+		var url = $(this).data().url;
+		console.log(url)
+
+		deleteCallAjax(url)
+
+	});
+
+});
+</script>

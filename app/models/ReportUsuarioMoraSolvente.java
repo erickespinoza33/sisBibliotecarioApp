@@ -11,6 +11,7 @@ public class ReportUsuarioMoraSolvente {
 	String monto;
 	Date fechainicio;
 	Date fechafin;
+	
 	public String getNombre() {
 		return nombre;
 	}

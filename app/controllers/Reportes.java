@@ -7,12 +7,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import models.ReportCantidadPrestamos;
 import models.ReportLibroCategoria;
 import models.ReportLibroExistencia;
 import models.ReportPeriodicoFecha;
 import models.ReportRevistaFecha;
 import models.ReportTgNombre;
 import models.ReportUsuarioMoraSolvente;
+import models.ReportUsuariosRegistrados;
 import play.Logger;
 import play.mvc.Controller;
 
@@ -313,4 +315,71 @@ public class Reportes extends Controller {
 		render(list);
 
 	}
+	
+	public static void getReportUsuariosRegistrados() {
+
+		Connection conn = play.db.DB.getConnection();
+		List<ReportUsuariosRegistrados> list = new ArrayList<ReportUsuariosRegistrados>();
+		try {
+			ResultSet resultSet = null;
+			PreparedStatement statement = conn
+					.prepareStatement("SELECT * FROM USUARIOS_REGISTRADOS");
+			resultSet = statement.executeQuery();
+			while (resultSet.next()) {
+				ReportUsuariosRegistrados rrf = new ReportUsuariosRegistrados(
+						resultSet.getString("PROFESORES"),
+						resultSet.getString("ESTUDIANTES"),
+						resultSet.getString("EXTERNO"));
+				if (rrf != null)
+					list.add(rrf);
+
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		render(list);
+
+	}
+	
+	public static void getReportCantidadPrestamos() {
+
+		Connection conn = play.db.DB.getConnection();
+		List<ReportCantidadPrestamos> list = new ArrayList<ReportCantidadPrestamos>();
+		try {
+			ResultSet resultSet = null;
+			PreparedStatement statement = conn
+					.prepareStatement("SELECT * FROM CANTIDAD_PRESTAMOS");
+			resultSet = statement.executeQuery();
+			while (resultSet.next()) {
+				ReportCantidadPrestamos rrf = new ReportCantidadPrestamos(
+						resultSet.getString("CARNET"),
+						resultSet.getString("NOMBREUSUARIO"),
+						resultSet.getString("APELLIDOUSUARIO"),
+						resultSet.getString("PRESTAMOS"),
+						resultSet.getDate("FECHASUSCRIPCION"),
+						resultSet.getDate("FECHAEXPIRACION"));
+				if (rrf != null)
+					list.add(rrf);
+
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		render(list);
+
+	}
+
+	
+	
+	public static void menu() {
+
+		Connection conn = play.db.DB.getConnection();
+		
+		render();
+	}
 }
+

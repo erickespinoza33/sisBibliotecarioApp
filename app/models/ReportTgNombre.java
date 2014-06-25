@@ -9,19 +9,10 @@ import javax.persistence.Table;
 
 public class ReportTgNombre{
 	
-	@Column(name="TEMA")
-	String tema;
-	
-	@Column(name="FECHAARCHIVADO")
+	String tema;	
 	Date fechaarchivado;
-	
-	@Column(name="ASESOR")
-	String asesor;
-	
-	@Column(name="NOMBRESAUTOR")
-	String nombresautor;
-	
-	@Column(name="APELLIDOSAUTOR")
+	String asesor;	
+	String nombresautor;	
 	String apellidosautor;
 	
 	public String getTema() {

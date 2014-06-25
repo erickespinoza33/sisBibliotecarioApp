@@ -13,6 +13,7 @@ public class ReportRevistaFecha{
 	Date fechapublicacion;
 	String ubicacion;
 	String existencias;
+	
 	public String getCategoriamaterial() {
 		return categoriamaterial;
 	}

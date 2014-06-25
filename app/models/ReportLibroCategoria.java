@@ -1,28 +1,12 @@
 package models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
-
-
 public class ReportLibroCategoria{
 	
-	@Column(name="DESCRIPCIONCATEGORIA")
-	String descripcioncategoria;
-	
-	@Column(name="UBICACION")
-	String ubicacion;
-	
-	@Column(name="EXISTENCIAS")
-	String existencias;
-	
-	@Column(name="TITULO")
-	String titulo;
-	
-	@Column(name="EDICION")
-	String edicion;
-	
-	@Column(name="VOLUMEN")
+	String descripcioncategoria;	
+	String ubicacion;	
+	String existencias;	
+	String titulo;	
+	String edicion;	
 	String volumen;
 
 	public String getDescripcioncategoria() {

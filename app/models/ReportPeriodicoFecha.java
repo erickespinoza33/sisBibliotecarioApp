@@ -11,6 +11,7 @@ public class ReportPeriodicoFecha {
 	Date fechapublicacion;
 	String ubicacion;
 	String existencias;
+	
 	public String getCategoramaterial() {
 		return categoramaterial;
 	}

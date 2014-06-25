@@ -1,0 +1,62 @@
+#{extends 'main.html' /}
+#{set title:'Reporte cantidad prestamos' /}
+
+
+
+<div class="bs-example">
+	<table class="table table-striped">
+	<thead>
+	<tr>
+		<th  width="10%">
+			Carnet
+		</th>
+		<th  width="20%">
+			Nombre
+		</th >
+		<th  width="20%">
+			Apellido
+		</th >
+		<th  width="10%">
+			Cantidad de prestamos
+		</th >
+		<th  width="20%">
+			Fecha de suscripcion
+		</th>
+		<th wit width="20%">
+			Fecha de expiracion
+		</th>
+	</tr>
+	</thead>
+	<tbody>
+	#{list items:list, as:'item'}
+		<tr>
+			<td>${item.carnet}</td>
+			<td>${item.nombreusuario}</td>
+			<td>${item.apellidousuario}</td>
+			<td>${item.prestamos}</td>
+			<td>${item.fechasuscripcion.format('dd/MMM/yyyy')}</td>
+			<td>${item.fechaexpiracion.format('dd/MMM/yyyy')}</td>
+
+		</tr>
+
+	#{/list}							
+	</tbody>
+	</table>
+	
+</div>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+	
+	$(".grid-delete").click(function(){
+
+		var url = $(this).data().url;
+		console.log(url)
+
+		deleteCallAjax(url)
+
+	});
+
+});
+</script>

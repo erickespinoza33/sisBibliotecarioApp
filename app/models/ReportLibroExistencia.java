@@ -9,6 +9,7 @@ public class ReportLibroExistencia {
 	String totallibros;
 	String ejemplares;
 	String ubicacion;
+	
 	public String getId() {
 		return id;
 	}

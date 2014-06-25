@@ -112,16 +112,20 @@ GET		/search/bibliotecologo						Prestamos.buscarBibliotecologo
 GET		/busqueda/material							Prestamos.buscarMaterial
 
 # REPORTES
-GET		/reporte1									Reportes.getReportLibroCategoria
-GET		/reporte2									Reportes.getReportTgNombre
-GET		/reporte3									Reportes.getReportTgAsesor
-GET		/reporte4									Reportes.getReportRevistaFecha
-GET		/reporte5									Reportes.getReportPeriodicoFecha
-GET		/reporte6									Reportes.getReportRevistaTitulo
-GET		/reporte7									Reportes.getReportPeriodicoTitulo
-GET		/reporte8									Reportes.getReportLibroExistencia
-GET		/reporte9									Reportes.getReportUsuarioMora
-GET		/reporte10									Reportes.getReportUsuarioSolvente
+GET		/reporte/menu								Reportes.menu
+GET		/LibroCategoria								Reportes.getReportLibroCategoria
+GET		/ReportTgNombre								Reportes.getReportTgNombre
+GET		/ReportTgAsesor								Reportes.getReportTgAsesor
+GET		/RevistaFecha								Reportes.getReportRevistaFecha
+GET		/PeriodicoFecha								Reportes.getReportPeriodicoFecha
+GET		/RevistaTitulo								Reportes.getReportRevistaTitulo
+GET		/PeriodicoTitulo							Reportes.getReportPeriodicoTitulo
+GET		/LibroExistencia							Reportes.getReportLibroExistencia
+GET		/UsuarioMora								Reportes.getReportUsuarioMora
+GET		/UsuarioSolvente							Reportes.getReportUsuarioSolvente
+GET		/UsuariosRegistrados						Reportes.getReportUsuariosRegistrados
+GET		/CantidadPrestamos							Reportes.getReportCantidadPrestamos
+
 
 #GET     /											Application.signin
 #GET     /signin									Application.signin

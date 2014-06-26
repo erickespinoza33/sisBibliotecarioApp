@@ -28,6 +28,10 @@ public class Hemerografia extends GenericModel {
 	@Column(name="CODIGO")
 	private long codigo;
 
+	@Id
+	@Column(name="IDMATERIAL")
+	private long idMaterial;
+	
 	@Column(name="DESCRIPCIONHEM")
 	private String descripcionhem;
 

@@ -142,3 +142,9 @@
 	width: 140px;
 	margin-top: -10px;
 }
+
+.report-title{
+	text-align: center;
+	margin-top: -20px;
+	padding-bottom: 5px;
+}

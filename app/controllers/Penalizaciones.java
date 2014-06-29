@@ -10,9 +10,16 @@ import java.util.List;
 
 import models.Estudiante;
 import models.Externo;
+import models.Mora;
+import models.Penalizacion;
 import models.Prestamista;
 
 public class Penalizaciones extends Controller{
+	
+	public static void listarPenalizaciones(){
+		List<Penalizacion> penalizacion = Penalizacion.findAll();
+		render(penalizacion);
+	}
 	
 	public static void nuevaPenalizacion(String carnet, String mora){
 		Logger.log4j.info("New " + carnet);
@@ -60,5 +67,17 @@ public class Penalizaciones extends Controller{
 		
 	}
 	
+	public static void cancelarPenalizacion(String id){
+		Penalizacion penalizacion = Penalizacion.find("IDPENALIZACION", Long.parseLong(id)).first();
+		Connection conn = play.db.DB.getConnection();
+		try {
+			CallableStatement prepareCall = conn.prepareCall("call cancelarPenalizacion("+id+")");
+			Logger.log4j.info(prepareCall.execute());
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		redirect("/mora/listar");
+	}
 	
 }

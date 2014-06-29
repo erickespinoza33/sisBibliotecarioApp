@@ -1,0 +1,149 @@
+#{extends 'main.html' /}
+#{set title:'Listar Penalizaciones' /}
+
+<div class="bs-example">
+	<legend> Indicadores </legend>
+	<table class="table table-hover">
+	  <tr>
+	  	<th class="danger" width="33%">
+	  		Activa
+	  	</th>
+	  	<th class="success" width="34%">
+	  		Inactiva
+	  	</th>
+	  </tr>
+	</table>
+	<legend> Penalizaciones </legend>
+	<table class="table table-hover">
+	<thead>
+	<tr>
+		<th  width="10%">
+			ID Usuario
+		</th >
+		<th  width="10%">
+			Carnet
+		</th >
+		<th  width="15%">
+			Nombres
+		</th>
+		<th  width="15%">
+			Apellidos
+		</th>
+		<th  width="20%">
+			Descripcion
+		</th>
+		<th  width="10%">
+			Inicio el:
+		</th>
+		<th  width="10%">
+			Termina el:
+		</th>
+		<th  width="10%">
+			Acciones
+		</th>
+	</tr>
+	</thead>
+	<tbody>
+	#{list items:penalizacion, as:'penalizacion'}
+		#{ if (penalizacion.estado == 1) }
+			<tr class="danger">
+				<td>
+					#{ if (penalizacion?.externo?.idexterno != null) }
+						${penalizacion.externo.prestamista.usuario.idUsuario}
+					#{/if}
+					#{ else }
+						${penalizacion.estudiante.prestamista.usuario.idUsuario}
+					#{/else}
+				</td>
+				<td>
+					#{ if (penalizacion?.externo?.idexterno != null) }
+						${penalizacion.externo.prestamista.carnet}
+					#{/if}
+					#{ else }
+						${penalizacion.estudiante.prestamista.carnet}
+					#{/else}
+				</td>
+				<td>
+					#{ if (penalizacion?.externo?.idexterno != null) }
+						${penalizacion.externo.prestamista.usuario.nombres}
+					#{/if}
+					#{ else }
+						${penalizacion.estudiante.prestamista.usuario.nombres}
+					#{/else}
+				</td>
+				<td>
+					#{ if (penalizacion?.externo?.idexterno != null) }
+						${penalizacion.externo.prestamista.usuario.apellidos}
+					#{/if}
+					#{ else }
+						${penalizacion.estudiante.prestamista.usuario.apellidos}
+					#{/else}
+				</td>
+				<td>
+					${penalizacion.descripcionpenalizacion}
+				<td>
+					${penalizacion.fechainicio.format('dd/MMM/yyyy')}
+				</td>
+				<td>
+					${penalizacion.tiempo.format('dd/MMM/yyyy')}
+				</td>
+				<td>
+					<div class="btn-group">
+						<button type="button" class="btn btn-default"><a href="/penalizacion/cancelar/${penalizacion.idpenalizacion}">Cancelarla</a></button>
+					</div>
+				</td>
+			</tr>
+		#{/if}
+	#{/list}
+	#{list items:penalizacion, as:'penalizacion'}
+		#{ if (penalizacion.estado == 0) }
+			<tr class="success">
+				<td>
+					#{ if (penalizacion?.externo?.idexterno != null) }
+						${penalizacion.externo.prestamista.usuario.idUsuario}
+					#{/if}
+					#{ else }
+						${penalizacion.estudiante.prestamista.usuario.idUsuario}
+					#{/else}
+				</td>
+				<td>
+					#{ if (penalizacion?.externo?.idexterno != null) }
+						${penalizacion.externo.prestamista.carnet}
+					#{/if}
+					#{ else }
+						${penalizacion.estudiante.prestamista.carnet}
+					#{/else}
+				</td>
+				<td>
+					#{ if (penalizacion?.externo?.idexterno != null) }
+						${penalizacion.externo.prestamista.usuario.nombres}
+					#{/if}
+					#{ else }
+						${penalizacion.estudiante.prestamista.usuario.nombres}
+					#{/else}
+				</td>
+				<td>
+					#{ if (penalizacion?.externo?.idexterno != null) }
+						${penalizacion.externo.prestamista.usuario.apellidos}
+					#{/if}
+					#{ else }
+						${penalizacion.estudiante.prestamista.usuario.apellidos}
+					#{/else}
+				</td>
+				<td>
+					${penalizacion.descripcionpenalizacion}
+				<td>
+					${penalizacion.fechainicio.format('dd/MMM/yyyy')}
+				</td>
+				<td>
+					${penalizacion.tiempo.format('dd/MMM/yyyy')}
+				</td>
+				<td>
+					Penalizacion Cumplida!
+				</td>
+			</tr>
+		#{/if}
+	 #{/list}
+	</tbody>
+	</table>
+</div>

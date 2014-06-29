@@ -103,8 +103,10 @@ GET		/mora/listar								Moras.listarMoras
 GET		/mora/mostrar/{id}							Moras.mostrarMoras
 
 #PENALIZACIONES
+GET		/penalizacion/listar						Penalizaciones.listarPenalizaciones
 GET		/penalizacion/nueva/{carnet}/{mora}			Penalizaciones.nuevaPenalizacion
 POST	/penalizacion/guardar						Penalizaciones.guardarPenalizacion
+GET		/penalizacion/cancelar/{id}					Penalizaciones.cancelarPenalizacion
 
 # SEARCH
 GET		/search/bibliotecologo						Prestamos.buscarBibliotecologo

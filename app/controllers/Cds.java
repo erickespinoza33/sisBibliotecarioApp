@@ -49,7 +49,7 @@ public class Cds extends Controller {
 	}
 	
 	public static void mostrarCD(String id){
-		Cd cd = Cd.find("ID", Long.parseLong(id)).first();
+		Cd cd = Cd.find("IDCD", Long.parseLong(id)).first();
 		List<Artista> artistas = Artista.findAll();
 		List<Categoriamaterial> categorias = Categoriamaterial.findAll();
 		Logger.log4j.info(cd.getAlbum());

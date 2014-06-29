@@ -26,7 +26,7 @@
 	#{list items:listCds, as:'cd'}
 		<tr>
 			<td>
-				${cd.id}
+				${cd.idcd}
 			</td>
 			<td>
 				${cd.album}
@@ -39,9 +39,9 @@
 			</td>
 			<td class="admin">
 				<div class="btn-group">
-					<button type="button" class="btn btn-default"><a href="/material/cd/mostrar/${cd.id}">Editar</a></button>
+					<button type="button" class="btn btn-default"><a href="/material/cd/mostrar/${cd.idcd}">Editar</a></button>
 					<button 
-				  			data-url="/material/cd/eliminar/${cd.id}"
+				  			data-url="/material/cd/eliminar/${cd.idcd}"
 							data-extra="true"
 							type="button" 
 							class="btn btn-default grid-delete">

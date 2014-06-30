@@ -123,11 +123,20 @@ public class Prestamos extends Controller {
 		Categoriamaterial catmat = Categoriamaterial.findById(Long.parseLong(id));
 		List<ResultadoBusqueda> result = new ArrayList<ResultadoBusqueda>();;
 		switch (catmat.getCategoriamat()) {
-			case "Libro":
+			case "Libro infantil":
 				Logger.log4j.info("Libro");
-				List<Libro> libros = Libro.findAll();
-				for (int i = 0; i < libros.size(); i++) {
-					Libro libro = libros.get(i);
+				List<Libro> librosInfantil = Libro.findAll();
+				for (int i = 0; i < librosInfantil.size(); i++) {
+					Libro libro = librosInfantil.get(i);
+					ResultadoBusqueda itemResult = new ResultadoBusqueda(libro.getMaterial().getIdmaterial() , libro.getTitulo());
+					result.add(itemResult);
+				}
+			break;
+			case "Libro general":
+				Logger.log4j.info("Libro");
+				List<Libro> librosGenaral = Libro.findAll();
+				for (int i = 0; i < librosGenaral.size(); i++) {
+					Libro libro = librosGenaral.get(i);
 					ResultadoBusqueda itemResult = new ResultadoBusqueda(libro.getMaterial().getIdmaterial() , libro.getTitulo());
 					result.add(itemResult);
 				}

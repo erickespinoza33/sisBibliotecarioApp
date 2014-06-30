@@ -44,10 +44,12 @@ public class Security extends Secure.Security {
 	public static boolean setDBSchema(Usuario usuario) {
 		// Play.configuration.setProperty("hibernate.connection.url ",
 		// "jdbc:oracle:thin:@192.168.1.14:1521/xe");
+		if(usuario.getRol().getRol().equals("Prestamista")){
+			Play.configuration.setProperty("db.user", "Prestamista");
+			Play.configuration.setProperty("db.pass", "Presdb123");
+			Play.configuration.setProperty("db.default.schema", "Prastamista");			
+		}
 
-		Play.configuration.setProperty("db.user", usuario.getNombreusuario());
-		Play.configuration.setProperty("db.pass", usuario.getContrasena());
-		Play.configuration.setProperty("db.default.schema", usuario.getRol().getRol());
 
 		JPA.entityManagerFactory = null;
 		JPAPlugin plugin = new JPAPlugin();
@@ -60,15 +62,15 @@ public class Security extends Secure.Security {
 		// Play.configuration.setProperty("hibernate.connection.url ",
 		// "jdbc:oracle:thin:@192.168.1.14:1521/xe");
 
-		Play.configuration.setProperty("db.user", "adminuser");
-		Play.configuration.setProperty("db.pass", "adminuser");
+		Play.configuration.setProperty("db.user", "Administrador");
+		Play.configuration.setProperty("db.pass", "Admindb123");
 		Play.configuration.setProperty("db.default.schema",
 				"adminuser");
 		
 		
-		Play.configuration.setProperty("%production.db.user", "adminuser");
-		Play.configuration.setProperty("%production.db.pass", "adminuser");
-		Play.configuration.setProperty("%production.db.default.schema",
+		Play.configuration.setProperty("%production.db.user", "Administrador");
+		Play.configuration.setProperty("%production.db.pass", "Admindb123");
+		Play.configuration.setProperty("%production.db.default.Administrador",
 				"adminuser");
 		
 

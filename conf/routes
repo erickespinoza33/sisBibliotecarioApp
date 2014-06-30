@@ -21,6 +21,7 @@ GET		/estudiante/listar							Estudiantes.listarEstudiante
 GET		/estudiante/nuevo							Estudiantes.nuevoEstudiante
 POST	/estudiante/guardar							Estudiantes.guardarEstudiante
 GET		/estudiante/mostrar/{id}					Estudiantes.mostrarEstudiante
+GET		/estudiante/mostrar							Estudiantes.mostrarEstudiantePorId
 GET		/estudiante/eliminar/{id}					Estudiantes.eliminarEstudiante
 
 # REVISTAS

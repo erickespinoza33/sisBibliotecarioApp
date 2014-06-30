@@ -5,11 +5,14 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
+import com.google.gson.Gson;
+
 import models.Bibliotecologo;
 import models.Categoriamaterial;
 import models.Editorial;
 import models.Periodico;
 import models.Rol;
+import models.UserInfo;
 import models.Usuario;
 import models.Prestamista;
 import models.Estudiante;
@@ -36,6 +39,16 @@ public class Estudiantes extends Controller {
 		Estudiante estudiante = Estudiante.find("IDESTUDIANTE", Long.parseLong(id)).first();
 		List<Institucion> instituciones = Institucion.findAll();
 		render(estudiante, instituciones);	
+	}
+	
+	public static void mostrarEstudiantePorId(){
+		Gson gson = new Gson();
+		String userJSON = session.get("userInfo");
+		UserInfo user = gson.fromJson(userJSON, UserInfo.class);
+		Logger.log4j.info("---------------" + user);
+		Estudiante estudiante = Estudiante.find("ID_USUARIO", user.getId()).first();
+		List<Institucion> instituciones = Institucion.findAll();
+		renderTemplate("Estudiantes/mostrarEstudiante.html",estudiante, instituciones);	
 	}
 	
 	public static void eliminarEstudiante(String id){

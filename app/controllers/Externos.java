@@ -98,8 +98,15 @@ public class Externos extends Controller {
 				e.printStackTrace();
 			}	
 		}
+		
+		Gson gson = new Gson();
+		String userJSON = session.get("userInfo");
+		UserInfo user = gson.fromJson(userJSON, UserInfo.class);
+		if(user.getRol().equals("Prestamista")){
+			redirect("/index");			
+		}
 			
-			redirect("/externo/listar");
+		redirect("/externo/listar");
 		
 
 	}

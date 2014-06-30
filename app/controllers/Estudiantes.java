@@ -46,7 +46,6 @@ public class Estudiantes extends Controller {
 		Gson gson = new Gson();
 		String userJSON = session.get("userInfo");
 		UserInfo user = gson.fromJson(userJSON, UserInfo.class);
-		Logger.log4j.info("---------------" + user);
 
 		Estudiante estudiante = Estudiante.find("ID_USUARIO", user.getId()).first();
 		Externo externo = Externo.find("ID_USUARIO", user.getId()).first();
@@ -109,7 +108,14 @@ public class Estudiantes extends Controller {
 			}	
 		}
 			
-			redirect("/estudiante/listar");
+		Gson gson = new Gson();
+		String userJSON = session.get("userInfo");
+		UserInfo user = gson.fromJson(userJSON, UserInfo.class);
+		if(user.getRol().equals("Prestamista")){
+			redirect("/index");			
+		}
+		
+		redirect("/estudiante/listar");
 		
 
 	}

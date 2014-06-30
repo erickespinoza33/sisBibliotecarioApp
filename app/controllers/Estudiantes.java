@@ -10,6 +10,7 @@ import com.google.gson.Gson;
 import models.Bibliotecologo;
 import models.Categoriamaterial;
 import models.Editorial;
+import models.Externo;
 import models.Periodico;
 import models.Rol;
 import models.UserInfo;
@@ -46,9 +47,17 @@ public class Estudiantes extends Controller {
 		String userJSON = session.get("userInfo");
 		UserInfo user = gson.fromJson(userJSON, UserInfo.class);
 		Logger.log4j.info("---------------" + user);
+
 		Estudiante estudiante = Estudiante.find("ID_USUARIO", user.getId()).first();
+		Externo externo = Externo.find("ID_USUARIO", user.getId()).first();
 		List<Institucion> instituciones = Institucion.findAll();
-		renderTemplate("Estudiantes/mostrarEstudiante.html",estudiante, instituciones);	
+
+		
+		if(estudiante!=null)
+			renderTemplate("Estudiantes/mostrarEstudiante.html",estudiante, instituciones);
+		
+		if(externo!=null)		
+			renderTemplate("Externos/mostrarExterno.html",externo, instituciones);
 	}
 	
 	public static void eliminarEstudiante(String id){

@@ -14,7 +14,7 @@ $(document).ready(function() {
             currentUser = data;
             $(".currentUser").html(data.nombres +" "+ data.apellidos);
             if(data.rol == "Prestamista"){
-                $(".admin").remove();
+                $(".admin").hide();
                 $(".prestamista").show();
             }
         }

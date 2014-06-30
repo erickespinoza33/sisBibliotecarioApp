@@ -46,8 +46,18 @@ public class Security extends Secure.Security {
 		// "jdbc:oracle:thin:@192.168.1.14:1521/xe");
 		if(usuario.getRol().getRol().equals("Prestamista")){
 			Play.configuration.setProperty("db.user", "Prestamista");
-			Play.configuration.setProperty("db.pass", "Presdb123");
+			Play.configuration.setProperty("db.pass", "Pres123");
 			Play.configuration.setProperty("db.default.schema", "Prastamista");			
+		}else{
+			if(usuario.getRol().getRol().equals("Bibliotecologo")){
+				Play.configuration.setProperty("db.user", "Bibliotecologo");
+				Play.configuration.setProperty("db.pass", "Biblio123");
+				Play.configuration.setProperty("db.default.schema", "Bibliotecologo");			
+			}else{
+				Play.configuration.setProperty("db.user", "Administrador");
+				Play.configuration.setProperty("db.pass", "Admindb123");
+				Play.configuration.setProperty("db.default.schema",	"Administrador");
+			}
 		}
 
 
@@ -64,8 +74,7 @@ public class Security extends Secure.Security {
 
 		Play.configuration.setProperty("db.user", "Administrador");
 		Play.configuration.setProperty("db.pass", "Admindb123");
-		Play.configuration.setProperty("db.default.schema",
-				"adminuser");
+		Play.configuration.setProperty("db.default.schema",	"Administrador");
 		
 		
 		Play.configuration.setProperty("%production.db.user", "Administrador");

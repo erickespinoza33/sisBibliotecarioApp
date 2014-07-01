@@ -74,5 +74,13 @@ public class Dvd extends GenericModel {
 	public void setMedioDigital(MedioDigital medioDigital) {
 		this.medioDigital = medioDigital;
 	}
+	
+	public long getId() {
+		return id;
+	}
+	
+	public long getIddvd() {
+		return iddvd;
+	}
 
 }

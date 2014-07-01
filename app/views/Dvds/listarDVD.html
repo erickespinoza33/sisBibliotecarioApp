@@ -1,0 +1,74 @@
+#{extends 'main.html' /}
+#{set title:'Listar DVD' /}
+
+<div class="bs-example">
+	<table class="table table-striped">
+	<thead>
+	<tr>
+		<th  width="20%">
+			Titulo
+		</th >
+		<th  width="20%">
+			Ubicacion
+		</th>
+		<th  width="20%">
+			Existencias
+		</th>
+		<th  width="20%">
+			Categoria
+		</th>
+		<th class="admin" width="20%">
+			Acciones
+		</th>
+	</tr>
+	</thead>
+	<tbody>
+	#{list items:listDvds, as:'dvd'}
+		<tr>
+			<td>
+				${dvd.titulo}
+			</td>
+			<td>
+				${dvd.medioDigital.material.ubicacion}
+			</td>
+			<td>
+				${dvd.medioDigital.material.existencias}
+			</td>
+			<td>
+				${dvd.categoriadvd.nombre}
+			</td>
+			<td class="admin">
+				<div class="btn-group">
+					<button type="button" class="btn btn-default"><a href="/material/dvd/mostrar/${dvd.id}">Editar</a></button>
+					<button 
+				  			data-url="/material/dvd/eliminar/${dvd.id}"
+							data-extra="true"
+							type="button" 
+							class="btn btn-default grid-delete">
+							<a>Eliminar</a>
+					</button>
+				</div>
+			</td>
+		</tr>	
+	 #{/list}
+
+
+	</tbody>
+	</table>
+</div>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+	
+	$(".grid-delete").click(function(){
+
+		var url = $(this).data().url;
+		console.log(url)
+
+		deleteCallAjax(url)
+
+	});
+
+});
+</script>

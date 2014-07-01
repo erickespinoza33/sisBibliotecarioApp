@@ -1,0 +1,77 @@
+#{extends 'main.html' /}
+#{set title:'Nuevo DVD' /}
+
+<form class="form-horizontal" action="/material/dvd/guardar"  method="POST">
+	<fieldset>
+		<!-- Form Name -->
+		<legend>Nuevo Material - DVD</legend>
+		<!-- Select Basic -->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="selectbasic">Categoría Material</label>
+			<div class="col-md-4">
+				<select id="selectbasic" name="dvdCategM" class="form-control" required>
+				    	  #{list items:categoriasMat, as:'categoria'}
+				      		<option value="${categoria.idcategoriamat}">${categoria.categoriamat}</option>	
+				      	  #{/list}
+				</select>
+			</div>
+		</div>
+		<!-- Text input-->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="textinput">Ubicación</label>
+			<div class="col-md-5">
+				<input id="textinput" name="dvdUbicaM" type="text" placeholder="" class="form-control input-md" maxlength="25" required>
+				<span class="help-block">Ubicación en la biblioteca pasillo, estante</span>
+			</div>
+		</div>
+		<!-- Text input-->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="textinput">Existencias</label>
+			<div class="col-md-4">
+				<input id="textinput" name="dvdExistM" type="text" placeholder="" class="form-control input-md" pattern="[0-9]{1,9}$" title="Solo puede contener numeros" required>
+			</div>
+		</div>
+		<!-- Text input-->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="textinput">Descripción de Material</label>
+			<div class="col-md-5">
+				<input id="textinput" name="dvdDescM" type="text" placeholder="" class="form-control input-md"  maxlength="50" required>
+			</div>
+		</div>
+		<!-- Text input-->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="textinput">Descripción de Medio Digital</label>
+			<div class="col-md-4">
+				<input id="textinput" name="dvdDescMd" type="text" placeholder="" class="form-control input-md" maxlength="50" required>
+			</div>
+		</div>
+		<!-- Select Basic -->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="selectbasic">Categoria DVD</label>
+			<div class="col-md-4">
+				<select id="selectbasic" name="dvdCatdvd" class="form-control">
+				    	  #{list items:categoriasDvd, as:'categoriaDvd'}
+				      		<option value="${categoriaDvd.idcatdvd}">${categoriaDvd.nombre}</option>	
+				      	  #{/list}
+				</select>
+			</div>
+		</div>
+		<!-- Text input-->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="textinput">Titulo</label>
+			<div class="col-md-4">
+				<input id="textinput" name="dvdTitulo" type="text" placeholder="" class="form-control input-md"
+				pattern="[a-zA-Z\s_-]{3,50}$" title="Solo puede contener letras y espacios, maximo 50" required>
+			</div>
+		</div>
+		
+		<!-- Button (Double) -->
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="guardarDVD"></label>
+			<div class="col-md-8">
+				<button type="submit" id="guardarDVD" name="guardarDVD" class="btn btn-success">Guardar</button>
+				<button id="cancelarDVD" name="cancelarDVD" class="btn btn-danger">Cancelar</button>
+			</div>
+		</div>
+	</fieldset>
+</form>

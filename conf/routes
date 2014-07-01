@@ -38,6 +38,13 @@ POST	/material/cd/guardar						Cds.guardarCD
 GET		/material/cd/mostrar/{id}					Cds.mostrarCD
 GET		/material/cd/eliminar/{id}					Cds.eliminarCD
 
+# DVD's
+GET		/material/dvd/listar						Dvds.listarDVD
+GET		/material/dvd/nuevo							Dvds.nuevoDVD
+POST	/material/dvd/guardar						Dvds.guardarDVD
+GET		/material/dvd/mostrar/{id}					Dvds.mostrarDVD
+GET		/material/dvd/eliminar/{id}					Dvds.eliminarDVD
+
 # Libros
 GET		/material/libro/listar						Libros.listarLibros
 GET		/material/libro/nuevo						Libros.nuevoLibro

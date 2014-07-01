@@ -24,7 +24,7 @@ public class Dvds extends Controller {
 		render(categoriasDvd, categoriasMat);
 	}
 
-	public static void guardarDVD(String dvdTitulo, int dvdCatdvd, String dvdDescMd, String dvdDescM, int dvdExistM, String dvdUbicaM, String dvdCategM, String dvdIdM, int dvdId, int dvdIdDvd){
+	public static void guardarDVD(String dvdTitulo, int dvdCatdvd, String dvdDescMd, String dvdDescM, int dvdExistM, String dvdUbicaM, int dvdCategM, String dvdIdM, int dvdId, int dvdIdDvd){
 		if(dvdIdM == null ){
 			Logger.log4j.info("New " + dvdIdM);
 			Connection conn = play.db.DB.getConnection();
@@ -39,8 +39,8 @@ public class Dvds extends Controller {
 			Logger.log4j.info("Update " + dvdIdM);
 			Connection conn = play.db.DB.getConnection();
 			try {
-
-				CallableStatement prepareCall = conn.prepareCall("call MODIFICAR_DVD("+Integer.parseInt(dvdIdM)+", "+dvdCategM+", '"+dvdUbicaM+"', "+dvdExistM+", '"+dvdDescM+"',"+dvdId+" , '"+dvdDescMd+"', "+dvdIdDvd+", "+dvdCatdvd+", '"+dvdTitulo+"')");
+				Logger.log4j.info("call MODIFICAR_DVD("+Integer.parseInt(dvdIdM)+","+dvdCategM+", '"+dvdUbicaM+"', "+dvdExistM+", '"+dvdDescM+"',"+dvdId+" , '"+dvdDescMd+"', "+dvdIdDvd+", "+dvdCatdvd+", '"+dvdTitulo+"')");
+				CallableStatement prepareCall = conn.prepareCall("call MODIFICAR_DVD("+Integer.parseInt(dvdIdM)+","+dvdCategM+", '"+dvdUbicaM+"', "+dvdExistM+", '"+dvdDescM+"',"+dvdId+" , '"+dvdDescMd+"', "+dvdIdDvd+", "+dvdCatdvd+", '"+dvdTitulo+"')");
 				Logger.log4j.info(prepareCall.execute());
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
@@ -52,7 +52,7 @@ public class Dvds extends Controller {
 	}
 	
 	public static void mostrarDVD(String id){
-		Dvd DVD = Dvd.find("ID", Long.parseLong(id)).first();
+		Dvd DVD = Dvd.find("IDDVD", Long.parseLong(id)).first();
 		List<Categoriadvd> categoriasDvd = Categoriadvd.findAll();
 		List<Categoriamaterial> categoriasMat = Categoriamaterial.findAll();
 		Logger.log4j.info(DVD.getTitulo());
@@ -62,7 +62,7 @@ public class Dvds extends Controller {
 	
 	public static void eliminarDVD(String id){
 		Logger.log4j.info("ID a Eliminar "+id);
-		Dvd DVD = Dvd.find("ID", Long.parseLong(id)).first();
+		Dvd DVD = Dvd.find("IDDVD", Long.parseLong(id)).first();
 		
 		Logger.log4j.info("Eliminar " + DVD.getId());
 		Connection conn = play.db.DB.getConnection();

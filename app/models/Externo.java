@@ -71,6 +71,10 @@ public class Externo extends GenericModel {
 		this.id = id;
 	}
 */
+	public long getIdexterno() {
+		return this.idexterno;
+	}
+	
 	public String getLugartrabajo() {
 		return this.lugartrabajo;
 	}

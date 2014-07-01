@@ -1,0 +1,202 @@
+#{extends 'main.html' /}
+#{set title:'Nuevo Externo' /}
+
+<form class="form-horizontal" action="/externo/guardar"  method="POST">
+	<fieldset>
+	
+		<!-- Form Name -->
+		<legend>Nuevo Prestamista Externo</legend>
+		
+		<legend>Datos de Usuario</legend>
+		
+		<!-- Text input-->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="nombres">Nombres del Externo</label>  
+		  <div class="col-md-4">
+		  <input id="nombres" name="nombres" type="text" placeholder="" class="form-control input-md" required="">
+		    
+		  </div>
+		</div>
+		
+		<!-- Text input-->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="apellidos">Apellidos del Externo</label>  
+		  <div class="col-md-4">
+		  <input id="apellidos" name="apellidos" type="text" placeholder="" class="form-control input-md" required="">
+		    
+		  </div>
+		</div>
+		
+		<!-- Select Basic -->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="genero">Genero</label>
+		  <div class="col-md-4">
+		    <select id="genero" name="genero" class="form-control">
+		      <option value="M">Masculino</option>
+		      <option value="F">Femenino</option>
+		    </select>
+		  </div>
+		</div>
+		
+		<!-- Text input-->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="username">Nombre de Usuario</label>  
+		  <div class="col-md-4">
+		  <input id="username" name="username" type="text" placeholder="" class="form-control input-md" required="">
+		    
+		  </div>
+		</div>
+		
+		<!-- Password input-->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="password">Password Input</label>
+		  <div class="col-md-4">
+		    <input id="password" name="password" type="password" placeholder="" class="form-control input-md" required="">
+		    
+		  </div>
+		</div>
+		
+		<!-- Multiple Radios -->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="activado">Activarlo</label>
+		  <div class="col-md-4">
+		  <div class="radio">
+		    <label for="activado-0">
+		      <input type="radio" name="activado" id="activado-0" value="0" checked="checked">
+		      No
+		    </label>
+			</div>
+		  <div class="radio">
+		    <label for="activado-1">
+		      <input type="radio" name="activado" id="activado-1" value="1">
+		      Si
+		    </label>
+			</div>
+		  </div>
+		</div>
+		
+		<legend>Datos de Prestamista</legend>
+		
+		<!-- Select Basic -->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="bibliotecologo">Bibliotecologo que registra</label>
+		  <div class="col-md-4">
+		    <select id="bibliotecologo" name="bibliotecologo" class="form-control">
+		    	 #{list items:bibliotecologos, as:'bibliotecologo'}
+		      		<option value="${bibliotecologo.idbiblio}">${bibliotecologo.usuario.nombres} ${bibliotecologo.usuario.apellidos}</option>	
+		      	  #{/list}
+		    </select>
+		  </div>
+		</div>
+		
+		<!-- Text input-->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="movil">Telefono Movil</label>  
+		  <div class="col-md-4">
+		  <input id="movil" name="movil" type="text" placeholder="" class="form-control input-md" required="">
+		    
+		  </div>
+		</div>
+		
+		<!-- Text input-->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="fijo">Telefono Fijo</label>  
+		  <div class="col-md-4">
+		  <input id="fijo" name="fijo" type="text" placeholder="" class="form-control input-md" required="">
+		    
+		  </div>
+		</div>
+		
+		<!-- Text input-->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="direccion">Direccion</label>  
+		  <div class="col-md-4">
+		  <input id="direccion" name="direccion" type="text" placeholder="" class="form-control input-md" required="">
+		    
+		  </div>
+		</div>
+		
+		<!-- Text input-->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="correo">Correo</label>  
+		  <div class="col-md-4">
+		  <input id="correo" name="correo" type="email" placeholder="" class="form-control input-md" required="">
+		    
+		  </div>
+		</div>
+		
+		<!-- Text input-->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="documento">Nº de Documento</label>  
+		  <div class="col-md-4">
+		  <input id="documento" name="documento" type="text" placeholder="" class="form-control input-md" required="">
+		    
+		  </div>
+		</div>
+		
+		<!-- Text input-->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="fechasusc">Fecha Suscripcion</label>  
+		  <div class="col-md-4 input-group date" id="fechaSusc" data-date-format="DD/MM/YYYY" style="padding-left: 15px;">
+		  <input id="fechasusc" name="fechasusc" type="text" placeholder="" class="form-control input-md" required="">
+		  <span class="input-group-addon">
+			<span class="glyphicon-calendar glyphicon"></span>
+          </span>  
+		  </div>
+		</div>
+		
+		<!-- Multiple Radios -->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="carnet">Carnet Entregado</label>
+		  <div class="col-md-4">
+		  <div class="radio">
+		    <label for="carnet-0">
+		      <input type="radio" name="carnet" id="carnet-0" value="0" checked="checked">
+		      No
+		    </label>
+			</div>
+		  <div class="radio">
+		    <label for="carnet-1">
+		      <input type="radio" name="carnet" id="carnet-1" value="1">
+		      Si
+		    </label>
+			</div>
+		  </div>
+		</div>
+		
+		<legend>Datos de Estudiante</legend>
+		
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="infra">Profesion</label>
+		  <div class="col-md-4">
+		    <input id="profesion" name="profesion" type="text" placeholder="" class="form-control input-md" required="">
+		  </div>
+		</div>
+		
+		<!-- Text input-->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="carrera">Lugar de Trabajo</label>  
+		  <div class="col-md-4">
+		  	<input id="trabajo" name="trabajo" type="text" placeholder="" class="form-control input-md" required="">
+		  </div>
+		</div>
+		
+		<!-- Button (Double) -->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="guardar">Acciones</label>
+		  <div class="col-md-8">
+		    <button type="submit" id="guardar" name="guardar" class="btn btn-success">Guardar</button>
+		    <button id="cancelar" name="cancelar" class="btn btn-danger">Cancelar</button>
+		  </div>
+		</div>
+		
+	</fieldset>
+</form>
+
+<script type="text/javascript">
+    $(function () {
+        $('#fechaSusc').datetimepicker({
+            pickTime: false
+        });
+    });
+</script>

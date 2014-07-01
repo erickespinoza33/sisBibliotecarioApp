@@ -31,14 +31,14 @@ public class Libros extends Controller {
 		render(autor);
 	}
 	
-	public static void guardarLibro(int libCategM, String libUbicaM, int libExistM, String libDescM, int libISBN, int libEditorial, String libTitulo, int libEdicion, int libVolumen, int libCosto, int Donado, int idioma, String libIdM, String logo){
+	public static void guardarLibro(int libCategM, String libUbicaM, int libExistM, String libDescM, int libISBN, int libEditorial, String libTitulo, int libEdicion, int libVolumen, int libCosto, int Donado, int libIdioma, String libIdM, String logo){
 		logo = null;
 		if(libIdM == null ){
 			Logger.log4j.info("New " + libIdM);
 			Connection conn = play.db.DB.getConnection();
 			
 			try {
-				CallableStatement prepareCall = conn.prepareCall("call INSERTARLIBRO("+libCategM+", '"+libUbicaM+"', "+libExistM+", '"+libDescM+"', "+libISBN+","+libEditorial+", '"+libTitulo+"', "+libEdicion+","+libVolumen+","+libCosto+","+Donado+",'"+logo+"',"+idioma+")");
+				CallableStatement prepareCall = conn.prepareCall("call INSERTARLIBRO("+libCategM+", '"+libUbicaM+"', "+libExistM+", '"+libDescM+"', "+libISBN+","+libEditorial+", '"+libTitulo+"', "+libEdicion+","+libVolumen+","+libCosto+","+Donado+",'"+logo+"',"+libIdioma+")");
 				Logger.log4j.info(prepareCall.execute());
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
@@ -48,7 +48,7 @@ public class Libros extends Controller {
 			Logger.log4j.info("Update " + libIdM);
 			Connection conn = play.db.DB.getConnection();
 			try {
-				CallableStatement prepareCall = conn.prepareCall("call MODIFICARLIBRO("+libIdM+","+libCategM+", '"+libUbicaM+"', "+libExistM+", '"+libDescM+"', "+libISBN+","+libEditorial+", '"+libTitulo+"', "+libEdicion+","+libVolumen+","+libCosto+","+Donado+",'"+logo+"',"+idioma+")");
+				CallableStatement prepareCall = conn.prepareCall("call MODIFICARLIBRO("+libIdM+","+libCategM+", '"+libUbicaM+"', "+libExistM+", '"+libDescM+"', "+libISBN+","+libEditorial+", '"+libTitulo+"', "+libEdicion+","+libVolumen+","+libCosto+","+Donado+",'"+logo+"',"+libIdioma+")");
 				Logger.log4j.info(prepareCall.execute());
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block

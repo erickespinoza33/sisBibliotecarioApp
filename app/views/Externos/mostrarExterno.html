@@ -1,0 +1,166 @@
+#{extends 'main.html' /}
+#{set title:'Modificar Externo' /}
+
+<form class="form-horizontal" action="/externo/guardar"  method="POST">
+	<fieldset>
+	
+		<!-- Form Name -->
+		<legend>Modificar Prestamista Externo</legend>
+		
+		<legend>Datos de Usuario</legend>
+		
+		<input name="extIdUsuario" value="${externo.prestamista.usuario.idUsuario}" type="hidden">
+		<input name="extCarnet" value="${externo.prestamista.carnet}" type="hidden">
+		<input name="extIdExterno" value="${externo.idexterno}" type="hidden">
+			
+		<!-- Text input-->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="nombres">Nombres del Externo</label>  
+		  <div class="col-md-4">
+		  <input id="nombres" name="nombres" type="text" placeholder="" class="form-control input-md" required="" value="${externo.prestamista.usuario.nombres}">
+		    
+		  </div>
+		</div>
+		
+		<!-- Text input-->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="apellidos">Apellidos del Externo</label>  
+		  <div class="col-md-4">
+		  <input id="apellidos" name="apellidos" type="text" placeholder="" class="form-control input-md" required="" value="${externo.prestamista.usuario.apellidos}">
+		    
+		  </div>
+		</div>
+		
+		<!-- Select Basic -->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="genero">Genero</label>
+		  <div class="col-md-4">
+		    <select id="genero" name="genero" class="form-control">
+		      <option value="M" #{ if (externo.prestamista.usuario.genero == 'M') } selected="selected"  #{/if}>Masculino</option>
+		      <option value="F" #{ if (externo.prestamista.usuario.genero == 'F') } selected="selected"  #{/if}>Femenino</option>
+		    </select>
+		  </div>
+		</div>
+		
+		<!-- Text input-->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="username">Nombre de Usuario</label>  
+		  <div class="col-md-4">
+		  <input id="username" name="username" type="text" placeholder="" class="form-control input-md" required="" value="${externo.prestamista.usuario.nombreusuario}">
+		    
+		  </div>
+		</div>
+		
+		<!-- Multiple Radios -->
+		<div class="form-group admin">
+		  <label class="col-md-4 control-label" for="activado">Activado</label>
+		  <div class="col-md-4">
+		  <div class="radio">
+		    <label for="activado-0">
+		      <input type="radio" name="activado" id="activado-0" value="0" #{ if (externo.prestamista.usuario.activado == 0) } checked="checked"  #{/if}>
+		      No
+		    </label>
+			</div>
+		  <div class="radio">
+		    <label for="activado-1">
+		      <input type="radio" name="activado" id="activado-1" value="1" #{ if (externo.prestamista.usuario.activado == 1) } checked="checked"  #{/if}>
+		      Si
+		    </label>
+			</div>
+		  </div>
+		</div>
+		
+		<legend>Datos de Prestamista</legend>
+		
+		<!-- Text input-->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="movil">Telefono Movil</label>  
+		  <div class="col-md-4">
+		  <input id="movil" name="movil" type="text" placeholder="" class="form-control input-md" required="" value="${externo.prestamista.telmovil}">
+		    
+		  </div>
+		</div>
+		
+		<!-- Text input-->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="fijo">Telefono Fijo</label>  
+		  <div class="col-md-4">
+		  <input id="fijo" name="fijo" type="text" placeholder="" class="form-control input-md" required="" value="${externo.prestamista.telfijo}">
+		    
+		  </div>
+		</div>
+		
+		<!-- Text input-->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="direccion">Direccion</label>  
+		  <div class="col-md-4">
+		  <input id="direccion" name="direccion" type="text" placeholder="" class="form-control input-md" required="" value="${externo.prestamista.direccionprestamista}">
+		    
+		  </div>
+		</div>
+		
+		<!-- Text input-->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="correo">Correo</label>  
+		  <div class="col-md-4">
+		  <input id="correo" name="correo" type="email" placeholder="" class="form-control input-md" required="" value="${externo.prestamista.correo}">
+		    
+		  </div>
+		</div>
+		
+		<!-- Text input-->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="documento">Nº de Documento</label>  
+		  <div class="col-md-4">
+		  <input id="documento" name="documento" type="text" placeholder="" class="form-control input-md" required="" value="${externo.prestamista.documento}">
+		    
+		  </div>
+		</div>
+		
+		<!-- Multiple Radios -->
+		<div class="form-group admin">
+		  <label class="col-md-4 control-label" for="carnet">Carnet Entregado</label>
+		  <div class="col-md-4">
+		  <div class="radio">
+		    <label for="carnet-0">
+		      <input type="radio" name="carnet" id="carnet-0" value="0" #{ if (externo.prestamista.carnetrecibido == 0) } checked="checked"  #{/if}>
+		      No
+		    </label>
+			</div>
+		  <div class="radio">
+		    <label for="carnet-1">
+		      <input type="radio" name="carnet" id="carnet-1" value="1" #{ if (externo.prestamista.carnetrecibido == 1) } checked="checked"  #{/if}>
+		      Si
+		    </label>
+			</div>
+		  </div>
+		</div>
+		
+		<legend>Datos de Externo</legend>
+		
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="infra">Profesion</label>
+		  <div class="col-md-4">
+		    <input id="profesion" name="profesion" type="text" placeholder="" class="form-control input-md" required="" value="${externo.profesion}">
+		  </div>
+		</div>
+		
+		<!-- Text input-->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="carrera">Lugar de Trabajo</label>  
+		  <div class="col-md-4">
+		  	<input id="trabajo" name="trabajo" type="text" placeholder="" class="form-control input-md" required="" value="${externo.lugartrabajo}">
+		  </div>
+		</div>
+		
+		<!-- Button (Double) -->
+		<div class="form-group">
+		  <label class="col-md-4 control-label" for="guardar">Acciones</label>
+		  <div class="col-md-8">
+		    <button type="submit" id="guardar" name="guardar" class="btn btn-success">Guardar</button>
+		    <button id="cancelar" name="cancelar" class="btn btn-danger">Cancelar</button>
+		  </div>
+		</div>
+		
+	</fieldset>
+</form>

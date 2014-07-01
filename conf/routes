@@ -24,6 +24,14 @@ GET		/estudiante/mostrar/{id}					Estudiantes.mostrarEstudiante
 GET		/estudiante/mostrar							Estudiantes.mostrarEstudiantePorId
 GET		/estudiante/eliminar/{id}					Estudiantes.eliminarEstudiante
 
+# Externos
+GET		/externo/listar								Externos.listarExterno
+GET		/externo/nuevo								Externos.nuevoExterno
+POST	/externo/guardar							Externos.guardarExterno
+GET		/externo/mostrar/{id}						Externos.mostrarExterno
+GET		/externo/mostrar							Externos.mostrarExternoPorId
+GET		/externo/eliminar/{id}						Externos.eliminarExterno
+
 # REVISTAS
 GET		/material/revista/listar					Revistas.listarRevista
 GET		/material/revista/nuevo						Revistas.nuevoRevista

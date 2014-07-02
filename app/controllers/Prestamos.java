@@ -39,7 +39,9 @@ public class Prestamos extends Controller {
 			Logger.log4j.info("New ----------------->");
 			Connection conn = play.db.DB.getConnection();
 			try { 	
-				CallableStatement prepareCall = conn.prepareCall("call INSERTARPRESTAMO("+p.getUsuario().getIdUsuario()+" ,"+ p.getCarnet()+" ,"+b.getUsuario().getIdUsuario()+", "+b.getIdbiblio()+", "+Long.parseLong(presMatIdSelect)+", "+Long.parseLong(presTipoPres)+" , "+Long.parseLong(presEstado)+" ,'"+presFechaIn+"','"+presFecahDev+"')");
+				Logger.log4j.info(presFechaIn);
+				CallableStatement prepareCall = conn.prepareCall("call INSERTARPRESTAMO("+p.getUsuario().getIdUsuario()+" ,"+ p.getCarnet()+" ,"+b.getUsuario().getIdUsuario()+", "+b.getIdbiblio()+", "+Long.parseLong(presMatIdSelect)+", "+Long.parseLong(presTipoPres)+" ,'"+presFechaIn+"')");
+				Logger.log4j.info("call INSERTARPRESTAMO("+p.getUsuario().getIdUsuario()+" ,"+ p.getCarnet()+" ,"+b.getUsuario().getIdUsuario()+", "+b.getIdbiblio()+", "+Long.parseLong(presMatIdSelect)+", "+Long.parseLong(presTipoPres)+" ,'"+presFechaIn+"')");
 				Logger.log4j.info(prepareCall.execute()); 
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block

@@ -63,7 +63,7 @@ public class Penalizaciones extends Controller{
 				e.printStackTrace();
 			}
 		}
-		redirect("/mora/listar");
+		redirect("/penalizacion/listar");
 		
 	}
 	
@@ -77,7 +77,7 @@ public class Penalizaciones extends Controller{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		redirect("/mora/listar");
+		redirect("/penalizacion/listar");
 	}
 	
 }

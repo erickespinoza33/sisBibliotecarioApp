@@ -7,11 +7,20 @@
 		<legend>Detalles de Prestamo</legend>
 		
 		<input name="prestamoId" type="hidden" value="${prestamo.idprestamo}">
+		<input name="presBiblioId" type="hidden" value="${prestamo.bibliotecologo.idbiblio}">
+		<input name="prestPrestId" type="hidden" value="${prestamo.prestamista.carnet}">
+		<input name="presTipoMat" type="hidden" value="${prestamo.material.categoriamaterial.idcategoriamat}">
+		<input name="presMatIdSelect" type="hidden" value="${prestamo.material.idmaterial}">
+		<input name="presTipoPres" type="hidden" value="${prestamo.tipoprestamo.idtipoprestamo}">
+		<input name="presEstado" type="hidden" value="0">
+
+		
 		<!-- Appended Input-->
 		<div class="form-group">
 			<label class="col-md-4 control-label" for="presBiblioId">Bibliotecologo</label>
 			<div class="col-md-5">
-				<select id="presBiblioId" name="presBiblioId" style="width:400px" requ>
+				<input id="presBiblioId1" name="presBiblioId1" type="text" placeholder="" class="form-control input-md" value="${prestamo.bibliotecologo.usuario.nombres} ${prestamo.bibliotecologo.usuario.apellidos}" readonly>
+				<!--  <select id="presBiblioId" name="presBiblioId" style="width:400px" readonly>
 					<option></option>
 					#{list items:litsBiblio, as:'bibliotecologo'}
 					<option value="${bibliotecologo.idbiblio}" #{ if (bibliotecologo.idbiblio == prestamo.bibliotecologo.idbiblio) } selected="selected"  #{/if}>
@@ -27,49 +36,54 @@
 		<div class="form-group">
 			<label class="col-md-4 control-label" for="prestPrestId">Prestamista</label>
 			<div class="col-md-4">
-				<select id="prestPrestId" name="prestPrestId" style="width:400px">
+				<input id="prestPrestId1" name="prestPrestId1" type="text" placeholder="" class="form-control input-md" value="${prestamo.prestamista.usuario.nombres} ${prestamo.prestamista.usuario.apellidos}" readonly>
+				<!--  <select id="prestPrestId" name="prestPrestId" style="width:400px" readonly>
 					<option></option>
 					#{list items:litsPresta, as:'prestamista'}
 					<option value="${prestamista.carnet}" #{ if (prestamista.carnet== prestamo.prestamista.carnet) } selected="selected"  #{/if}>
 						${prestamista.usuario.nombres} ${prestamista.usuario.apellidos}</option> #{/list}
-				</select>
+				</select>-->
 			</div>
 		</div>
 		<!-- Select Basic -->
 		<div class="form-group">
 			<label class="col-md-4 control-label" for="presTipoMat">Tipo de Material</label>
 			<div class="col-md-4">
-				<select id="presTipoMat" name="presTipoMat" class="form-control" onchange="setMaterial(this);">
+				<input id="presTipoMat" name="presTipoMat" type="text" placeholder="" class="form-control input-md" value="${prestamo.material.categoriamaterial.categoriamat}" readonly>
+				<!--  <select id="presTipoMat" name="presTipoMat" class="form-control" onchange="setMaterial(this);">
 					<option></option>
 					#{list items:listaTipoMateial, as:'categoria'}
 						<option value="${categoria.idcategoriamat}"  #{ if (categoria.idcategoriamat == prestamo.material.categoriamaterial.idcategoriamat) } selected="selected"  #{/if}>${categoria.categoriamat}</option>	
 					#{/list}
-				</select>
+				</select>-->
 			</div>
 		</div>
 		<!-- Appended Input-->
 		<div class="form-group">
 			<label class="col-md-4 control-label" for="presMatId">Material</label>
 			<div class="col-md-5">
-				<div class="input-group">				
-					<select id="presMatIdSelect" name="presMatIdSelect" style="width: 400px">
+				<div class="input-group">	
+					<input id="presMatIdSelect1" name="presMatIdSelect1" type="text" placeholder="" class="form-control input-md" value="${prestamo.material.descripcionmaterial}" readonly>			
+					<!--  <select id="presMatIdSelect" name="presMatIdSelect" style="width: 400px">
 						<option value="${prestamo.material.idmaterial}" >${prestamo.material.descripcionmaterial}</option>
-					</select>
+					</select>-->
 				</div>
 			</div>
 		</div>
 		<!-- Select Basic -->
-		<div class="form-group">
-			<label class="col-md-4 control-label" for="presTipoPres">Tipo de Prestamo</label>
+		 <div class="form-group">
+			 <label class="col-md-4 control-label" for="presTipoPres">Tipo de Prestamo</label>
 			<div class="col-md-4">
+				<input id="presTipoPres1" name="presTipoPres1" type="text" placeholder="" class="form-control input-md" value="${prestamo.tipoprestamo.tipo}" readonly>			
+				<!--  	
 				<select id="presTipoPres" name="presTipoPres" class="form-control">
 				    	  #{list items:listaTipoPrestamo, as:'tipoPrestamo'}
 				      		<option value="${tipoPrestamo.idtipoprestamo}"  #{ if (tipoPrestamo.idtipoprestamo == prestamo.tipoprestamo.idtipoprestamo) } selected="selected"  #{/if}>${tipoPrestamo.tipo}</option>	
 				      	  #{/list}
-				</select>
+				</select>-->
 			</div>
 		</div>
-		<!-- Select Basic -->
+		<!-- Select Basic 
 		<div class="form-group">
 			<label class="col-md-4 control-label" for="presEstado">Estado Prestamo</label>
 			<div class="col-md-2">
@@ -80,32 +94,28 @@
 					<option value="3" #{ if (prestamo.estado == 3)} selected="selected"  #{/if}>PENALIZADO</option>
 				</select>
 			</div>
-		</div>
+		</div>-->
 		<!-- Text input-->
 		<div class="form-group">
 			<label class="col-md-4 control-label" for="presFechaIn">Fecha Inicio</label>
 			<div class="col-md-4 input-group date" id="datetimepicker1" data-date-format="DD/MMM/YYYY" style="padding-left: 15px;">
-				<input id="presFechaIn" name="presFechaIn" type="text" placeholder="" class="form-control input-md" value="${prestamo.fechainicio.format('dd/MMM/yyyy')}" required="">
-				<span class="input-group-addon">
-					<span class="glyphicon-calendar glyphicon"></span>
-                </span>
+				<input id="presFechaIn" name="presFechaIn" type="text" placeholder="" class="form-control input-md" value="${prestamo.fechainicio.format('dd/MMM/yyyy')}" readonly>
+				
 			</div>
 		</div>
 		<!-- Text input-->
 		<div class="form-group">
 			<label class="col-md-4 control-label" for="presFechaFin">Fecha Fin</label>
 			<div class="col-md-4 input-group date" id="datetimepicker2" data-date-format="DD/MMM/YYYY" style="padding-left: 15px;">
-				<input id="presFechaFin" name="presFechaFin" type="text" placeholder="" class="form-control input-md" value="${prestamo.fechafin?.format('dd/MMM/yyyy')}">
-				<span class="input-group-addon">
-					<span class="glyphicon-calendar glyphicon"></span>
-                </span>
+				<input id="presFechaFin" name="presFechaFin" type="text" placeholder="" class="form-control input-md" value="${prestamo.fechafin?.format('dd/MMM/yyyy')}" readonly>
+				
 			</div>
 		</div>
 		<!-- Text input-->
 		<div class="form-group">
 			<label class="col-md-4 control-label" for="presFecahDev">Fecha de Devolución </label>
 			<div class="col-md-4 input-group date" id="datetimepicker3" data-date-format="DD/MMM/YYYY" style="padding-left: 15px;">
-				<input id="presFecahDev" name="presFecahDev" type="text" placeholder="" class="form-control input-md" value="${prestamo.fechadevolucion?.format('dd/MMM/yyyy')}">
+				<input id="presFecahDev" name="presFecahDev" type="text" placeholder="" class="form-control input-md" value="${prestamo.fechadevolucion?.format('dd/MMM/yyyy')}" readonly>
 				<span class="input-group-addon">
 					<span class="glyphicon-calendar glyphicon"></span>
                 </span>
@@ -128,34 +138,11 @@
             console.log("Redireccionar")
         	window.location.href ="/prestamo/listar";
         });
-        $('#datetimepicker1').datetimepicker({
-            pickTime: false
-        });
-        $('#datetimepicker2').datetimepicker({
-            pickTime: false
-        });
+        
         $('#datetimepicker3').datetimepicker({
             pickTime: false
         });
 
-		$("#datetimepicker1").on("dp.change",function (e) {
-		    $('#datetimepicker2').data("DateTimePicker").setMinDate(e.date);
-		 });
-		$("#datetimepicker1").on("dp.change",function (e) {
-		    $('#datetimepicker3').data("DateTimePicker").setMinDate(e.date);
-		 });
-		 
-		$("#presBiblioId").select2({
-		    placeholder: "Seleccionar Bibliotecologo"
-		});
-
-		$("#prestPrestId").select2({
-		    placeholder: "Seleccionar Prestamista"
-		});
-
-		$("#presTipoMat").select2({
-		    placeholder: "Seleccionar Prestamista"
-		});
     });
 
     function setMaterial(select){

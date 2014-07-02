@@ -58,7 +58,7 @@
 		<div class="form-group">
 			<label class="col-md-4 control-label" for="textinput">Fecha de publicacion</label>
 			<div class="col-md-4 input-group date" id="datetimepicker1" data-date-format="DD/MMM/YYYY" style="padding-left: 15px;">
-				<input id="presFechaIn" name="revFechaPub" type="text" placeholder="" class="form-control input-md" value="" required>
+				<input id="presFechaIn" name="revFechaPub" type="text" placeholder="" class="form-control input-md" value="${Rev.hemerografia.fechapublicacion.format('dd/MM/yyyy')}" required readonly>
 				<span class="input-group-addon">
 					<span class="glyphicon-calendar glyphicon"></span>
                 </span>

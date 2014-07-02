@@ -55,7 +55,6 @@
 				#{list items:prestamo.prestamista.profesors, as:'profesor'}				
 					#{ if (profesor.carnet == prestamo.prestamista.carnet) } ${profesor.prestamista.usuario.nombres}  ${profesor.prestamista.usuario.apellidos}#{/if}
 				#{/list}
-
 			</td>
 			<td>
 				${prestamo.material.categoriamaterial.categoriamat}
@@ -78,8 +77,8 @@
 			</td>
 			<td>
 				<div class="btn-group">
+					#{ if (prestamo.fechadevolucion == null) } <button type="button" class="btn btn-default"><a href="/prestamo/mostrar/${prestamo.idprestamo}">Devolver</a></button>  #{/if} 
 					
-					<button type="button" class="btn btn-default"><a href="/prestamo/mostrar/${prestamo.idprestamo}">Detalles</a></button>
 					<!-- button type="button" class="btn btn-default"><a href="/prestamo/mostrar/${prestamo.idprestamo}">Editar</a></button -->
 										
 				</div>
